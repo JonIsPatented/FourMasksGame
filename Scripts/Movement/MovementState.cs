@@ -25,6 +25,13 @@ public interface MovementState
     public void Process(MovementInfo info) { }
 
     /// <summary>
+    /// Called when the consumer needs the directive output from this state.
+    /// </summary>
+    /// <param name="info"></param>
+    /// <returns></returns>
+    public MovementDirective Directive(MovementInfo info);
+
+    /// <summary>
     /// Called once when this state is exited during a transition.
     /// </summary>
     /// <param name="info"></param>

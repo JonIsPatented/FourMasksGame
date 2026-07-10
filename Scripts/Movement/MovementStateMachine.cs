@@ -19,6 +19,19 @@ public partial class MovementStateMachine : GodotObject
     }
 
     /// <summary>
+    /// Get the directive output of the current state.
+    /// </summary>
+    /// <returns></returns>
+    public MovementDirective GetDirective()
+    {
+        if (currentState == null)
+        {
+            return new();
+        }
+        return currentState.Directive(movementInfo);
+    }
+
+    /// <summary>
     /// Allow the current state to process, then query for and possibly perform a transition. No more than one transition will be performed per call, so each state in a chain will be current after at least one process call.
     /// </summary>
     public void Process()
