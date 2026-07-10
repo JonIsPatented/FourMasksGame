@@ -19,7 +19,8 @@ public partial class Player : CharacterBody2D
     {
         movementStateMachine.PassInfo(new()
         {
-            grounded = IsOnFloor()
+            grounded = IsOnFloor(),
+            realVelocity = GetRealVelocity()
         });
         movementStateMachine.Process();
         if (movementStateMachine.TransitionOnLastProcess)

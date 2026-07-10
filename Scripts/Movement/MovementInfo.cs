@@ -1,4 +1,6 @@
 
+using Godot;
+
 namespace FourMasksGame.Scripts.Movement;
 
 /// <summary>
@@ -7,4 +9,5 @@ namespace FourMasksGame.Scripts.Movement;
 public struct MovementInfo
 {
     public bool grounded;
+    public Vector2 realVelocity;
 }
