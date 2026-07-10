@@ -121,7 +121,7 @@ public partial class InputManager : Node
     {
         if (bufferedActions.ContainsKey(actionName))
         {
-            return bufferedActions[actionName] < Engine.GetProcessFrames() + bufferTolerance;
+            return bufferedActions[actionName] >= Engine.GetProcessFrames() - bufferTolerance;
         }
         return false;
     }
