@@ -37,7 +37,7 @@ public partial class InputManager : Node
     public override void _Ready()
     {
         AimWithJoystick = false;
-        contextStack.Push(new NormalInputContext());
+        contextStack.Push(new CutsceneInputContext()); // Using cutscene input as the default to prevent consumers collecting input without manipulating the context
         Instance = this;
     }
 
@@ -57,21 +57,40 @@ public partial class InputManager : Node
         }
     }
 
-    // Enters a new current input context on top of the previous input context.
+    /// <summary>
+    /// Enters a new current input context on top of the previous input context.
+    /// </summary>
+    /// <param name="context">The context to make current.</param>
     public void PushContext(InputContext context)
     {
         contextStack.Push(context);
     }
 
-    // Returns to the previous input context. Should only be used after pushing.
+    /// <summary>
+    /// Returns to the previous input context. Should only be used after pushing. Never pops the bottom context.
+    /// </summary>
     public void PopContext()
     {
-        contextStack.Pop();
+        if (contextStack.Count > 1)
+        {
+            contextStack.Pop();
+        }
     }
 
-    // Get the axis of horizontal movement based on input actions.
-    // Returns zero if the context filters out the horizontal axis.
-    // TODO: Implement persistent storage of the most recent nonzero horizontal value.
+    /// <summary>
+    /// Change the bottom context of the context stack and remove all other contexts.
+    /// </summary>
+    /// <param name="context">The context to make both base and current.</param>
+    public void ClearContext(InputContext context)
+    {
+        contextStack.Clear();
+        contextStack.Push(context);
+    }
+
+    /// <summary>
+    /// Get the axis of horizontal movement based on input actions. Returns zero if the context filters out the horizontal axis.
+    /// </summary>
+    /// <returns>A float where right is positive.</returns>
     public float GetHorizontalAxis()
     {
         if (CurrentContext.UseAny && CurrentContext.UseHorizontalAxis)
