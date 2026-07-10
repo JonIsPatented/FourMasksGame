@@ -66,7 +66,7 @@ public partial class MovementStateMachine : GodotObject
 
     private void TransitionToState(MovementState state)
     {
-        currentState?.OnExit(movementInfo, state);
+        currentState?.OnExit(movementInfo, state.Label);
         currentState = state;
         futureStates = currentState?.FutureStates();
         futureStates ??= [];

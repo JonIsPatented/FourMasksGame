@@ -36,7 +36,7 @@ public interface MovementState
     /// </summary>
     /// <param name="info"></param>
     /// <param name="futureState"></param>
-    public void OnExit(MovementInfo info, MovementState futureState) { }
+    public void OnExit(MovementInfo info, MovementStateLabel futureState) { }
 
     /// <summary>
     /// Called once when the state is entered to get all states for which should exit to will be queried.
