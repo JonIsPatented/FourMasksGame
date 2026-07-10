@@ -24,10 +24,6 @@ public partial class Player : CharacterBody2D
             realVelocity = GetRealVelocity()
         });
         movementStateMachine.Process();
-        if (movementStateMachine.TransitionOnLastProcess)
-        {
-            Velocity = GetRealVelocity() + movementStateMachine.GetDirective().impulseOnEnter;
-        }
 
         if (sprite != null)
         {
@@ -44,10 +40,17 @@ public partial class Player : CharacterBody2D
         // So I'm resetting each step here to the real velocity.
         // That means that the requested Y velocity will stop accumulating if on the ground.
         Velocity = GetRealVelocity();
-        if (!IsOnFloor())
+
+        if (movementStateMachine.TransitionOnLastProcess)
         {
-            Velocity += GetGravity() * (float)delta;
+            //* I think this logic is frame dependent. Not sure how to fix it.
+            //* I think GetRealVelocity()'s return value is time-interpolated, so it changes slowly based on the requested velocity.
+            //* That would make this the correct method, maybe? It needs to be evaluated at different framerates.
+
+            Velocity = GetRealVelocity() + movementStateMachine.GetDirective().impulseOnEnter;
         }
+
+        Velocity += GetGravity() * (float)delta;
 
         // The player controls horizontal velocity directive determines whether the player gets to set the horizontal velocity with input.
         if (directive.playerControlsHorizontalVelocity)
