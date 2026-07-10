@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cjlmwxnfgoepo"]
+
+[ext_resource type="Script" uid="uid://b0mwlm65rymvk" path="res://Scripts/Input/Testing/InputTestControl.cs" id="1_jcoca"]
+[ext_resource type="Script" uid="uid://bm4cpqwprq1w1" path="res://Scripts/Input/Testing/InputDisplay.cs" id="1_lj1nj"]
+
+[node name="InputTesting" type="Node2D" unique_id=1569773631]
+script = ExtResource("1_jcoca")
+
+[node name="JumpDisplay" type="Node2D" parent="." unique_id=1735764836]
+position = Vector2(50, 51)
+script = ExtResource("1_lj1nj")
+actionName = "Jump"
+
+[node name="Label" type="Label" parent="JumpDisplay" unique_id=1465125507]
+offset_left = -18.0
+offset_top = -37.0
+offset_right = 23.0
+offset_bottom = -14.0
+text = "Jump"
+
+[node name="HorizontalDisplay" type="Node2D" parent="." unique_id=506770128]
+position = Vector2(175, 276)
+script = ExtResource("1_lj1nj")
+inputType = 2
+
+[node name="Label2" type="Label" parent="HorizontalDisplay" unique_id=1902432208]
+offset_left = -40.0
+offset_top = -37.0
+offset_right = 41.0
+offset_bottom = -14.0
+text = "Horizontal"
+horizontal_alignment = 1
+
+[node name="AimDisplay" type="Node2D" parent="." unique_id=1691418279]
+position = Vector2(470, 276)
+script = ExtResource("1_lj1nj")
+inputType = 1
+
+[node name="Label3" type="Label" parent="AimDisplay" unique_id=38795918]
+offset_left = -16.0
+offset_top = -36.0
+offset_right = 25.0
+offset_bottom = -13.0
+text = "Aim"
+
+[node name="Instructions" type="Label" parent="." unique_id=1359088877]
+offset_left = 298.0
+offset_top = 22.0
+offset_right = 621.0
+offset_bottom = 123.0
+text = "Press 1 to push a normal input context.
+Press 2 to push an aimLock input context.
+Press 3 to push a cutscene input context.
+Press 4 to pop the current context."
