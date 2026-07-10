@@ -31,6 +31,20 @@ offset_bottom = -14.0
 text = "Horizontal"
 horizontal_alignment = 1
 
+[node name="LastHorizontalDisplay" type="Node2D" parent="." unique_id=1496942718]
+position = Vector2(175, 326)
+script = ExtResource("1_lj1nj")
+inputType = 2
+persistent = true
+
+[node name="Label2" type="Label" parent="LastHorizontalDisplay" unique_id=1192252647]
+offset_left = -58.0
+offset_top = -37.0
+offset_right = 60.0
+offset_bottom = -14.0
+text = "Last Horizontal"
+horizontal_alignment = 1
+
 [node name="AimDisplay" type="Node2D" parent="." unique_id=1691418279]
 position = Vector2(470, 276)
 script = ExtResource("1_lj1nj")
