@@ -54,13 +54,11 @@ public partial class InputManager : Node
             {
                 if (inputEvent.IsActionPressed(actionName, false))
                 {
-                    actionRecords[actionName].hasPress = true;
-                    actionRecords[actionName].framePressed = frame;
+                    actionRecords[actionName].RecordPress(frame);
                 }
                 if (inputEvent.IsActionReleased(actionName))
                 {
-                    actionRecords[actionName].hasRelease = true;
-                    actionRecords[actionName].frameReleased = frame;
+                    actionRecords[actionName].RecordRelease(frame);
                 }
             }
         }
@@ -92,21 +90,33 @@ public partial class InputManager : Node
                 // Record a press for actions with filtered presses in the previous context.
                 if (record.frameReleased > record.framePressed && Godot.Input.IsActionPressed(actionName))
                 {
-                    actionRecords[actionName].hasPress = true;
-                    actionRecords[actionName].framePressed = frame;
+                    actionRecords[actionName].RecordPress(frame);
                 }
 
                 // Record a release for actions with filtered releases in the previous context.
                 if (record.frameReleased < record.framePressed && !Godot.Input.IsActionPressed(actionName))
                 {
-                    actionRecords[actionName].hasRelease = true;
-                    actionRecords[actionName].frameReleased = frame;
+                    actionRecords[actionName].RecordRelease(frame);
                 }
             }
 
             if (context.UseHorizontalAxis)
             {
                 horizontalAxisRecord = Godot.Input.GetAxis("MoveLeft", "MoveRight");
+            }
+        }
+
+        if (!context.UseAny)
+        {
+            foreach (string actionName in actionRecords.Keys)
+            {
+                ActionRecord record = actionRecords[actionName];
+
+                // Record a release for pressed actions that are filtered in this context.
+                if (record.frameReleased < record.framePressed)
+                {
+                    actionRecords[actionName].RecordRelease(frame);
+                }
             }
         }
     }
@@ -227,10 +237,15 @@ public partial class InputManager : Node
     /// Get whether an action is currently held.
     /// </summary>
     /// <param name="actionName">The action name in the input map.</param>
+    /// <param name="bufferTolerance">The number of frames before the current frame to allow a release and still record that the action is held.</param>
     /// <returns>True if the action is held and not filtered by the context.</returns>
-    public bool GetActionHeld(string actionName)
+    public bool GetActionHeld(string actionName, uint bufferTolerance = 0)
     {
-        return CurrentContext.UseAny && Godot.Input.IsActionPressed(actionName);
+        if (actionRecords.ContainsKey(actionName))
+        {
+            return actionRecords[actionName].hasPress && actionRecords[actionName].framePressed >= actionRecords[actionName].frameReleased - bufferTolerance;
+        }
+        return false;
     }
 
     /// <summary>
@@ -259,6 +274,18 @@ public partial class InputManager : Node
         /// The frame this action was most recently released. The default value is zero, use hasRelease to determine if this field actually represents a release.
         /// </summary>
         public ulong frameReleased = 0;
+
+        public void RecordPress(ulong frame)
+        {
+            hasPress = true;
+            framePressed = frame;
+        }
+
+        public void RecordRelease(ulong frame)
+        {
+            hasRelease = true;
+            frameReleased = frame;
+        }
     }
 }
 
