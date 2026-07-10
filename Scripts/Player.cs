@@ -9,10 +9,11 @@ public partial class Player : CharacterBody2D
     private MovementStateMachine movementStateMachine;
     [Export] private Sprite2D sprite;
 
-    // I don't think export variables are set until after _EnterTree and _Ready, so be careful about referencing exported node references here.
+    // I don't think export variables are set until after _EnterTree and _Ready, so be careful about using exported node references here.
     public override void _EnterTree()
     {
         movementStateMachine = new();
+        movementStateMachine.EnterState(new Movement.States.IdleMovementState());
     }
 
     public override void _Process(double delta)
