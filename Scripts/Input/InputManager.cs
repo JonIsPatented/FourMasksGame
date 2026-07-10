@@ -33,6 +33,9 @@ public partial class InputManager : Node
         {"Jump", new()},
     };
 
+    // The InputManager records the horizontal axis here whenever it reaches 1 or -1.
+    private float horizontalAxisRecord = 0f;
+
     // The InputManager node enters the SceneTree with some default settings.
     public override void _Ready()
     {
@@ -61,6 +64,20 @@ public partial class InputManager : Node
                 }
             }
         }
+
+        if (CurrentContext.UseHorizontalAxis)
+        {
+            if (inputEvent.IsAction("MoveLeft") || inputEvent.IsAction("MoveRight"))
+            {
+                float horizontalAxis = Godot.Input.GetAxis("MoveLeft", "MoveRight");
+                if (Mathf.Abs(horizontalAxis) >= 1f)
+                {
+                    horizontalAxisRecord = Mathf.Round(horizontalAxis);
+                }
+            }
+        }
+
+        // TODO: Implement aim recording here.
     }
 
     /// <summary>
@@ -107,13 +124,12 @@ public partial class InputManager : Node
     }
 
     /// <summary>
-    /// Not implemented.
+    /// Get the most recent value in {-1, 1} for the horizontal axis. Doesn't update if the context filters horizontal axis.
     /// </summary>
-    /// <returns></returns>
-    // TODO: Implement persistent storage of the most recent nonzero horizontal value.
+    /// <returns>The most recent value for the horizontal axis in {1, -1}.</returns>
     public float GetLastHorizontalAxis()
     {
-        return 0f;
+        return horizontalAxisRecord;
     }
 
     /// <summary>
