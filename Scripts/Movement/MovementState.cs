@@ -52,5 +52,10 @@ public interface MovementState
     /// <param name="info"></param>
     /// <param name="futureState"></param>
     /// <returns></returns>
-    public bool ShouldExitTo(MovementInfo info, MovementState futureState) { return true; }
+    public bool ShouldExitTo(MovementInfo info, MovementStateLabel futureState) { return true; }
+
+    /// <summary>
+    /// The label used to identify this state in the ShouldExitTo call.
+    /// </summary>
+    public MovementStateLabel Label { get; }
 }

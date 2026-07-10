@@ -44,7 +44,7 @@ public partial class MovementStateMachine : GodotObject
             {
                 if (currentState != null)
                 {
-                    if (currentState.ShouldExitTo(movementInfo, futureState))
+                    if (currentState.ShouldExitTo(movementInfo, futureState.Label))
                     {
                         TransitionOnLastProcess = true;
                         TransitionToState(futureState);
