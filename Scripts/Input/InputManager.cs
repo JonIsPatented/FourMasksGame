@@ -65,7 +65,7 @@ public partial class InputManager : Node
             }
         }
 
-        if (CurrentContext.UseHorizontalAxis)
+        if (CurrentContext.UseHorizontalAxis && CurrentContext.UseAny)
         {
             if (inputEvent.IsAction("MoveLeft") || inputEvent.IsAction("MoveRight"))
             {
@@ -80,6 +80,37 @@ public partial class InputManager : Node
         // TODO: Implement aim recording here.
     }
 
+    public void EnterContext(InputContext context)
+    {
+        ulong frame = Engine.GetProcessFrames();
+        if (context.UseAny)
+        {
+            foreach (string actionName in actionRecords.Keys)
+            {
+                ActionRecord record = actionRecords[actionName];
+
+                // Record a press for actions with filtered presses in the previous context.
+                if (record.frameReleased > record.framePressed && Godot.Input.IsActionPressed(actionName))
+                {
+                    actionRecords[actionName].hasPress = true;
+                    actionRecords[actionName].framePressed = frame;
+                }
+
+                // Record a release for actions with filtered releases in the previous context.
+                if (record.frameReleased < record.framePressed && !Godot.Input.IsActionPressed(actionName))
+                {
+                    actionRecords[actionName].hasRelease = true;
+                    actionRecords[actionName].frameReleased = frame;
+                }
+            }
+
+            if (context.UseHorizontalAxis)
+            {
+                horizontalAxisRecord = Godot.Input.GetAxis("MoveLeft", "MoveRight");
+            }
+        }
+    }
+
     /// <summary>
     /// Enters a new current input context on top of the previous input context.
     /// </summary>
@@ -87,6 +118,7 @@ public partial class InputManager : Node
     public void PushContext(InputContext context)
     {
         contextStack.Push(context);
+        EnterContext(context);
     }
 
     /// <summary>
@@ -97,6 +129,7 @@ public partial class InputManager : Node
         if (contextStack.Count > 1)
         {
             contextStack.Pop();
+            EnterContext(contextStack.Peek());
         }
     }
 
@@ -108,6 +141,7 @@ public partial class InputManager : Node
     {
         contextStack.Clear();
         contextStack.Push(context);
+        EnterContext(context);
     }
 
     /// <summary>
