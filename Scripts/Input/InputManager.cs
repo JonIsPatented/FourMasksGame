@@ -100,13 +100,24 @@ public partial class InputManager : Node
         return 0f;
     }
 
-    // Get the aim direction as a Vector2 with a length in [0, 1].
-    // If the current input context filters aim inputs, this method returns Vector2.Zero.
-    // If AimWithJoystick is true, the result of this method is determined solely by input actions.
-    // Otherwise, the result of this method is determined by the mouse position.
-    // The viewport aim origin is the point in the viewport from which the aim vector originates.
-    // The aim vector returned will be in the direction of the mouse from the viewport aim origin.
-    // TODO: Implement persistent storage of the most recent nonzero aim vector.
+    /// <summary>
+    /// Not implemented.
+    /// </summary>
+    /// <returns></returns>
+    // TODO: Implement persistent storage of the most recent nonzero horizontal value.
+    public float GetLastHorizontalAxis()
+    {
+        return 0f;
+    }
+
+    /// <summary>
+    /// Get the aim direction as a Vector2 with a length in [0, 1].
+    /// If the current input context filters aim inputs, this method returns Vector2.Zero.
+    /// If AimWithJoystick is true, the result of this method is determined solely by input actions.
+    /// Otherwise, the result of this method is determined by the mouse position.
+    /// </summary>
+    /// <param name="viewportAimOrigin">The point in the viewport from which the aim vector originates.</param>
+    /// <returns>The vector in the direction of the mouse from the viewport aim origin, or the aim vector from joystick.</returns>
     public Vector2 GetAim(Vector2 viewportAimOrigin)
     {
         if (CurrentContext.UseAny && CurrentContext.UseAim)
@@ -135,7 +146,18 @@ public partial class InputManager : Node
         return Vector2.Zero;
     }
 
-    // Get whether an action was pressed without being filtered within a certain tolerance.
+    // TODO: Implement persistent storage of the most recent nonzero aim vector.
+    public Vector2 GetLastAim(Vector2 viewportAimOrigin)
+    {
+        return Vector2.Zero;
+    }
+
+    /// <summary>
+    /// Get whether an action was pressed without being filtered within a certain tolerance.
+    /// </summary>
+    /// <param name="actionName">The action name in the input map.</param>
+    /// <param name="bufferTolerance">The number of frames before the current frame to include in the window of possible press frames.</param>
+    /// <returns></returns>
     public bool GetActionPressed(string actionName, uint bufferTolerance = 0)
     {
         if (bufferedActions.ContainsKey(actionName))
