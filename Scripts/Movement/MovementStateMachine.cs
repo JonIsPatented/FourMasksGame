@@ -16,6 +16,9 @@ public partial class MovementStateMachine : GodotObject
         movementInfo = info;
     }
 
+    /// <summary>
+    /// Allow the current state to process, then query for and possibly perform a transition. No more than one transition will be performed per call, so each state in a chain will be current after at least one process call.
+    /// </summary>
     public void Process()
     {
         currentState?.Process(movementInfo);
