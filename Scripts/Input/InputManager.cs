@@ -177,6 +177,18 @@ public partial class InputManager : Node
     }
 
     /// <summary>
+    /// Modifies the cached value for "last horizontal axis". Use to set a default value at the start of a game context.
+    /// </summary>
+    /// <param name="horizontalAxis">The value to use as the most recent horizontal axis value.</param>
+    public void SimulateDefaultHorizontalAxis(float horizontalAxis)
+    {
+        if (horizontalAxis != 0f)
+        {
+            horizontalAxisRecord = Mathf.Sign(horizontalAxis);
+        }
+    }
+
+    /// <summary>
     /// Get the aim direction as a Vector2 with a length in [0, 1].
     /// If the current input context filters aim inputs, this method returns Vector2.Zero.
     /// If AimWithJoystick is true, the result of this method is determined solely by input actions.
