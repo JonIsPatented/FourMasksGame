@@ -36,8 +36,9 @@ public partial class InputManager : Node
     // The InputManager records the horizontal axis here whenever it reaches 1 or -1.
     private float horizontalAxisRecord = 0f;
 
-    // The InputManager node enters the SceneTree with some default settings.
-    public override void _Ready()
+    // The InputManager is constructed with some default settings.
+    // If this isn't done in the constructor, there isn't an instance in time for _EnterTree calls.
+    public InputManager()
     {
         AimWithJoystick = false;
         contextStack.Push(new CutsceneInputContext()); // Using cutscene input as the default to prevent consumers collecting input without manipulating the context
