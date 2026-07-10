@@ -12,7 +12,15 @@ config_version=5
 
 config/name="FourMasksGame"
 config/features=PackedStringArray("4.7")
+run/max_fps=120
 config/icon="res://icon.png"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1920
+window/size/window_height_override=1080
 
 [dotnet]
 
@@ -28,4 +36,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_environment="res://default_env.tres"
