@@ -29,7 +29,9 @@ public partial class InputManager : Node
     // The InputManager populates this table with the frames that these actions occurred as it receives them.
     // The InputManager will not log an action unless it already has an entry.
     // TODO: Populate this table with "frame zero" entries.
-    private readonly Dictionary<string, ulong> bufferedActions = [];
+    private readonly Dictionary<string, ulong> bufferedActions = new() {
+        {"Jump", 0},
+    };
 
     // The InputManager node enters the SceneTree with some default settings.
     public override void _Ready()
