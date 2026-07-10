@@ -45,11 +45,11 @@ public partial class InputManager : Node
     public override void _Input(InputEvent inputEvent)
     {
         ulong frame = Engine.GetProcessFrames();
-        if (CurrentContext.UseAny)
+        if (CurrentContext.UseAny && !inputEvent.IsEcho())
         {
             foreach (string actionName in bufferedActions.Keys)
             {
-                if (inputEvent.IsAction(actionName))
+                if (inputEvent.IsActionPressed(actionName, false))
                 {
                     bufferedActions[actionName] = frame;
                 }
