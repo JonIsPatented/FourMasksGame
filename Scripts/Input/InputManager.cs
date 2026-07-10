@@ -124,10 +124,14 @@ public partial class InputManager : Node
         return false;
     }
 
-    // Get whether an action is currently held.
+    /// <summary>
+    /// Get whether an action is currently held.
+    /// </summary>
+    /// <param name="actionName">The action name in the input map.</param>
+    /// <returns>True if the action is held and not filtered by the context.</returns>
     public bool GetActionHeld(string actionName)
     {
-        return CurrentContext.UseAny && Godot.Input.IsActionJustPressed(actionName);
+        return CurrentContext.UseAny && Godot.Input.IsActionPressed(actionName);
     }
 }
 
