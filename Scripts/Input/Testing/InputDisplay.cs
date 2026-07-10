@@ -2,7 +2,7 @@ using Godot;
 
 namespace FourMasksGame.Scripts.Input.Testing;
 
-public partial class InputActionDisplay : Node2D
+public partial class InputDisplay : Node2D
 {
     [Export] public InputType inputType;
     [Export] public string actionName;
