@@ -4,9 +4,11 @@ namespace FourMasksGame.Scripts.Input.Testing;
 
 public partial class InputTestControl : Node2D
 {
+    [Export] private float defaultHorizontal;
+
     public override void _Ready()
     {
-        InputManager.Instance.PushContext(new NormalInputContext());
+        InputManager.Instance.SimulateDefaultHorizontalAxis(defaultHorizontal);
     }
 
     public override void _Process(double delta)

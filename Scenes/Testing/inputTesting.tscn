@@ -5,6 +5,7 @@
 
 [node name="InputTesting" type="Node2D" unique_id=1569773631]
 script = ExtResource("1_jcoca")
+defaultHorizontal = 1.0
 
 [node name="JumpDisplay" type="Node2D" parent="." unique_id=1735764836]
 position = Vector2(50, 51)
