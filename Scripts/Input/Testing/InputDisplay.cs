@@ -4,7 +4,25 @@ namespace FourMasksGame.Scripts.Input.Testing;
 
 public partial class InputDisplay : Node2D
 {
+    /// <summary>
+    /// The type of input this display should represent.
+    /// 
+    /// Action input represents the pressed and held state of an action with a circle. The action name determines which action is represented.
+    /// 
+    /// Aim input represents the aim input state with a line. Persistence is not implemented for the aim input.
+    /// 
+    /// Horizontal Axis input represents the horizontal axis input state. If persistent is checked, it will represent the "last" horizontal axis state.
+    /// </summary>
     [Export] public InputType inputType;
+
+    /// <summary>
+    /// If the input type is Horizontal Axis, whether the "last" or "current" horizontal axis should be represented.
+    /// </summary>
+    [Export] public bool persistent;
+
+    /// <summary>
+    /// If the input type is Action, the name of the action to be represented.
+    /// </summary>
     [Export] public string actionName;
 
     private Rid canvasItem;
@@ -32,6 +50,8 @@ public partial class InputDisplay : Node2D
                 break;
             case InputType.Horizontal:
                 float horizontalAxis = im.GetHorizontalAxis();
+                if (persistent)
+                    horizontalAxis = im.GetLastHorizontalAxis();
                 RenderingServer.CanvasItemAddLine(canvasItem, Vector2.Zero, horizontalAxis * Vector2.Right * 20f, new(1, 1, 1), 5f, true);
                 break;
         }
