@@ -176,5 +176,33 @@ public partial class InputManager : Node
     {
         return CurrentContext.UseAny && Godot.Input.IsActionPressed(actionName);
     }
+
+    /// <summary>
+    /// Stores buffered data for a particular boolean action.
+    /// </summary>
+    private class ActionRecord
+    {
+        public ActionRecord() { }
+
+        /// <summary>
+        /// Whether a press has ever been recorded in this record.
+        /// </summary>
+        private bool hasPress = false;
+
+        /// <summary>
+        /// The frame this action was most recently pressed. The default value is zero, use hasPress to determine if this field actually represents a press.
+        /// </summary>
+        private ulong framePressed = 0;
+
+        /// <summary>
+        /// Whether a release has ever been recorded in this record.
+        /// </summary>
+        private bool hasRelease = false;
+
+        /// <summary>
+        /// The frame this action was most recently released. The default value is zero, use hasRelease to determine if this field actually represents a release.
+        /// </summary>
+        private ulong frameReleased = 0;
+    }
 }
 
