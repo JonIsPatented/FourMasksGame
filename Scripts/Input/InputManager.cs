@@ -29,8 +29,8 @@ public partial class InputManager : Node
     // The InputManager populates this table with the frames that these actions occurred as it receives them.
     // The InputManager will not log an action unless it already has an entry.
     // TODO: Populate this table with "frame zero" entries.
-    private readonly Dictionary<string, ulong> bufferedActions = new() {
-        {"Jump", 0},
+    private readonly Dictionary<string, ActionRecord> actionRecords = new() {
+        {"Jump", new()},
     };
 
     // The InputManager node enters the SceneTree with some default settings.
@@ -47,11 +47,17 @@ public partial class InputManager : Node
         ulong frame = Engine.GetProcessFrames();
         if (CurrentContext.UseAny && !inputEvent.IsEcho())
         {
-            foreach (string actionName in bufferedActions.Keys)
+            foreach (string actionName in actionRecords.Keys)
             {
                 if (inputEvent.IsActionPressed(actionName, false))
                 {
-                    bufferedActions[actionName] = frame;
+                    actionRecords[actionName].hasPress = true;
+                    actionRecords[actionName].framePressed = frame;
+                }
+                if (inputEvent.IsActionReleased(actionName))
+                {
+                    actionRecords[actionName].hasRelease = true;
+                    actionRecords[actionName].frameReleased = frame;
                 }
             }
         }
@@ -160,9 +166,9 @@ public partial class InputManager : Node
     /// <returns></returns>
     public bool GetActionPressed(string actionName, uint bufferTolerance = 0)
     {
-        if (bufferedActions.ContainsKey(actionName))
+        if (actionRecords.ContainsKey(actionName))
         {
-            return bufferedActions[actionName] >= Engine.GetProcessFrames() - bufferTolerance;
+            return actionRecords[actionName].hasPress && actionRecords[actionName].framePressed >= Engine.GetProcessFrames() - bufferTolerance;
         }
         return false;
     }
@@ -178,7 +184,7 @@ public partial class InputManager : Node
     }
 
     /// <summary>
-    /// Stores buffered data for a particular boolean action.
+    /// Records input events for a particular boolean action.
     /// </summary>
     private class ActionRecord
     {
@@ -187,22 +193,22 @@ public partial class InputManager : Node
         /// <summary>
         /// Whether a press has ever been recorded in this record.
         /// </summary>
-        private bool hasPress = false;
+        public bool hasPress = false;
 
         /// <summary>
         /// The frame this action was most recently pressed. The default value is zero, use hasPress to determine if this field actually represents a press.
         /// </summary>
-        private ulong framePressed = 0;
+        public ulong framePressed = 0;
 
         /// <summary>
         /// Whether a release has ever been recorded in this record.
         /// </summary>
-        private bool hasRelease = false;
+        public bool hasRelease = false;
 
         /// <summary>
         /// The frame this action was most recently released. The default value is zero, use hasRelease to determine if this field actually represents a release.
         /// </summary>
-        private ulong frameReleased = 0;
+        public ulong frameReleased = 0;
     }
 }
 
