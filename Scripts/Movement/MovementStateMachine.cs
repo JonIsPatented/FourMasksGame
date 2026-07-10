@@ -8,6 +8,8 @@ public partial class MovementStateMachine : GodotObject
     private MovementState[] futureStates = [];
     private MovementInfo movementInfo = new();
 
+    public bool TransitionOnLastProcess { get; set; } = false;
+
     // An empty constructor is necessary for classes inheriting GodotObject.
     public MovementStateMachine() { }
 
@@ -21,6 +23,7 @@ public partial class MovementStateMachine : GodotObject
     /// </summary>
     public void Process()
     {
+        TransitionOnLastProcess = false;
         currentState?.Process(movementInfo);
         foreach (MovementState futureState in futureStates)
         {
@@ -30,11 +33,13 @@ public partial class MovementStateMachine : GodotObject
                 {
                     if (currentState.ShouldExitTo(movementInfo, futureState))
                     {
+                        TransitionOnLastProcess = true;
                         TransitionToState(futureState);
                     }
                 }
                 else
                 {
+                    TransitionOnLastProcess = true;
                     TransitionToState(futureState);
                 }
             }
