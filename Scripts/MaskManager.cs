@@ -10,12 +10,12 @@ public partial class MaskManager : Node
     [Signal]
     public delegate void MaskChangedEventHandler(Mask mask);
 
-    private readonly Dictionary<int, Mask> masks = new()
+    private readonly Dictionary<int, string> maskPaths = new()
     {
-        {0, ResourceLoader.Load<Mask>("res://Resources/Masks/wingMask.tres")},
-        {1, ResourceLoader.Load<Mask>("res://Resources/Masks/demonMask.tres")},
-        {2, ResourceLoader.Load<Mask>("res://Resources/Masks/mistMask.tres")},
-        {3, ResourceLoader.Load<Mask>("res://Resources/Masks/golemMask.tres")}
+        {0, "res://Resources/Masks/wingMask.tres"},
+        {1, "res://Resources/Masks/demonMask.tres"},
+        {2, "res://Resources/Masks/mistMask.tres"},
+        {3, "res://Resources/Masks/golemMask.tres"}
     };
 
     public MaskManager()
@@ -25,6 +25,6 @@ public partial class MaskManager : Node
 
     public void ChangeMask(int mask)
     {
-        EmitSignal(SignalName.MaskChanged, masks[mask]);
+        EmitSignal(SignalName.MaskChanged, ResourceLoader.Load<Mask>(maskPaths[mask]));
     }
 }
