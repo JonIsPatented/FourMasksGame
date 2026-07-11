@@ -35,7 +35,7 @@ public partial class MaskModulateRemoteControlNode : Node2D
         {
             modulateTarget.Modulate = mask.EnvironmentColor;
         }
-        Modulate = defaultModulate;
+        Modulate = mask.EnvironmentColor;
     }
 
     private void ResetModulate()
