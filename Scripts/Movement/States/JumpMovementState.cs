@@ -27,7 +27,7 @@ public class JumpMovementState : MovementState
     {
         if (futureState == MovementStateLabel.Falling)
         {
-            return info.realVelocity.Y < 0f;
+            return info.realVelocity.Y > 0f; // greater than zero is down.
         }
         return true;
     }
