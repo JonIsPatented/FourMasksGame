@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
     [Export] private Sprite2D sprite;
 
     // Used for debug.
-    public MovementStateMachine StateMachine { get; }
+    public MovementStateMachine StateMachine { get => movementStateMachine; }
 
     // I don't think export variables are set until after _EnterTree and _Ready, so be careful about using exported node references here.
     public override void _EnterTree()
