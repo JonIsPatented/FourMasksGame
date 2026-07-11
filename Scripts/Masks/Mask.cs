@@ -4,18 +4,14 @@ namespace FourMasksGame.Scripts.Masks;
 
 public partial class Mask : Resource
 {
-    [Export] public ImageTexture OverlayTexture;
+    [Export] public Texture2D OverlayTexture;
     [Export] public Color EnvironmentColor;
+    [Export] public SpriteFrames PlayerSprites;
 
-    [ExportGroup("Ability Slots")]
-    [Export] public PackedScene AbilitySlot1;
-    [Export] public PackedScene AbilitySlot2;
-    [Export] public PackedScene AbilitySlot3;
-    [Export] public PackedScene AbilitySlot4;
-
-    [ExportGroup("Player Sprites")]
-    [Export] public SpriteFrames IdleSpriteFrames;
-    [Export] public SpriteFrames RunSpriteFrames;
-    [Export] public SpriteFrames JumpSpriteFrames;
-    [Export] public SpriteFrames FallingSpriteFrames;
+    [ExportGroup("Abilities")]
+    [Export] public PackedScene Jump;
+    [Export] public PackedScene LightAttack;
+    [Export] public PackedScene ChargeAttack;
+    [Export] public PackedScene SpecialAbility;
+    [Export] public PackedScene Dash;
 }
