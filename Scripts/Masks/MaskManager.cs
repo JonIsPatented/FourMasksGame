@@ -7,6 +7,8 @@ public partial class MaskManager : Node
 {
     public static MaskManager Instance;
 
+    public Mask CurrentMask { get; private set; }
+
     [Signal]
     public delegate void MaskChangedEventHandler(Mask mask);
 
@@ -25,6 +27,7 @@ public partial class MaskManager : Node
 
     public void ChangeMask(int mask)
     {
-        EmitSignal(SignalName.MaskChanged, ResourceLoader.Load<Mask>(maskPaths[mask]));
+        CurrentMask = ResourceLoader.Load<Mask>(maskPaths[mask]);
+        EmitSignal(SignalName.MaskChanged, CurrentMask);
     }
 }
