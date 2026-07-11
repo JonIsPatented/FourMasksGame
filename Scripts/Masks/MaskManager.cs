@@ -14,10 +14,10 @@ public partial class MaskManager : Node
 
     private readonly Dictionary<int, string> maskPaths = new()
     {
-        {0, "res://Resources/Masks/wingMask.tres"},
-        {1, "res://Resources/Masks/demonMask.tres"},
-        {2, "res://Resources/Masks/mistMask.tres"},
-        {3, "res://Resources/Masks/golemMask.tres"}
+        {1, "res://Resources/Masks/wingMask.tres"},
+        {2, "res://Resources/Masks/demonMask.tres"},
+        {3, "res://Resources/Masks/mistMask.tres"},
+        {4, "res://Resources/Masks/golemMask.tres"}
     };
 
     public MaskManager()
