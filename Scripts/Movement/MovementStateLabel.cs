@@ -6,6 +6,7 @@ namespace FourMasksGame.Scripts.Movement;
 /// </summary>
 public enum MovementStateLabel
 {
+    None,
     Idle,
     Falling,
     Jump,
