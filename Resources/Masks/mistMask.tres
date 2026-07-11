@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="Mask" format=3 uid="uid://4swe53cwey83"]
+
+[ext_resource type="Script" uid="uid://ppeha7ubcnsp" path="res://Scripts/Masks/Mask.cs" id="1_g1ebb"]
+
+[resource]
+script = ExtResource("1_g1ebb")
