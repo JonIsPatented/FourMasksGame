@@ -9,19 +9,19 @@ public partial class DebugMaskSwitch : Node
 {
     public void _Process()
     {
-        if (Input.IsActionJustPressed("SwitchMask1"))
+        if (Input.IsActionJustPressed("DonMask1"))
         {
             MaskManager.Instance.ChangeMask(1);
         }
-        if (Input.IsActionJustPressed("SwitchMask2"))
+        if (Input.IsActionJustPressed("DonMask2"))
         {
             MaskManager.Instance.ChangeMask(2);
         }
-        if (Input.IsActionJustPressed("SwitchMask3"))
+        if (Input.IsActionJustPressed("DonMask3"))
         {
             MaskManager.Instance.ChangeMask(3);
         }
-        if (Input.IsActionJustPressed("SwitchMask4"))
+        if (Input.IsActionJustPressed("DonMask4"))
         {
             MaskManager.Instance.ChangeMask(4);
         }
