@@ -5,5 +5,6 @@
 
 [resource]
 script = ExtResource("1_cc5c1")
+Name = "Golem"
 EnvironmentColor = Color(0.042240057, 0.48, 0.01920001, 1)
 PlayerSprites = ExtResource("1_oq33h")
