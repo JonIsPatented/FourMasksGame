@@ -1,6 +1,9 @@
-[gd_resource type="Resource" script_class="Mask" format=3 uid="uid://db31jj4xxohle"]
+[gd_resource type="Resource" format=3 uid="uid://db31jj4xxohle"]
 
 [ext_resource type="Script" uid="uid://ppeha7ubcnsp" path="res://Scripts/Masks/Mask.cs" id="1_mrxtr"]
+[ext_resource type="Texture2D" uid="uid://c1qupptt72hxp" path="res://assets/player_sprites/demon_mask_sprites/mask.png" id="1_vsglk"]
 
 [resource]
 script = ExtResource("1_mrxtr")
+OverlayTexture = ExtResource("1_vsglk")
+EnvironmentColor = Color(1, 0, 0, 1)

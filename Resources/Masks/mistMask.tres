@@ -1,6 +1,9 @@
-[gd_resource type="Resource" script_class="Mask" format=3 uid="uid://4swe53cwey83"]
+[gd_resource type="Resource" format=3 uid="uid://4swe53cwey83"]
 
 [ext_resource type="Script" uid="uid://ppeha7ubcnsp" path="res://Scripts/Masks/Mask.cs" id="1_g1ebb"]
+[ext_resource type="SpriteFrames" uid="uid://cb63svudlbfo6" path="res://Resources/SpriteFrames/Player/MistMask/mist_player.tres" id="1_sms0k"]
 
 [resource]
 script = ExtResource("1_g1ebb")
+EnvironmentColor = Color(0.697951, 0.2890121, 0.615523, 1)
+PlayerSprites = ExtResource("1_sms0k")
