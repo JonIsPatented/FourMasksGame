@@ -17,6 +17,13 @@ public class AbilityMovementState : MovementState
         return InputAbilitySlot() != -1;
     }
 
+    int abilitySlot;
+
+    void MovementState.OnEnter(MovementInfo info)
+    {
+        abilitySlot = InputAbilitySlot();
+    }
+
     /// <summary>
     /// Return the slot triggered by user input. Returns -1 if no slot is requested.
     /// </summary>
@@ -33,7 +40,9 @@ public class AbilityMovementState : MovementState
     {
         return new()
         {
-            
+            useAbility = true,
+            abilitySlot = abilitySlot,
+            useAbilityDirective = true,
         };
     }
 }
