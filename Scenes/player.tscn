@@ -8,7 +8,7 @@ size = Vector2(8, 32)
 
 [node name="Player" type="CharacterBody2D" unique_id=634190875 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_g2els")
-sprite = NodePath("")
+sprite = NodePath("TextureRect")
 
 [node name="TextureRect" type="AnimatedSprite2D" parent="." unique_id=1903325322]
 sprite_frames = ExtResource("2_cvnsp")
