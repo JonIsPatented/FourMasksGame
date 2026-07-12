@@ -9,5 +9,6 @@ public enum MovementStateLabel
     Idle,
     Falling,
     Jump,
-    Run
+    Run,
+    Ability,
 }
