@@ -56,6 +56,7 @@ public partial class AbilityBridge : GodotObject
             return false;
         }
 
+        usingAbility = true;
         ActiveAbility = abilitySceneRoot;
         sceneParent.AddChild(abilitySceneRoot);
         return true;
@@ -88,6 +89,7 @@ public partial class AbilityBridge : GodotObject
         }
 
         EndAbility();
+        usingAbility = true;
         ActiveAbility = abilitySceneRoot;
         sceneParent.AddChild(abilitySceneRoot);
         return true;
@@ -131,8 +133,6 @@ public partial class AbilityBridge : GodotObject
     public void EndAbility()
     {
         usingAbility = false;
-        Node abilitySceneParent = ActiveAbility.GetParent();
-        abilitySceneParent.RemoveChild(ActiveAbility);
         ActiveAbility.QueueFree();
         ActiveAbility = null;
     }
