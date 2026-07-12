@@ -10,4 +10,5 @@ public struct MovementInfo
 {
     public bool grounded;
     public Vector2 realVelocity;
+    public bool usingAbility;
 }
