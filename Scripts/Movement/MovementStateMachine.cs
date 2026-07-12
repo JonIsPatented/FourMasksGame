@@ -64,6 +64,22 @@ public partial class MovementStateMachine : GodotObject
         TransitionToState(state);
     }
 
+    /// <summary>
+    /// Enter the first enter-able future state ignoring shouldExit conditions.
+    /// 
+    /// Useful to skip states where the directive fails.
+    /// </summary>
+    public void EscapeState()
+    {
+        foreach (MovementState futureState in futureStates)
+        {
+            if (futureState.CanEnter(movementInfo))
+            {
+                TransitionToState(futureState);
+            }
+        }
+    }
+
     private void TransitionToState(MovementState state)
     {
         currentState?.OnExit(movementInfo, state.Label);
