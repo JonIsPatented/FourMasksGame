@@ -7,7 +7,7 @@ public partial class AbilityBridge : GodotObject
 {
     public Dictionary<int, PackedScene> AbilitySlots = new()
     {
-        {0, ResourceLoader.Load<PackedScene>("res://Scenes/Abilities/WingMaskLightAttack.tscn")}
+        {1, ResourceLoader.Load<PackedScene>("res://Scenes/Abilities/WingMaskLightAttack.tscn")}
     };
 
     public AbilitySceneRoot ActiveAbility;
