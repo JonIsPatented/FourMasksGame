@@ -1,4 +1,5 @@
 using Godot;
+using FourMasksGame.Scripts.Input;
 
 namespace FourMasksGame.Scripts.Abilities.SceneRoots;
 
@@ -10,6 +11,12 @@ public partial class WingMaskLightAttack : AbilitySceneRoot
     public override void _EnterTree()
     {
         animation.AnimationFinished += ReadyToExit;
+    }
+
+    public override void _Ready()
+    {
+        animation.Play();
+        animation.FlipH = InputManager.Instance.GetLastHorizontalAxis() < 0f;
     }
 
     public void ReadyToExit()
