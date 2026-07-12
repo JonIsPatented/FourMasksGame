@@ -43,6 +43,8 @@ public partial class Player : CharacterBody2D
             MovementDirective directive = movementStateMachine.GetDirective();
             if (directive.useAbility)
             {
+                // TODO: When switching to a state that uses a different ability, end the first
+                
                 bool abilityUsed = abilityBridge.UseAbility(this, directive.abilitySlot);
                 if (abilityUsed)
                 {
@@ -53,6 +55,14 @@ public partial class Player : CharacterBody2D
                     // ability-motivating state failed, so escape to a viable state.
                     movementStateMachine.EscapeState();
                 }
+            }
+            else
+            {
+                if (abilityBridge.UsingAbility())
+                {
+                    abilityBridge.EndAbility();
+                }
+                sprite.Visible = true;
             }
         }
 
