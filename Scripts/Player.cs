@@ -25,6 +25,17 @@ public partial class Player : CharacterBody2D
 
     public override void _Process(double delta)
     {
+        if (abilityBridge.UsingAbility())
+        {
+            // allow chains and ending
+            bool continuedAbility = abilityBridge.ContinueAbility();
+            if (!continuedAbility)
+            {
+                movementStateMachine.EscapeState();
+                sprite.Visible = true;
+            }
+        }
+
         movementStateMachine.PassInfo(new()
         {
             grounded = IsOnFloor(),
@@ -44,7 +55,7 @@ public partial class Player : CharacterBody2D
             if (directive.useAbility)
             {
                 // TODO: When switching to a state that uses a different ability, end the first
-                
+
                 bool abilityUsed = abilityBridge.UseAbility(this, directive.abilitySlot);
                 if (abilityUsed)
                 {
@@ -54,6 +65,7 @@ public partial class Player : CharacterBody2D
                 {
                     // ability-motivating state failed, so escape to a viable state.
                     movementStateMachine.EscapeState();
+                    sprite.Visible = true;
                 }
             }
             else
@@ -63,16 +75,6 @@ public partial class Player : CharacterBody2D
                     abilityBridge.EndAbility();
                 }
                 sprite.Visible = true;
-            }
-        }
-
-        if (abilityBridge.UsingAbility())
-        {
-            // allow chains and ending
-            bool continuedAbility = abilityBridge.ContinueAbility();
-            if (!continuedAbility)
-            {
-                movementStateMachine.EscapeState();
             }
         }
     }
