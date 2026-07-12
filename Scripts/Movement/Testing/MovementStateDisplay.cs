@@ -32,6 +32,9 @@ public partial class MovementStateDisplay : Label
             case MovementStateLabel.Run:
                 Text = "Run";
                 return;
+            case MovementStateLabel.Ability:
+                Text = "Ability";
+                return;
         }
     }
 }
