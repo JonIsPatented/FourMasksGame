@@ -1,17 +1,18 @@
 [gd_scene format=3 uid="uid://b313wkoetydv6"]
 
 [ext_resource type="Script" uid="uid://dtbnn45srq4e8" path="res://Scripts/Player.cs" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://cltjomy3ipbt6" path="res://assets/player_sprites/wing_mask_sprites/player_idle.png" id="2_cvnsp"]
+[ext_resource type="SpriteFrames" uid="uid://b1tirhlpdkyyk" path="res://Resources/SpriteFrames/Player/Wing/wing_player_sprites.tres" id="2_cvnsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
 size = Vector2(8, 32)
 
 [node name="Player" type="CharacterBody2D" unique_id=634190875 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_g2els")
-sprite = NodePath("TextureRect")
+sprite = NodePath("")
 
-[node name="TextureRect" type="Sprite2D" parent="." unique_id=660113228]
-texture = ExtResource("2_cvnsp")
+[node name="TextureRect" type="AnimatedSprite2D" parent="." unique_id=1903325322]
+sprite_frames = ExtResource("2_cvnsp")
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=768757703]
 shape = SubResource("RectangleShape2D_sov4a")

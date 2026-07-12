@@ -49,5 +49,10 @@ position = Vector2(82, -75)
 script = ExtResource("2_au00k")
 actionName = "Jump"
 
+[node name="JumpDisplay2" type="Node2D" parent="." unique_id=1544380024]
+position = Vector2(129, -75)
+script = ExtResource("2_au00k")
+actionName = "LightAttack"
+
 [node name="AutoNormalContextSwitch" type="Node" parent="." unique_id=1649574770]
 script = ExtResource("3_707cn")
