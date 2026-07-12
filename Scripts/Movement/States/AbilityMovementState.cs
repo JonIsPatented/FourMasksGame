@@ -23,7 +23,6 @@ public class AbilityMovementState : MovementState
     /// <returns></returns>
     int InputAbilitySlot()
     {
-        if (InputManager.Instance.GetActionPressed("Jump")) return 0;
         if (InputManager.Instance.GetActionPressed("LightAttack")) return 1;
         if (InputManager.Instance.GetActionPressed("ChargeAttack")) return 2;
         if (InputManager.Instance.GetActionPressed("Special")) return 3;
