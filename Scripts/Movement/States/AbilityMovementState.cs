@@ -17,6 +17,11 @@ public class AbilityMovementState : MovementState
         return InputAbilitySlot() != -1;
     }
 
+    bool MovementState.ShouldExitTo(MovementInfo info, MovementStateLabel futureState)
+    {
+        return !info.usingAbility;
+    }
+
     int abilitySlot;
 
     void MovementState.OnEnter(MovementInfo info)
