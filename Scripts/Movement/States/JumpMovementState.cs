@@ -9,6 +9,7 @@ public class JumpMovementState : MovementState
 
     MovementState[] MovementState.FutureStates() => [
         new FallingMovementState(),
+        new AbilityMovementState(),
     ];
 
     MovementDirective MovementState.Directive(MovementInfo info) => new()
