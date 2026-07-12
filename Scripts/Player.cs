@@ -25,7 +25,8 @@ public partial class Player : CharacterBody2D
         movementStateMachine.PassInfo(new()
         {
             grounded = IsOnFloor(),
-            realVelocity = GetRealVelocity()
+            realVelocity = GetRealVelocity(),
+            usingAbility = abilityBridge.UsingAbility(),
         });
         movementStateMachine.Process();
 
@@ -33,15 +34,51 @@ public partial class Player : CharacterBody2D
         {
             sprite.FlipH = InputManager.Instance.GetLastHorizontalAxis() < 0f;
         }
+
+        if (movementStateMachine.TransitionOnLastProcess)
+        {
+            MovementDirective directive = movementStateMachine.GetDirective();
+            if (directive.useAbility)
+            {
+                bool abilityUsed = abilityBridge.UseAbility(this, directive.abilitySlot);
+                if (abilityUsed)
+                {
+                    sprite.Visible = false;
+                }
+                else
+                {
+                    // ability-motivating state failed, so escape to a viable state.
+                    movementStateMachine.EscapeState();
+                }
+            }
+        }
+
+        if (abilityBridge.UsingAbility())
+        {
+            // allow chains and ending
+            bool continuedAbility = abilityBridge.ContinueAbility();
+            if (!continuedAbility)
+            {
+                movementStateMachine.EscapeState();
+            }
+        }
     }
 
     public override void _PhysicsProcess(double delta)
     {
         MovementDirective directive = movementStateMachine.GetDirective();
-        FollowMovementDirective(directive, delta);
+        if (directive.useAbilityDirective)
+        {
+            PhysicsFollowAbilityDirective(abilityBridge.GetDirective(), delta);
+        }
+        else
+        {
+            PhysicsFollowMovementDirective(directive, delta);
+        }
+        MoveAndSlide();
     }
 
-    public void FollowMovementDirective(MovementDirective directive, double delta)
+    public void PhysicsFollowMovementDirective(MovementDirective directive, double delta)
     {
         // For a character body, the Velocity property actually represents a requested velocity.
         // Without a reset, applications like gravity will pile up forever.
@@ -65,7 +102,10 @@ public partial class Player : CharacterBody2D
         {
             Velocity = new(directive.horizontalMovementSpeed * InputManager.Instance.GetHorizontalAxis(), Velocity.Y);
         }
+    }
 
-        MoveAndSlide();
+    public void PhysicsFollowAbilityDirective(AbilityDirective directive, double delta)
+    {
+        
     }
 }
