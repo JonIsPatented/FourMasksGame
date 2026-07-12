@@ -31,6 +31,13 @@ public partial class InputManager : Node
     // TODO: Populate this table with "frame zero" entries.
     private readonly Dictionary<string, ActionRecord> actionRecords = new() {
         {"Jump", new()},
+        {"LightAttack", new()},
+        {"ChargeAttack", new()},
+        {"Dash", new()},
+        {"DonMask1", new()},
+        {"DonMask2", new()},
+        {"DonMask3", new()},
+        {"DonMask4", new()}
     };
 
     // The InputManager records the horizontal axis here whenever it reaches 1 or -1.
