@@ -142,6 +142,11 @@ public partial class AbilityBridge : GodotObject
         return AbilitySlots.ContainsKey(slot);
     }
 
+    public bool UsingAbility()
+    {
+        return usingAbility;
+    }
+
     public AbilityDirective GetDirective()
     {
         if (usingAbility)
