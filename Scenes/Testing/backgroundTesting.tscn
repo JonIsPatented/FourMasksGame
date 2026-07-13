@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bwyp8af8knl74"]
+
+[ext_resource type="Script" uid="uid://3nps1bfq0pkx" path="res://Scripts/Environment/Background.cs" id="1_3gn3j"]
+[ext_resource type="Script" uid="uid://cpgwxsi28caos" path="res://Scripts/Environment/Testing/FreeCamera.cs" id="2_f3jdy"]
+
+[node name="BackgroundTesting" type="Node2D" unique_id=1366059477]
+metadata/_edit_vertical_guides_ = [-15.0, -306.0]
+metadata/_edit_horizontal_guides_ = [-77.0, 22.0, -139.0]
+
+[node name="Background" type="Node2D" parent="." unique_id=518073391]
+script = ExtResource("1_3gn3j")
+metadata/_custom_type_script = "uid://3nps1bfq0pkx"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1932342468]
+script = ExtResource("2_f3jdy")
