@@ -32,7 +32,6 @@ public partial class Player : CharacterBody2D
             if (!continuedAbility)
             {
                 movementStateMachine.EscapeState();
-                sprite.Visible = true;
             }
         }
 
@@ -44,11 +43,6 @@ public partial class Player : CharacterBody2D
         });
         movementStateMachine.Process();
 
-        if (sprite != null)
-        {
-            sprite.FlipH = InputManager.Instance.GetLastHorizontalAxis() < 0f;
-        }
-
         if (movementStateMachine.TransitionOnLastProcess)
         {
             MovementDirective directive = movementStateMachine.GetDirective();
@@ -57,15 +51,9 @@ public partial class Player : CharacterBody2D
                 // TODO: When switching to a state that uses a different ability, end the first
 
                 bool abilityUsed = abilityBridge.UseAbility(this, directive.abilitySlot);
-                if (abilityUsed)
+                if (!abilityUsed)
                 {
-                    sprite.Visible = false;
-                }
-                else
-                {
-                    // ability-motivating state failed, so escape to a viable state.
-                    movementStateMachine.EscapeState();
-                    sprite.Visible = true;
+                    movementStateMachine.EscapeState(); // ability-motivating state failed, so escape to a viable state.
                 }
             }
             else
@@ -74,7 +62,27 @@ public partial class Player : CharacterBody2D
                 {
                     abilityBridge.EndAbility();
                 }
-                sprite.Visible = true;
+            }
+        }
+
+        if (sprite != null)
+        {
+            sprite.FlipH = InputManager.Instance.GetLastHorizontalAxis() < 0f;
+            sprite.Visible = !movementStateMachine.GetDirective().useAbility;
+            switch (movementStateMachine.GetLabel())
+            {
+                case MovementStateLabel.Idle:
+                    sprite.Animation = "Idle";
+                    sprite.Play();
+                    break;
+                case MovementStateLabel.Run:
+                    sprite.Animation = "Walk";
+                    sprite.Play();
+                    break;
+                default:
+                    sprite.Animation = "Idle";
+                    sprite.Stop();
+                    break;
             }
         }
     }
