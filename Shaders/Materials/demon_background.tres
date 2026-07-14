@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://50ye04jip1il"]
+
+[ext_resource type="Shader" uid="uid://biwd2b2cdafet" path="res://Shaders/demon_background.gdshader" id="1_48wnb"]
+
+[resource]
+shader = ExtResource("1_48wnb")
