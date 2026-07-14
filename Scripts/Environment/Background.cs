@@ -15,9 +15,10 @@ public partial class Background : Node2D
         RenderingServer.CanvasItemAddRect(bgCanvasItem, new(viewportRect.Position - viewportRect.Size / 2, viewportRect.Size), new(1, 1, 1));
     }
 
-    public override void _Process(double delta)
+    public override void _Ready()
     {
-        GlobalPosition = GetViewport().GetCamera2D().GlobalPosition;
+        GetParent().CallDeferred("remove_child", this);
+        GetViewport().GetCamera2D().CallDeferred("add_child", this);
     }
 
     public override void _ExitTree()
