@@ -13,7 +13,7 @@ public interface DamageSource
     /// <summary>
     /// The amount of damage that this damage source should apply.
     /// </summary>
-    int Damage { get; }
+    float Damage { get; }
 
     /// <summary>
     /// The team value for this damage source. Team value is used to filter attacks that should not affect particular damage consumers.
@@ -35,4 +35,36 @@ public interface DamageSource
     /// </summary>
     /// <returns></returns>
     bool IsComplete();
+
+    public class Attack : DamageSource
+    {
+        public float Damage { get; }
+        public int Team { get; }
+        private float startTime;
+        private float endTime;
+        
+        public Attack(float delay, float lifetime, float damage, int team)
+        {
+            float now = Godot.Time.GetTicksMsec() / 1000f;
+            startTime = now + delay;
+            endTime = now + delay + lifetime;
+            Damage = damage;
+            Team = team;
+        }
+
+        float DamageSource.Damage => Damage;
+        bool DamageSource.Filter => true;
+        bool DamageSource.IsActive()
+        {
+            float now = Godot.Time.GetTicksMsec() / 1000f;
+            return now >= startTime && now < endTime;
+        }
+
+        bool DamageSource.IsComplete()
+        {
+            float now = Godot.Time.GetTicksMsec() / 1000f;
+            return now >= endTime;
+        }
+
+    }
 }
