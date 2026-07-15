@@ -6,7 +6,13 @@ namespace FourMasksGame.Scripts.Damage;
 [GlobalClass]
 public partial class DamageSender : Area2D
 {
-    private HashSet<DamageSource> loadedSources = [];
+    private readonly HashSet<DamageSource> loadedSources = [];
+    public HashSet<DamageSource> LoadedSources { get
+        {
+            loadedSources.RemoveWhere((s) => s.IsComplete());
+            return loadedSources;
+        }
+    }
 
     /// <summary>
     /// Make a damage source accessible from this sender.
@@ -16,8 +22,7 @@ public partial class DamageSender : Area2D
     /// <param name="source"></param>
     public void Load(DamageSource source)
     {
-        loadedSources.Add(source);
-        ClearComplete();
+        LoadedSources.Add(source);
     }
 
     /// <summary>
@@ -27,9 +32,8 @@ public partial class DamageSender : Area2D
     /// </summary>
     public HashSet<DamageSource> Poll()
     {
-        ClearComplete();
         HashSet<DamageSource> activeSources = [];
-        foreach(DamageSource source in loadedSources)
+        foreach(DamageSource source in LoadedSources)
         {
             if (source.IsActive() && !source.IsComplete())
             {
@@ -37,13 +41,5 @@ public partial class DamageSender : Area2D
             }
         }
         return activeSources;
-    }
-
-    /// <summary>
-    /// Removes all completed damage sources from loaded sources.
-    /// </summary>
-    private void ClearComplete()
-    {
-        loadedSources.RemoveWhere((s) => s.IsComplete());
     }
 }
