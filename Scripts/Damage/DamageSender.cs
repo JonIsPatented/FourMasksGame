@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace FourMasksGame.Scripts.Damage;
 
+[GlobalClass]
 public partial class DamageSender : Area2D
 {
-    private HashSet<DamageSource> loadedSources;
+    private HashSet<DamageSource> loadedSources = [];
 
     /// <summary>
     /// Make a damage source accessible from this sender.

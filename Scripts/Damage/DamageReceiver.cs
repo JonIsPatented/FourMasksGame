@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace FourMasksGame.Scripts.Damage;
 
+[GlobalClass]
 public partial class DamageReceiver : Area2D
 {
     private HashSet<DamageSource> filteredSources = [];
