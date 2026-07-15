@@ -35,7 +35,7 @@ public partial class DamageReceiver : Area2D
     /// <param name="team"></param>
     private void Filter(HashSet<DamageSource> polledSources, int team)
     {
-        polledSources.SymmetricExceptWith(filteredSources);
+        polledSources.RemoveWhere(filteredSources.Contains);
         polledSources.RemoveWhere((s) => team == s.Team);
     }
 
