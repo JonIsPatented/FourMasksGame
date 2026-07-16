@@ -5,6 +5,7 @@ namespace FourMasksGame.Scripts.Masks;
 public partial class Mask : Resource
 {
     [Export] public string Name;
+    [Export] public int Number;
     [Export] public Texture2D OverlayTexture;
     [Export] public Color EnvironmentColor;
     [Export] public SpriteFrames PlayerSprites;
