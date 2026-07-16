@@ -2,6 +2,7 @@ using Godot;
 using FourMasksGame.Scripts.Movement;
 using FourMasksGame.Scripts.Input;
 using FourMasksGame.Scripts.Abilities;
+using FourMasksGame.Scripts.Masks;
 
 namespace FourMasksGame.Scripts;
 
@@ -21,6 +22,12 @@ public partial class Player : CharacterBody2D
         movementStateMachine = new();
         movementStateMachine.EnterState(new Movement.States.IdleMovementState());
         abilityBridge = new();
+        sprite.SpriteFrames = MaskManager.Instance.CurrentMask?.PlayerSprites;
+    }
+
+    private void ExchangeSpriteLibrary(Mask mask)
+    {
+        sprite.SpriteFrames = mask?.PlayerSprites;
     }
 
     public override void _Process(double delta)
