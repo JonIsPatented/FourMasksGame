@@ -12,4 +12,5 @@ public enum MovementStateLabel
     Jump,
     Run,
     Ability,
+    DonMask,
 }
