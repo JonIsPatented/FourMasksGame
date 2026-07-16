@@ -3,6 +3,7 @@ using FourMasksGame.Scripts.Masks;
 
 namespace FourMasksGame.Scripts.Visual;
 
+[GlobalClass]
 public partial class SpriteMachine : AnimatedSprite2D
 {
     [Export] private SpriteFramesSet spriteFramesSet;
