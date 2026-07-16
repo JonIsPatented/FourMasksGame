@@ -35,11 +35,13 @@ public partial class AbilityBridge : GodotObject
     public void LoadAbilities(Mask mask)
     {
         AbilitySlots.Clear();
-        AbilitySlots[0] = mask.Jump;
-        AbilitySlots[1] = mask.LightAttack;
-        AbilitySlots[2] = mask.ChargeAttack;
-        AbilitySlots[3] = mask.SpecialAbility;
-        AbilitySlots[4] = mask.Dash;
+        if (mask != null) {
+            AbilitySlots[0] = mask.Jump;
+            AbilitySlots[1] = mask.LightAttack;
+            AbilitySlots[2] = mask.ChargeAttack;
+            AbilitySlots[3] = mask.SpecialAbility;
+            AbilitySlots[4] = mask.Dash;
+        }
     }
 
     /// <summary>
@@ -149,7 +151,8 @@ public partial class AbilityBridge : GodotObject
 
     public bool AbilityAvailable(int slot)
     {
-        return AbilitySlots.ContainsKey(slot);
+        bool gotValue = AbilitySlots.TryGetValue(slot, out PackedScene ability);
+        return AbilitySlots.ContainsKey(slot) && ability != null && gotValue;
     }
 
     public bool UsingAbility()
