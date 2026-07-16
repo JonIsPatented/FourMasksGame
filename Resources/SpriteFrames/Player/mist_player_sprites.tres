@@ -1,18 +1,30 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://cm1o8wljoif3r"]
 
-[ext_resource type="Texture2D" uid="uid://bvf6aqtb0wyi5" path="res://assets/player_sprites/mist_mask_sprites/player_sprite.png" id="1_es0pj"]
+[ext_resource type="Texture2D" uid="uid://cr63pt7korhmy" path="res://assets/player_sprites/mist_mask_sprites/player_idle.png" id="1_es0pj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5v4yv"]
 atlas = ExtResource("1_es0pj")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd7je"]
+atlas = ExtResource("1_es0pj")
+region = Rect2(32, 0, 32, 32)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5v4yv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd7je")
 }],
 "loop": 1,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"Walk",
 "speed": 5.0
 }]
