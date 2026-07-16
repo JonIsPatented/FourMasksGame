@@ -1,7 +1,7 @@
 [gd_resource type="Resource" format=3 uid="uid://4swe53cwey83"]
 
 [ext_resource type="Script" uid="uid://ppeha7ubcnsp" path="res://Scripts/Masks/Mask.cs" id="1_g1ebb"]
-[ext_resource type="SpriteFrames" uid="uid://cb63svudlbfo6" path="res://Resources/SpriteFrames/Player/MistMask/mist_player.tres" id="1_sms0k"]
+[ext_resource type="SpriteFrames" uid="uid://cm1o8wljoif3r" path="res://Resources/SpriteFrames/Player/mist_player_sprites.tres" id="1_sms0k"]
 
 [resource]
 script = ExtResource("1_g1ebb")

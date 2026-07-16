@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ppeha7ubcnsp" path="res://Scripts/Masks/Mask.cs" id="1_akewf"]
 [ext_resource type="Texture2D" uid="uid://8grhpujxp7te" path="res://assets/player_sprites/wing_mask_sprites/mask.png" id="1_ujnjp"]
-[ext_resource type="SpriteFrames" uid="uid://oux8mj2bc3ue" path="res://Resources/SpriteFrames/Player/WingMask/wing_player.tres" id="2_a3ghm"]
+[ext_resource type="SpriteFrames" uid="uid://b1tirhlpdkyyk" path="res://Resources/SpriteFrames/Player/wing_player_sprites.tres" id="2_ujnjp"]
 
 [resource]
 script = ExtResource("1_akewf")
 Name = "Wing"
 OverlayTexture = ExtResource("1_ujnjp")
 EnvironmentColor = Color(0.030000016, 0.75, 0.6899999, 1)
-PlayerSprites = ExtResource("2_a3ghm")
+PlayerSprites = ExtResource("2_ujnjp")
