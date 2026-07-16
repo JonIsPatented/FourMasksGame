@@ -12,17 +12,17 @@ public partial class DonMaskMovementState : MovementState
 
     private int GetMaskShouldChangeTo()
     {
-        Mask currentMask = MaskManager.Instance.CurrentMask;
-        if (InputManager.Instance.GetActionPressed("DonMask1", 5) && currentMask.Name != "Wing") {
+        string currentMaskName = MaskManager.Instance.CurrentMask?.Name;
+        if (InputManager.Instance.GetActionPressed("DonMask1", 5) && currentMaskName != "Wing") {
             return 1;
         }
-        if (InputManager.Instance.GetActionPressed("DonMask2", 5) && currentMask.Name != "Demon") {
+        if (InputManager.Instance.GetActionPressed("DonMask2", 5) && currentMaskName != "Demon") {
             return 2;
         }
-        if (InputManager.Instance.GetActionPressed("DonMask3", 5) && currentMask.Name != "Mist") {
+        if (InputManager.Instance.GetActionPressed("DonMask3", 5) && currentMaskName != "Mist") {
             return 3;
         }
-        if (InputManager.Instance.GetActionPressed("DonMask4", 5) && currentMask.Name != "Golem") {
+        if (InputManager.Instance.GetActionPressed("DonMask4", 5) && currentMaskName != "Golem") {
             return 4;
         }
         return -1;
