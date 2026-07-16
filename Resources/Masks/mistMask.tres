@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://4swe53cwey83"]
+
+[ext_resource type="Script" uid="uid://ppeha7ubcnsp" path="res://Scripts/Masks/Mask.cs" id="1_g1ebb"]
+[ext_resource type="SpriteFrames" uid="uid://cm1o8wljoif3r" path="res://Resources/SpriteFrames/Player/mist_player_sprites.tres" id="1_sms0k"]
+
+[resource]
+script = ExtResource("1_g1ebb")
+Name = "Mist"
+EnvironmentColor = Color(0.697951, 0.2890121, 0.615523, 1)
+PlayerSprites = ExtResource("1_sms0k")
