@@ -2,7 +2,7 @@ using Godot;
 using FourMasksGame.Scripts.Movement;
 using FourMasksGame.Scripts.Input;
 using FourMasksGame.Scripts.Abilities;
-using FourMasksGame.Scripts.Masks;
+using FourMasksGame.Scripts.Visual;
 
 namespace FourMasksGame.Scripts;
 
@@ -11,7 +11,7 @@ public partial class Player : CharacterBody2D
     private MovementStateMachine movementStateMachine;
     private AbilityBridge abilityBridge;
 
-    [Export] private AnimatedSprite2D sprite;
+    [Export] private SpriteMachine sprite;
 
     // Used for debug.
     public MovementStateMachine StateMachine { get => movementStateMachine; }
@@ -22,12 +22,6 @@ public partial class Player : CharacterBody2D
         movementStateMachine = new();
         movementStateMachine.EnterState(new Movement.States.IdleMovementState());
         abilityBridge = new();
-        sprite.SpriteFrames = MaskManager.Instance.CurrentMask?.PlayerSprites;
-    }
-
-    private void ExchangeSpriteLibrary(Mask mask)
-    {
-        sprite.SpriteFrames = mask?.PlayerSprites;
     }
 
     public override void _Process(double delta)
@@ -79,15 +73,12 @@ public partial class Player : CharacterBody2D
             switch (movementStateMachine.GetLabel())
             {
                 case MovementStateLabel.Idle:
-                    sprite.Animation = "Idle";
-                    sprite.Play();
+                    sprite.SwitchAnimation("Idle");
                     break;
                 case MovementStateLabel.Run:
-                    sprite.Animation = "Walk";
-                    sprite.Play();
+                    sprite.SwitchAnimation("Walk");
                     break;
                 default:
-                    sprite.Animation = "Idle";
                     sprite.Stop();
                     break;
             }
