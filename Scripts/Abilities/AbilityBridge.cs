@@ -1,14 +1,12 @@
 using Godot;
 using System.Collections.Generic;
+using FourMasksGame.Scripts.Masks;
 
 namespace FourMasksGame.Scripts.Abilities;
 
 public partial class AbilityBridge : GodotObject
 {
-    public Dictionary<int, PackedScene> AbilitySlots = new()
-    {
-        {1, ResourceLoader.Load<PackedScene>("res://Scenes/Abilities/WingMaskLightAttack.tscn")}
-    };
+    public Dictionary<int, PackedScene> AbilitySlots = [];
 
     public AbilitySceneRoot ActiveAbility;
     private bool usingAbility = false;
@@ -20,6 +18,8 @@ public partial class AbilityBridge : GodotObject
     public AbilityBridge()
     {
         tags = new();
+        MaskManager.Instance.MaskChanged += LoadAbilities;
+        LoadAbilities(MaskManager.Instance.CurrentMask);
     }
 
     public void PassInfo(AbilityInfo info)
@@ -30,6 +30,16 @@ public partial class AbilityBridge : GodotObject
     public void ClearTags()
     {
         tags.Clear();
+    }
+
+    public void LoadAbilities(Mask mask)
+    {
+        AbilitySlots.Clear();
+        AbilitySlots[0] = mask.Jump;
+        AbilitySlots[1] = mask.LightAttack;
+        AbilitySlots[2] = mask.ChargeAttack;
+        AbilitySlots[3] = mask.SpecialAbility;
+        AbilitySlots[4] = mask.Dash;
     }
 
     /// <summary>
