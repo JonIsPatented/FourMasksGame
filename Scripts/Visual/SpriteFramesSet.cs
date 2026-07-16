@@ -2,6 +2,7 @@ using Godot;
 
 namespace FourMasksGame.Scripts.Visual;
 
+[GlobalClass]
 public partial class SpriteFramesSet : Resource
 {
     [Export] public SpriteFrames wingSprites;
