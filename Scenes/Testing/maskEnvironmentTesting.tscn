@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://hwjxe6ebx4ns"]
+
+[ext_resource type="Texture2D" uid="uid://c1qupptt72hxp" path="res://assets/player_sprites/demon_mask_sprites/mask.png" id="1_lsqt0"]
+[ext_resource type="Script" uid="uid://dxo6cp6ay3sdl" path="res://Scripts/Environment/MaskModulateRemoteControlNode.cs" id="2_qwvhh"]
+[ext_resource type="Texture2D" uid="uid://db2v0uru55vhs" path="res://assets/environment/floor/default_floor.png" id="3_t6r8y"]
+[ext_resource type="Script" uid="uid://kfsikuovceu3" path="res://Scripts/Masks/Testing/DebugMaskSwitch.cs" id="4_qwvhh"]
+[ext_resource type="Script" uid="uid://b46jep1xaxinx" path="res://Scripts/Masks/Testing/DebugMaskDisplay.cs" id="5_t6r8y"]
+
+[node name="MaskEnvironmentTesting" type="Node2D" unique_id=686311892]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=372174213]
+position = Vector2(60, 52)
+texture = ExtResource("1_lsqt0")
+
+[node name="MaskModulateRemoteControlNode" type="Node2D" parent="." unique_id=627615032 node_paths=PackedStringArray("additionalTargets")]
+script = ExtResource("2_qwvhh")
+additionalTargets = [NodePath("../Sprite2D2")]
+metadata/_custom_type_script = "uid://dxo6cp6ay3sdl"
+
+[node name="Sprite2D" type="Sprite2D" parent="MaskModulateRemoteControlNode" unique_id=736634033]
+position = Vector2(164, 73)
+texture = ExtResource("3_t6r8y")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MaskModulateRemoteControlNode" unique_id=1207937736]
+position = Vector2(192, 73)
+texture = ExtResource("3_t6r8y")
+
+[node name="Sprite2D3" type="Sprite2D" parent="MaskModulateRemoteControlNode" unique_id=396922865]
+position = Vector2(222, 73)
+texture = ExtResource("3_t6r8y")
+
+[node name="DebugMaskSwitch" type="Node" parent="." unique_id=453443248]
+script = ExtResource("4_qwvhh")
+
+[node name="DebugMaskDisplay" type="Label" parent="." unique_id=929391985]
+offset_left = 33.0
+offset_top = 132.0
+offset_right = 73.0
+offset_bottom = 155.0
+script = ExtResource("5_t6r8y")

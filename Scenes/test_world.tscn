@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cv2m7c4cxcufr"]
+
+[ext_resource type="PackedScene" uid="uid://b313wkoetydv6" path="res://Scenes/player.tscn" id="1_skmq4"]
+[ext_resource type="Script" uid="uid://bm4cpqwprq1w1" path="res://Scripts/Input/Testing/InputDisplay.cs" id="2_au00k"]
+[ext_resource type="Script" uid="uid://dnvasc5uv4h5i" path="res://Scripts/Movement/Testing/MovementStateDisplay.cs" id="2_mq1bj"]
+[ext_resource type="Script" uid="uid://3cprxlyrd55v" path="res://Scripts/Input/InputContextSwitchNode.cs" id="3_707cn"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sov4a"]
+
+[node name="TestWorld" type="Node2D" unique_id=1767481912]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=581814608]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1786069853]
+shape = SubResource("WorldBoundaryShape2D_sov4a")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=1442637211]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -650.5
+offset_right = 650.5
+offset_bottom = 509.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="Player" parent="." unique_id=634190875 instance=ExtResource("1_skmq4")]
+position = Vector2(-3, -57)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=318793482]
+
+[node name="StateDisplay" type="Label" parent="Player" unique_id=1930168772 node_paths=PackedStringArray("player")]
+offset_left = -24.0
+offset_top = -49.0
+offset_right = 25.0
+offset_bottom = -26.0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_mq1bj")
+player = NodePath("..")
+
+[node name="HAxisDisplay" type="Node2D" parent="." unique_id=1520076649]
+position = Vector2(-109, -77)
+script = ExtResource("2_au00k")
+inputType = 2
+
+[node name="JumpDisplay" type="Node2D" parent="." unique_id=537819547]
+position = Vector2(82, -75)
+script = ExtResource("2_au00k")
+actionName = "Jump"
+
+[node name="JumpDisplay2" type="Node2D" parent="." unique_id=1544380024]
+position = Vector2(129, -75)
+script = ExtResource("2_au00k")
+actionName = "LightAttack"
+
+[node name="AutoNormalContextSwitch" type="Node" parent="." unique_id=1649574770]
+script = ExtResource("3_707cn")

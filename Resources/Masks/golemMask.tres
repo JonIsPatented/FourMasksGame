@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3 uid="uid://y1vtuld6r16s"]
+
+[ext_resource type="Script" uid="uid://ppeha7ubcnsp" path="res://Scripts/Masks/Mask.cs" id="1_cc5c1"]
+[ext_resource type="SpriteFrames" uid="uid://wyy4lu3cbxfh" path="res://Resources/SpriteFrames/Player/golem_sprite_frames.tres" id="1_oq33h"]
+
+[resource]
+script = ExtResource("1_cc5c1")
+Name = "Golem"
+Number = 4
+EnvironmentColor = Color(0.042240057, 0.48, 0.01920001, 1)
+PlayerSprites = ExtResource("1_oq33h")

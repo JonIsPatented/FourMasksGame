@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://txn84chtt7an"]
+
+[ext_resource type="Script" uid="uid://doh5labdnh6qo" path="res://Scripts/Abilities/SceneRoots/WingMaskLightAttack.cs" id="1_hxh5s"]
+[ext_resource type="SpriteFrames" uid="uid://b1tirhlpdkyyk" path="res://Resources/SpriteFrames/Player/wing_player_sprites.tres" id="2_hxh5s"]
+
+[node name="WingMaskLightAttack" type="Node2D" unique_id=1715060301 node_paths=PackedStringArray("animation")]
+script = ExtResource("1_hxh5s")
+animation = NodePath("AttackAnimation")
+metadata/_custom_type_script = "uid://c0tn7mreu1yhu"
+
+[node name="AttackAnimation" type="AnimatedSprite2D" parent="." unique_id=1710486017]
+sprite_frames = ExtResource("2_hxh5s")
+animation = &"LightAttack"
