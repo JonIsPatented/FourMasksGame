@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://dtbnn45srq4e8" path="res://Scripts/Player.cs" id="1_g2els"]
 [ext_resource type="SpriteFrames" uid="uid://b1tirhlpdkyyk" path="res://Resources/SpriteFrames/Player/wing_player_sprites.tres" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://dugm4fjjygmx1" path="res://Scripts/Visual/SpriteMachine.cs" id="3_6t5aa"]
-[ext_resource type="Resource" uid="uid://dqffkpp5648el" path="res://Resources/SpriteFrames/Player/player_sprites.tres" id="4_vgqql"]
+[ext_resource type="Resource" path="res://Resources/SpriteFrames/Player/player_sprites.tres" id="4_vgqql"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
 size = Vector2(8, 32)

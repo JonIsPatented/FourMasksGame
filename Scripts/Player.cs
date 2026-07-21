@@ -11,7 +11,10 @@ public partial class Player : CharacterBody2D
     private MovementStateMachine movementStateMachine;
     private AbilityBridge abilityBridge;
 
-    [Export] private SpriteMachine sprite;
+    [Export] private AnimatedSprite2D sprite;
+    [Export] private SpriteFramesSet spriteSet;
+
+    private SpriteController spriteController;
 
     // Used for debug.
     public MovementStateMachine StateMachine { get => movementStateMachine; }
@@ -22,6 +25,7 @@ public partial class Player : CharacterBody2D
         movementStateMachine = new();
         movementStateMachine.EnterState(new Movement.States.IdleMovementState());
         abilityBridge = new();
+
     }
 
     public override void _Process(double delta)
