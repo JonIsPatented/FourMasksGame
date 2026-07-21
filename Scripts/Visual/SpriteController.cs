@@ -105,7 +105,7 @@ public partial class SpriteController : GodotObject
         tween.Play();
     }
 
-    public delegate void DeathEndEventHandler();
+    [Signal] public delegate void DeathEndEventHandler();
 
     public void Die()
     {
@@ -114,7 +114,7 @@ public partial class SpriteController : GodotObject
         tween.TweenProperty(sprite, "modulate", new Color(0.8f, 0, 0), 0.2f);
         tween.TweenProperty(sprite, "scale", new Vector2(1.5f, 0f), 0.2f);
         Tween back = tween.Chain();
-        back.TweenCallback(Callable.From(() => EmitSignal("DeathEnd")));
+        back.TweenCallback(Callable.From(() => EmitSignal(SignalName.DeathEnd)));
     }
 
     public void HandleMaskChange(Mask mask)

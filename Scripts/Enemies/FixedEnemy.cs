@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using System.Collections.Generic;
 using FourMasksGame.Scripts.Damage;
 using FourMasksGame.Scripts.Visual;
 
@@ -11,6 +11,7 @@ public partial class FixedEnemy : Node2D
     SpriteController spriteController = new();
     [Export] DamageReceiver damageReceiver;
     [Export] AnimatedSprite2D sprite;
+    [Export] SpriteFramesSet spriteSet;
 
     private float shootCooldown = SHOOT_COOLDOWN_TIME;
     private const float SHOOT_COOLDOWN_TIME = 4f;
@@ -19,7 +20,7 @@ public partial class FixedEnemy : Node2D
     public override void _Ready()
     {
         healthBar.Start();
-        spriteController.Bind(sprite);
+        spriteController.Bind(sprite, spriteSet);
     }
 
     public override void _Process(double delta)
@@ -30,7 +31,7 @@ public partial class FixedEnemy : Node2D
         }
 
         HashSet<DamageSource> damage = damageReceiver.Receive(2);
-        if (!damage.IsEmpty())
+        if (damage.Count > 0)
         {
             spriteController.Damage();
             healthBar.Damage(damage);
@@ -56,6 +57,6 @@ public partial class FixedEnemy : Node2D
     private void Die()
     {
         spriteController.Die();
-        spriteController.DeathComplete += QueueFree();
+        spriteController.DeathEnd += QueueFree;
     }
 }

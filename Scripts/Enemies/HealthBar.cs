@@ -12,6 +12,8 @@ public partial class HealthBar : GodotObject
     public float MaxHealth { get; set; } = 0;
     public bool FloorDamage { get; set; } = false;
 
+    private float lastDamageTime = -1000f;
+
 
     public HealthBar() {
         
@@ -31,21 +33,28 @@ public partial class HealthBar : GodotObject
 
     public void Damage(HashSet<DamageSource> damageSources)
     {
-        for (DamageSource source in damageSources)
+        foreach (DamageSource source in damageSources)
         {
             if (FloorDamage)
             {
-                Health -= Mathf.Floor(source.damage);
+                Health -= Mathf.Floor(source.Damage);
             }
             else
             {
-                Health -= source.damage;
+                Health -= source.Damage;
             }
+            
+            lastDamageTime = Time.GetTicksMsec() / 1000f;
         }
     }
 
     public bool IsAlive()
     {
         return Health > 0f;
+    }
+
+    public float SinceLastDamage()
+    {
+        return (Time.GetTicksMsec() / 1000f) - lastDamageTime;
     }
 }
