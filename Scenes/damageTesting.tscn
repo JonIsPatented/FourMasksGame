@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://m8jse4vm2nui"]
+
+[ext_resource type="Script" uid="uid://dvp83de2iwa25" path="res://Scripts/Environment/Testing/FreeCamera.cs" id="1_yh6mw"]
+[ext_resource type="Script" uid="uid://do61u2qtd26a6" path="res://Scripts/Damage/Testing/DebugDamageApplier.cs" id="3_rumxr"]
+[ext_resource type="Script" uid="uid://dg53xxc7cqxvy" path="res://Scripts/Damage/Testing/DebugLoadedSourcesDisplay.cs" id="4_0esvy"]
+[ext_resource type="Script" uid="uid://bx0jews2vom0c" path="res://Scripts/Damage/DamageSender.cs" id="4_vrf8h"]
+[ext_resource type="Script" uid="uid://bfww60ai0qq0d" path="res://Scripts/Damage/Testing/DebugDamageTarget.cs" id="6_ysriy"]
+[ext_resource type="Script" uid="uid://ckkni6rswhj6x" path="res://Scripts/Damage/DamageReceiver.cs" id="7_qprlp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
+size = Vector2(60.8, 53.333332)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvx6q"]
+
+[node name="DamageTesting" type="Node2D" unique_id=778626840]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=145673762]
+script = ExtResource("1_yh6mw")
+
+[node name="DamageApplier" type="Node2D" parent="Camera2D" unique_id=666707058 node_paths=PackedStringArray("damageSender")]
+scale = Vector2(0.3125, 0.28125)
+script = ExtResource("3_rumxr")
+damageSender = NodePath("DamageSender")
+
+[node name="DamageSender" type="Area2D" parent="Camera2D/DamageApplier" unique_id=585721671]
+script = ExtResource("4_vrf8h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/DamageApplier/DamageSender" unique_id=1858732447]
+position = Vector2(-1.5999985, -1.7777778)
+shape = SubResource("RectangleShape2D_sov4a")
+debug_color = Color(0.99919087, 0, 0.13415843, 0.41960785)
+
+[node name="Label" type="Label" parent="Camera2D/DamageApplier" unique_id=1302857684 node_paths=PackedStringArray("sender")]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("4_0esvy")
+sender = NodePath("../DamageSender")
+
+[node name="BreakableBlock" type="Label" parent="." unique_id=1704838975 node_paths=PackedStringArray("damageReceiver")]
+offset_left = 54.0
+offset_top = 1.0
+offset_right = 54.0
+offset_bottom = 1.0
+script = ExtResource("6_ysriy")
+damageReceiver = NodePath("DamageReceiver")
+
+[node name="DamageReceiver" type="Area2D" parent="BreakableBlock" unique_id=190818554]
+script = ExtResource("7_qprlp")
+metadata/_custom_type_script = "uid://ckkni6rswhj6x"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreakableBlock/DamageReceiver" unique_id=1290456015]
+shape = SubResource("RectangleShape2D_hvx6q")
+
+[node name="BreakableBlock2" type="Label" parent="." unique_id=478691878 node_paths=PackedStringArray("damageReceiver")]
+offset_left = 89.0
+offset_right = 89.0
+script = ExtResource("6_ysriy")
+damageReceiver = NodePath("DamageReceiver")
+health = 4.0
+
+[node name="DamageReceiver" type="Area2D" parent="BreakableBlock2" unique_id=2069861902]
+script = ExtResource("7_qprlp")
+metadata/_custom_type_script = "uid://ckkni6rswhj6x"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreakableBlock2/DamageReceiver" unique_id=2143577774]
+shape = SubResource("RectangleShape2D_hvx6q")
