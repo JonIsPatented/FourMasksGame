@@ -25,7 +25,7 @@ public partial class Player : CharacterBody2D
         movementStateMachine = new();
         movementStateMachine.EnterState(new Movement.States.IdleMovementState());
         abilityBridge = new();
-
+        spriteController.Bind(sprite, spriteSet);
     }
 
     public override void _Process(double delta)
@@ -77,13 +77,13 @@ public partial class Player : CharacterBody2D
             switch (movementStateMachine.GetLabel())
             {
                 case MovementStateLabel.Idle:
-                    sprite.SwitchAnimation("Idle");
+                    spriteController.Do("Idle");
                     break;
                 case MovementStateLabel.Run:
-                    sprite.SwitchAnimation("Walk");
+                    spriteController.Do("Walk");
                     break;
                 default:
-                    sprite.Stop();
+                    spriteController.Stop();
                     break;
             }
         }
@@ -131,6 +131,7 @@ public partial class Player : CharacterBody2D
 
     public void PhysicsFollowAbilityDirective(AbilityDirective directive, double delta)
     {
-        
+        Velocity = GetRealVelocity();
+        Velocity += GetGravity() * (float)delta;
     }
 }

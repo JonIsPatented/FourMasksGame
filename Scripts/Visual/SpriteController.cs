@@ -13,11 +13,46 @@ public partial class SpriteController : GodotObject
 
     private AnimatedSprite2D sprite;
     private SpriteFramesSet animations;
+    private string currentAnimation = "";
 
     public void Bind(AnimatedSprite2D sprite, SpriteFramesSet animations)
     {
         this.sprite = sprite;
         this.animations = animations;
+        SyncSprite();
+    }
+
+    public void Do(string animationName)
+    {
+        currentAnimation = animationName;
+        SyncSprite();
+    }
+
+    public void Stop()
+    {
+        currentAnimation = "";
+        SyncSprite();
+    }
+
+    private void SyncSprite()
+    {
+        if (sprite == null) return;
+
+        if (!HasAnimation(currentAnimation))
+        {
+            sprite.Stop();
+            sprite.Visible = false;
+        }
+
+        if (sprite.Animation == currentAnimation && sprite.IsPlaying() && sprite.Visible)
+        {
+            return;
+        }
+
+        sprite.Animation = currentAnimation;
+        sprite.SpriteFrames = MaskFrames();
+        sprite.Play();
+        sprite.Visible = true;
     }
 
     private SpriteFrames MaskFrames()
@@ -58,23 +93,32 @@ public partial class SpriteController : GodotObject
         return true;
     }
 
-    public void Do(string animationName)
-    {
-        
-    }
-
     public void Damage()
     {
-        
+        Tween tween = sprite.CreateTween();
+        tween.SetParallel(true);
+        tween.TweenProperty(sprite, "modulate", new Color(0.8f, 0, 0), 0.1f);
+        tween.TweenProperty(sprite, "scale", new Vector2(1.1f, 0.9f), 0.1f);
+        Tween back = tween.Chain();
+        back.TweenProperty(sprite, "modulate", new Color(1f, 1f, 1f), 0.1f);
+        back.TweenProperty(sprite, "scale", new Vector2(1f, 1f), 0.1f);
+        tween.Play();
     }
+
+    public delegate void DeathEndEventHandler();
 
     public void Die()
     {
-        
+        Tween tween = sprite.CreateTween();
+        tween.SetParallel(true);
+        tween.TweenProperty(sprite, "modulate", new Color(0.8f, 0, 0), 0.2f);
+        tween.TweenProperty(sprite, "scale", new Vector2(1.5f, 0f), 0.2f);
+        Tween back = tween.Chain();
+        back.TweenCallback(Callable.From(() => EmitSignal("DeathEnd")));
     }
 
     public void HandleMaskChange(Mask mask)
     {
-        
+        SyncSprite();
     }
 }
