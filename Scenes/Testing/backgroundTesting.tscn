@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bwyp8af8knl74"]
 
 [ext_resource type="Script" uid="uid://3nps1bfq0pkx" path="res://Scripts/Environment/Background.cs" id="1_3gn3j"]
-[ext_resource type="Material" uid="uid://50ye04jip1il" path="res://Shaders/Materials/demon_background.tres" id="1_qm8oa"]
+[ext_resource type="Material" uid="uid://50ye04jip1il" path="res://Shaders/Materials/background.tres" id="1_qm8oa"]
 [ext_resource type="Script" uid="uid://cpgwxsi28caos" path="res://Scripts/Environment/Testing/FreeCamera.cs" id="2_f3jdy"]
 [ext_resource type="Texture2D" uid="uid://db2v0uru55vhs" path="res://assets/environment/floor/default_floor.png" id="5_827vj"]
 [ext_resource type="Texture2D" uid="uid://ce1igk78mfyf0" path="res://assets/player_sprites/demon_mask_sprites/player_idle.png" id="5_lugyv"]
+
 
 [node name="BackgroundTesting" type="Node2D" unique_id=1366059477]
 
