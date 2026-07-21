@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bpqsx164dv3gu"]
+
+[ext_resource type="Texture2D" uid="uid://br5aam26svtue" path="res://Scenes/Environment/Wing/cattail_atlas.tres" id="1_nvjjy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vumo3"]
+atlas = ExtResource("1_nvjjy")
+region = Rect2(0, 14, 32, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3xjw"]
+atlas = ExtResource("1_nvjjy")
+region = Rect2(0, 0, 32, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sov4a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vumo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3xjw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="WCattail" type="AnimatedSprite2D" unique_id=895397483]
+sprite_frames = SubResource("SpriteFrames_sov4a")
+frame_progress = 0.9643561
+centered = false
+offset = Vector2(-16, -14)

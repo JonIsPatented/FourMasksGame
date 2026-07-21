@@ -1,0 +1,347 @@
+[gd_scene format=3 uid="uid://7gh0whkami8f"]
+
+[ext_resource type="PackedScene" uid="uid://bocgudn10f5to" path="res://Scenes/Environment/Wing/w_gblock.tscn" id="1_hqkpc"]
+[ext_resource type="PackedScene" uid="uid://b6y4b7vnheohr" path="res://Scenes/Environment/Wing/w_ivy.tscn" id="2_2k5k4"]
+[ext_resource type="PackedScene" uid="uid://bpqsx164dv3gu" path="res://Scenes/Environment/Wing/w_cattail.tscn" id="2_eddad"]
+[ext_resource type="PackedScene" uid="uid://da180qg7oo0ho" path="res://Scenes/Environment/Wing/w_pillar.tscn" id="3_2k5k4"]
+[ext_resource type="Script" uid="uid://3nps1bfq0pkx" path="res://Scripts/Environment/Background.cs" id="4_5f2yr"]
+[ext_resource type="Material" uid="uid://50ye04jip1il" path="res://Shaders/Materials/background.tres" id="4_dalvw"]
+[ext_resource type="Texture2D" uid="uid://br5aam26svtue" path="res://Scenes/Environment/Wing/cattail_atlas.tres" id="4_ilagu"]
+[ext_resource type="Texture2D" uid="uid://cltjomy3ipbt6" path="res://assets/player_sprites/wing_mask_sprites/player_idle.png" id="5_07bew"]
+[ext_resource type="PackedScene" uid="uid://b5egc8khy7if3" path="res://Scenes/Environment/Wing/w_stonetop.tscn" id="5_ilagu"]
+[ext_resource type="Script" uid="uid://cpgwxsi28caos" path="res://Scripts/Environment/Testing/FreeCamera.cs" id="6_nva68"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vumo3"]
+atlas = ExtResource("4_ilagu")
+region = Rect2(0, 14, 32, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3xjw"]
+atlas = ExtResource("4_ilagu")
+region = Rect2(0, 0, 32, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gpjj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vumo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3xjw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="WTest" type="Node2D" unique_id=1599964216]
+
+[node name="BG" type="Node2D" parent="." unique_id=1974014669]
+modulate = Color(0.5370987, 0.5370987, 0.5370987, 1)
+
+[node name="WGblock" parent="BG" unique_id=640469796 instance=ExtResource("1_hqkpc")]
+position = Vector2(64, 8)
+rotation = 1.5707964
+metadata/_scene_painted = true
+
+[node name="WGblock2" parent="BG" unique_id=804412455 instance=ExtResource("1_hqkpc")]
+position = Vector2(88, 8)
+rotation = 1.5707964
+metadata/_scene_painted = true
+
+[node name="WGblock3" parent="BG" unique_id=384623297 instance=ExtResource("1_hqkpc")]
+position = Vector2(112, 8)
+rotation = 1.5707964
+metadata/_scene_painted = true
+
+[node name="WGblock4" parent="BG" unique_id=1842757803 instance=ExtResource("1_hqkpc")]
+position = Vector2(64, -32)
+rotation = 1.5707964
+metadata/_scene_painted = true
+
+[node name="WGblock5" parent="BG" unique_id=1923697034 instance=ExtResource("1_hqkpc")]
+position = Vector2(88, -32)
+rotation = 1.5707964
+metadata/_scene_painted = true
+
+[node name="WGblock6" parent="BG" unique_id=1435426407 instance=ExtResource("1_hqkpc")]
+position = Vector2(112, -32)
+rotation = 1.5707964
+metadata/_scene_painted = true
+
+[node name="WPillar3" parent="BG" unique_id=1099262397 instance=ExtResource("3_2k5k4")]
+position = Vector2(216, 112)
+metadata/_scene_painted = true
+
+[node name="WPillar" parent="BG" unique_id=1049740812 instance=ExtResource("3_2k5k4")]
+position = Vector2(168, 112)
+metadata/_scene_painted = true
+
+[node name="WPillar2" parent="BG" unique_id=1147162731 instance=ExtResource("3_2k5k4")]
+position = Vector2(192, 112)
+metadata/_scene_painted = true
+
+[node name="WCattail" parent="BG" unique_id=895397483 instance=ExtResource("2_eddad")]
+position = Vector2(16, 88)
+sprite_frames = SubResource("SpriteFrames_gpjj2")
+autoplay = "default"
+frame_progress = 0.0
+metadata/_scene_painted = true
+
+[node name="WCattail2" parent="BG" unique_id=813652450 instance=ExtResource("2_eddad")]
+position = Vector2(48, 88)
+sprite_frames = SubResource("SpriteFrames_gpjj2")
+autoplay = "default"
+frame_progress = 0.0
+metadata/_scene_painted = true
+
+[node name="WCattail3" parent="BG" unique_id=1849100381 instance=ExtResource("2_eddad")]
+position = Vector2(80, 88)
+sprite_frames = SubResource("SpriteFrames_gpjj2")
+autoplay = "default"
+frame_progress = 0.0
+metadata/_scene_painted = true
+
+[node name="WCattail4" parent="BG" unique_id=1914051562 instance=ExtResource("2_eddad")]
+position = Vector2(112, 88)
+sprite_frames = SubResource("SpriteFrames_gpjj2")
+autoplay = "default"
+frame_progress = 0.0
+metadata/_scene_painted = true
+
+[node name="WCattail5" parent="BG" unique_id=1059706008 instance=ExtResource("2_eddad")]
+position = Vector2(136, 88)
+metadata/_scene_painted = true
+
+[node name="WCattail6" parent="BG" unique_id=33975436 instance=ExtResource("2_eddad")]
+position = Vector2(144, 88)
+sprite_frames = SubResource("SpriteFrames_gpjj2")
+autoplay = "default"
+frame_progress = 0.0
+metadata/_scene_painted = true
+
+[node name="FG" type="Node2D" parent="." unique_id=1364878570]
+
+[node name="WGblock" parent="FG" unique_id=484874823 instance=ExtResource("1_hqkpc")]
+position = Vector2(0, 112)
+metadata/_scene_painted = true
+
+[node name="WGblock2" parent="FG" unique_id=1658972529 instance=ExtResource("1_hqkpc")]
+position = Vector2(80, 112)
+metadata/_scene_painted = true
+
+[node name="WGblock3" parent="FG" unique_id=1175287550 instance=ExtResource("1_hqkpc")]
+position = Vector2(0, 88)
+metadata/_scene_painted = true
+
+[node name="WGblock4" parent="FG" unique_id=1063606760 instance=ExtResource("1_hqkpc")]
+position = Vector2(80, 88)
+metadata/_scene_painted = true
+
+[node name="WGblock5" parent="FG" unique_id=1387472993 instance=ExtResource("1_hqkpc")]
+position = Vector2(160, 112)
+metadata/_scene_painted = true
+
+[node name="WGblock6" parent="FG" unique_id=378140963 instance=ExtResource("1_hqkpc")]
+position = Vector2(240, 136)
+metadata/_scene_painted = true
+
+[node name="WGblock7" parent="FG" unique_id=573550884 instance=ExtResource("1_hqkpc")]
+position = Vector2(160, 136)
+metadata/_scene_painted = true
+
+[node name="WGblock8" parent="FG" unique_id=1314796578 instance=ExtResource("1_hqkpc")]
+position = Vector2(80, 136)
+metadata/_scene_painted = true
+
+[node name="WGblock9" parent="FG" unique_id=148974212 instance=ExtResource("1_hqkpc")]
+position = Vector2(0, 136)
+metadata/_scene_painted = true
+
+[node name="WGblock10" parent="FG" unique_id=1046208513 instance=ExtResource("1_hqkpc")]
+position = Vector2(0, 160)
+metadata/_scene_painted = true
+
+[node name="WGblock11" parent="FG" unique_id=229612513 instance=ExtResource("1_hqkpc")]
+position = Vector2(80, 160)
+metadata/_scene_painted = true
+
+[node name="WGblock12" parent="FG" unique_id=1914174769 instance=ExtResource("1_hqkpc")]
+position = Vector2(160, 160)
+metadata/_scene_painted = true
+
+[node name="WGblock13" parent="FG" unique_id=1819064424 instance=ExtResource("1_hqkpc")]
+position = Vector2(240, 160)
+metadata/_scene_painted = true
+
+[node name="WIvy" parent="FG" unique_id=924302793 instance=ExtResource("2_2k5k4")]
+position = Vector2(0, 128)
+metadata/_scene_painted = true
+
+[node name="WIvy2" parent="FG" unique_id=1646802719 instance=ExtResource("2_2k5k4")]
+position = Vector2(16, 136)
+metadata/_scene_painted = true
+
+[node name="WIvy3" parent="FG" unique_id=459833306 instance=ExtResource("2_2k5k4")]
+position = Vector2(32, 128)
+metadata/_scene_painted = true
+
+[node name="WIvy4" parent="FG" unique_id=494771510 instance=ExtResource("2_2k5k4")]
+position = Vector2(48, 144)
+metadata/_scene_painted = true
+
+[node name="WIvy5" parent="FG" unique_id=1005045359 instance=ExtResource("2_2k5k4")]
+position = Vector2(72, 152)
+metadata/_scene_painted = true
+
+[node name="WIvy6" parent="FG" unique_id=2114481133 instance=ExtResource("2_2k5k4")]
+position = Vector2(64, 136)
+metadata/_scene_painted = true
+
+[node name="WIvy7" parent="FG" unique_id=85821891 instance=ExtResource("2_2k5k4")]
+position = Vector2(88, 136)
+metadata/_scene_painted = true
+
+[node name="WIvy8" parent="FG" unique_id=1373426622 instance=ExtResource("2_2k5k4")]
+position = Vector2(120, 144)
+metadata/_scene_painted = true
+
+[node name="WIvy9" parent="FG" unique_id=185243225 instance=ExtResource("2_2k5k4")]
+position = Vector2(104, 152)
+metadata/_scene_painted = true
+
+[node name="WIvy10" parent="FG" unique_id=397258985 instance=ExtResource("2_2k5k4")]
+position = Vector2(152, 152)
+metadata/_scene_painted = true
+
+[node name="WIvy11" parent="FG" unique_id=278474098 instance=ExtResource("2_2k5k4")]
+position = Vector2(136, 160)
+metadata/_scene_painted = true
+
+[node name="WIvy12" parent="FG" unique_id=1671881822 instance=ExtResource("2_2k5k4")]
+position = Vector2(144, 128)
+metadata/_scene_painted = true
+
+[node name="WIvy13" parent="FG" unique_id=899372614 instance=ExtResource("2_2k5k4")]
+position = Vector2(32, 152)
+metadata/_scene_painted = true
+
+[node name="WIvy14" parent="FG" unique_id=682827791 instance=ExtResource("2_2k5k4")]
+position = Vector2(16, 168)
+metadata/_scene_painted = true
+
+[node name="WIvy15" parent="FG" unique_id=1784311408 instance=ExtResource("2_2k5k4")]
+position = Vector2(0, 176)
+metadata/_scene_painted = true
+
+[node name="WIvy16" parent="FG" unique_id=1958118616 instance=ExtResource("2_2k5k4")]
+position = Vector2(40, 168)
+metadata/_scene_painted = true
+
+[node name="WIvy17" parent="FG" unique_id=677813623 instance=ExtResource("2_2k5k4")]
+position = Vector2(64, 176)
+metadata/_scene_painted = true
+
+[node name="WIvy18" parent="FG" unique_id=181467646 instance=ExtResource("2_2k5k4")]
+position = Vector2(56, 168)
+metadata/_scene_painted = true
+
+[node name="WIvy19" parent="FG" unique_id=1364348430 instance=ExtResource("2_2k5k4")]
+position = Vector2(88, 160)
+metadata/_scene_painted = true
+
+[node name="WIvy20" parent="FG" unique_id=1111218247 instance=ExtResource("2_2k5k4")]
+position = Vector2(112, 168)
+metadata/_scene_painted = true
+
+[node name="WIvy21" parent="FG" unique_id=2112146205 instance=ExtResource("2_2k5k4")]
+position = Vector2(112, 168)
+metadata/_scene_painted = true
+
+[node name="WIvy22" parent="FG" unique_id=219518611 instance=ExtResource("2_2k5k4")]
+position = Vector2(104, 168)
+metadata/_scene_painted = true
+
+[node name="WIvy23" parent="FG" unique_id=1531061066 instance=ExtResource("2_2k5k4")]
+position = Vector2(128, 160)
+metadata/_scene_painted = true
+
+[node name="WIvy24" parent="FG" unique_id=691841316 instance=ExtResource("2_2k5k4")]
+position = Vector2(168, 152)
+metadata/_scene_painted = true
+
+[node name="WIvy25" parent="FG" unique_id=2053324413 instance=ExtResource("2_2k5k4")]
+position = Vector2(152, 176)
+metadata/_scene_painted = true
+
+[node name="WIvy26" parent="FG" unique_id=333571384 instance=ExtResource("2_2k5k4")]
+position = Vector2(184, 168)
+metadata/_scene_painted = true
+
+[node name="WIvy27" parent="FG" unique_id=796453912 instance=ExtResource("2_2k5k4")]
+position = Vector2(208, 176)
+metadata/_scene_painted = true
+
+[node name="WIvy28" parent="FG" unique_id=1536429420 instance=ExtResource("2_2k5k4")]
+position = Vector2(256, 176)
+metadata/_scene_painted = true
+
+[node name="WIvy29" parent="FG" unique_id=684667766 instance=ExtResource("2_2k5k4")]
+position = Vector2(232, 176)
+metadata/_scene_painted = true
+
+[node name="WIvy30" parent="FG" unique_id=1656097026 instance=ExtResource("2_2k5k4")]
+position = Vector2(224, 168)
+metadata/_scene_painted = true
+
+[node name="WIvy31" parent="FG" unique_id=1648816718 instance=ExtResource("2_2k5k4")]
+position = Vector2(280, 176)
+metadata/_scene_painted = true
+
+[node name="WIvy32" parent="FG" unique_id=1821994904 instance=ExtResource("2_2k5k4")]
+position = Vector2(272, 184)
+metadata/_scene_painted = true
+
+[node name="WStoneTop2" parent="FG" unique_id=1708360253 instance=ExtResource("5_ilagu")]
+position = Vector2(8, 88)
+metadata/_scene_painted = true
+
+[node name="WStoneTop3" parent="FG" unique_id=1455959915 instance=ExtResource("5_ilagu")]
+position = Vector2(48, 88)
+metadata/_scene_painted = true
+
+[node name="WStoneTop4" parent="FG" unique_id=22004967 instance=ExtResource("5_ilagu")]
+position = Vector2(88, 88)
+metadata/_scene_painted = true
+
+[node name="WStoneTop5" parent="FG" unique_id=405026867 instance=ExtResource("5_ilagu")]
+position = Vector2(128, 88)
+metadata/_scene_painted = true
+
+[node name="WStoneTop6" parent="FG" unique_id=1376245294 instance=ExtResource("5_ilagu")]
+position = Vector2(168, 112)
+metadata/_scene_painted = true
+
+[node name="WStoneTop7" parent="FG" unique_id=1110414202 instance=ExtResource("5_ilagu")]
+position = Vector2(208, 112)
+metadata/_scene_painted = true
+
+[node name="WStoneTop8" parent="FG" unique_id=697497599 instance=ExtResource("5_ilagu")]
+position = Vector2(264, 136)
+metadata/_scene_painted = true
+
+[node name="WStoneTop9" parent="FG" unique_id=2100822128 instance=ExtResource("5_ilagu")]
+position = Vector2(288, 136)
+metadata/_scene_painted = true
+
+[node name="Background" type="Node2D" parent="." unique_id=1742502133]
+z_index = -5
+material = ExtResource("4_dalvw")
+script = ExtResource("4_5f2yr")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1250260641]
+position = Vector2(128, 72)
+script = ExtResource("6_nva68")
+
+[node name="Player" type="Sprite2D" parent="." unique_id=983235511]
+position = Vector2(128, 72)
+texture = ExtResource("5_07bew")

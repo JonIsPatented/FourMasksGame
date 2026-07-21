@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bwyp8af8knl74"]
+
+[ext_resource type="Script" uid="uid://3nps1bfq0pkx" path="res://Scripts/Environment/Background.cs" id="1_3gn3j"]
+[ext_resource type="Material" uid="uid://50ye04jip1il" path="res://Shaders/Materials/background.tres" id="1_qm8oa"]
+[ext_resource type="Script" uid="uid://cpgwxsi28caos" path="res://Scripts/Environment/Testing/FreeCamera.cs" id="2_f3jdy"]
+[ext_resource type="Texture2D" uid="uid://db2v0uru55vhs" path="res://assets/environment/floor/default_floor.png" id="5_827vj"]
+[ext_resource type="Texture2D" uid="uid://ce1igk78mfyf0" path="res://assets/player_sprites/demon_mask_sprites/player_idle.png" id="5_lugyv"]
+
+
+[node name="BackgroundTesting" type="Node2D" unique_id=1366059477]
+
+[node name="Background" type="Node2D" parent="." unique_id=518073391]
+material = ExtResource("1_qm8oa")
+script = ExtResource("1_3gn3j")
+metadata/_custom_type_script = "uid://3nps1bfq0pkx"
+
+[node name="FreeCamera" type="Camera2D" parent="." unique_id=1932342468]
+script = ExtResource("2_f3jdy")
+Speed = 43.458
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=624891798]
+modulate = Color(1, 0.07999998, 0.07999998, 1)
+self_modulate = Color(2.055, 2.055, 2.055, 1)
+position = Vector2(56, 40)
+texture = ExtResource("5_827vj")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=301853835]
+modulate = Color(1, 0.07999998, 0.07999998, 1)
+self_modulate = Color(2.055, 2.055, 2.055, 1)
+position = Vector2(72, 40)
+texture = ExtResource("5_827vj")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=496467219]
+modulate = Color(1, 0.07999998, 0.07999998, 1)
+self_modulate = Color(2.055, 2.055, 2.055, 1)
+position = Vector2(88, 40)
+texture = ExtResource("5_827vj")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=2022586131]
+modulate = Color(1, 0.07999998, 0.07999998, 1)
+self_modulate = Color(2.055, 2.055, 2.055, 1)
+position = Vector2(104, 40)
+texture = ExtResource("5_827vj")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=34158391]
+modulate = Color(1, 0.07999998, 0.07999998, 1)
+self_modulate = Color(2.055, 2.055, 2.055, 1)
+position = Vector2(120, 40)
+texture = ExtResource("5_827vj")
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=1580926366]
+modulate = Color(1, 0.07999998, 0.07999998, 1)
+self_modulate = Color(2.055, 2.055, 2.055, 1)
+position = Vector2(136, 40)
+texture = ExtResource("5_827vj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=196791283]
+position = Vector2(88, 16)
+texture = ExtResource("5_lugyv")
