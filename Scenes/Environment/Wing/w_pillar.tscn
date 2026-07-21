@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://da180qg7oo0ho"]
+
+[ext_resource type="Texture2D" uid="uid://dm3pmwiu8q5cq" path="res://assets/environment/wingatlas.png" id="1_wna2g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es0pj"]
+atlas = ExtResource("1_wna2g")
+region = Rect2(0, 0, 40, 11.13459)
+
+[node name="WPillar" type="Sprite2D" unique_id=1049740812]
+rotation = 1.5707964
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_es0pj")
+centered = false
+offset = Vector2(-40, -11)
