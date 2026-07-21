@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_akewf")
 Name = "Wing"
+Number = 2
 OverlayTexture = ExtResource("1_ujnjp")
 EnvironmentColor = Color(0.030000016, 0.75, 0.6899999, 1)
 PlayerSprites = ExtResource("2_ujnjp")

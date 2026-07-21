@@ -10,7 +10,7 @@ public partial class SpriteFramesSet : Resource
     [Export] public SpriteFrames mistSprites;
     [Export] public SpriteFrames golemSprites;
 
-    public SpriteFrames GetSprites(int? maskNumber)
+    public SpriteFrames GetSprites(int maskNumber)
     {
         return maskNumber switch
         {

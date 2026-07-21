@@ -16,7 +16,14 @@ public partial class SpriteMachine : AnimatedSprite2D
 
     public void SwapLibrary(Mask mask)
     {
-        SpriteFrames = spriteFramesSet.GetSprites(mask?.Number);
+        if (mask != null)
+        {
+            SpriteFrames = spriteFramesSet.GetSprites(mask.Number);
+        }
+        else
+        {
+            SpriteFrames = null;
+        }
     }
 
     public void SwitchAnimation(string animation)

@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ppeha7ubcnsp" path="res://Scripts/Masks/Mask.cs" id="1_mrxtr"]
 [ext_resource type="Texture2D" uid="uid://c1qupptt72hxp" path="res://assets/player_sprites/demon_mask_sprites/mask.png" id="1_vsglk"]
-[ext_resource type="SpriteFrames" uid="uid://dtewjjryemq2c" path="res://Resources/SpriteFrames/Player/demon_sprite_frames.tres" id="2_4k7db"]
 
 [resource]
 script = ExtResource("1_mrxtr")
 Name = "Demon"
+Number = 1
 OverlayTexture = ExtResource("1_vsglk")
 EnvironmentColor = Color(1, 0, 0, 1)
-PlayerSprites = ExtResource("2_4k7db")

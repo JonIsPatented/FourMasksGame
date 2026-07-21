@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_g1ebb")
 Name = "Mist"
+Number = 2
 EnvironmentColor = Color(0.697951, 0.2890121, 0.615523, 1)
 PlayerSprites = ExtResource("1_sms0k")
