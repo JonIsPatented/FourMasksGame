@@ -3,6 +3,9 @@ using FourMasksGame.Scripts.Movement;
 using FourMasksGame.Scripts.Input;
 using FourMasksGame.Scripts.Abilities;
 using FourMasksGame.Scripts.Visual;
+using FourMasksGame.Scripts.Enemies;
+using FourMasksGame.Scripts.Damage;
+using System.Collections.Generic;
 
 namespace FourMasksGame.Scripts;
 
@@ -10,9 +13,11 @@ public partial class Player : CharacterBody2D
 {
     private MovementStateMachine movementStateMachine;
     private AbilityBridge abilityBridge;
+    private HealthBar healthBar = new HealthBar(10f, 10f, true);
 
     [Export] private AnimatedSprite2D sprite;
     [Export] private SpriteFramesSet spriteSet;
+    [Export] private DamageReceiver damageReceiver;
 
     private SpriteController spriteController;
 
@@ -26,10 +31,29 @@ public partial class Player : CharacterBody2D
         movementStateMachine.EnterState(new Movement.States.IdleMovementState());
         abilityBridge = new();
         spriteController.Bind(sprite, spriteSet);
+        healthBar.Start();
     }
 
     public override void _Process(double delta)
     {
+        if (!healthBar.IsAlive())
+        {
+            return;
+        }
+        
+        HashSet<DamageSource> damageSources = damageReceiver.Receive(1);
+        if (damageSources.Count > 0)
+        {
+            spriteController.Damage();
+            healthBar.Damage(damageSources);
+        }
+
+        if (!healthBar.IsAlive())
+        {
+            spriteController.Die();
+            return;
+        }
+
         if (abilityBridge.UsingAbility())
         {
             // allow chains and ending
