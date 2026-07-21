@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bnfkrli7w2e3s"]
+
+[ext_resource type="Script" uid="uid://dpepmo72psstb" path="res://Scenes/Music/MusicManager.cs" id="1_ddlu3"]
+[ext_resource type="AudioStream" uid="uid://cdva1f37oa38p" path="res://assets/music/demon.mp3" id="2_okrqc"]
+
+[node name="Music" type="Node2D" unique_id=450214637]
+script = ExtResource("1_ddlu3")
+
+[node name="DemonMusic" type="AudioStreamPlayer" parent="." unique_id=370486889]
+stream = ExtResource("2_okrqc")
+
+[node name="WingMusic" type="AudioStreamPlayer" parent="." unique_id=1296707826]
+autoplay = true

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpriteFramesSet" format=3 uid="uid://dqffkpp5648el"]
+
+[ext_resource type="SpriteFrames" uid="uid://dtewjjryemq2c" path="res://Resources/SpriteFrames/Player/demon_sprite_frames.tres" id="1_1325g"]
+[ext_resource type="Script" uid="uid://dooq23qjrcclb" path="res://Scripts/Visual/SpriteFramesSet.cs" id="1_jx02v"]
+[ext_resource type="SpriteFrames" uid="uid://wyy4lu3cbxfh" path="res://Resources/SpriteFrames/Player/golem_sprite_frames.tres" id="2_r1k5l"]
+[ext_resource type="SpriteFrames" uid="uid://cm1o8wljoif3r" path="res://Resources/SpriteFrames/Player/mist_player_sprites.tres" id="3_p7o0y"]
+[ext_resource type="SpriteFrames" uid="uid://b1tirhlpdkyyk" path="res://Resources/SpriteFrames/Player/wing_player_sprites.tres" id="5_ycy7v"]
+
+[resource]
+script = ExtResource("1_jx02v")
+wingSprites = ExtResource("5_ycy7v")
+demonSprites = ExtResource("1_1325g")
+mistSprites = ExtResource("3_p7o0y")
+golemSprites = ExtResource("2_r1k5l")
+metadata/_custom_type_script = "uid://dooq23qjrcclb"
