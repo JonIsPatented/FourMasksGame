@@ -40,7 +40,7 @@ public partial class Player : CharacterBody2D
         {
             return;
         }
-        
+
         HashSet<DamageSource> damageSources = damageReceiver.Receive(1);
         if (damageSources.Count > 0)
         {
@@ -157,5 +157,12 @@ public partial class Player : CharacterBody2D
     {
         Velocity = GetRealVelocity();
         Velocity += GetGravity() * (float)delta;
+
+        if (directive.fixY)
+        {
+            Vector2 _v = Velocity;
+            _v.Y = 0;
+            Velocity = _v;
+        }
     }
 }
