@@ -13,7 +13,7 @@ public partial class SpriteController : GodotObject
 
     private AnimatedSprite2D sprite;
     private SpriteFramesSet animations;
-    private string currentAnimation = "";
+    private string currentAnimation = null;
 
     public void Bind(AnimatedSprite2D sprite, SpriteFramesSet animations)
     {
@@ -30,7 +30,7 @@ public partial class SpriteController : GodotObject
 
     public void Stop()
     {
-        currentAnimation = "";
+        currentAnimation = null;
         SyncSprite();
     }
 
@@ -38,10 +38,11 @@ public partial class SpriteController : GodotObject
     {
         if (sprite == null) return;
 
-        if (!HasAnimation(currentAnimation))
+        if (!HasAnimation(currentAnimation) || currentAnimation == null)
         {
             sprite.Stop();
             sprite.Visible = false;
+            return;
         }
 
         if (sprite.Animation == currentAnimation && sprite.IsPlaying() && sprite.Visible)
@@ -57,7 +58,7 @@ public partial class SpriteController : GodotObject
 
     private SpriteFrames MaskFrames()
     {
-        if (animations == null)
+        if (animations == null || MaskManager.Instance.CurrentMask == null)
         {
             return null;
         }
@@ -80,7 +81,7 @@ public partial class SpriteController : GodotObject
     private bool HasAnimation(string animationName)
     {
         SpriteFrames frames = MaskFrames();
-        if (frames == null)
+        if (frames == null || animationName == null)
         {
             return false;
         }

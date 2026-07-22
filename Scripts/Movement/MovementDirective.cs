@@ -8,6 +8,7 @@ public struct MovementDirective
     public bool useAbility = false;
     public int abilitySlot = -1;
     public bool useAbilityDirective = false;
+    public bool useJumpGravity = false;
 
     public MovementDirective() {}
 }

@@ -2,23 +2,29 @@
 
 [ext_resource type="Script" uid="uid://dtbnn45srq4e8" path="res://Scripts/Player.cs" id="1_g2els"]
 [ext_resource type="SpriteFrames" uid="uid://b1tirhlpdkyyk" path="res://Resources/SpriteFrames/Player/wing_player_sprites.tres" id="2_cvnsp"]
-[ext_resource type="Script" uid="uid://dugm4fjjygmx1" path="res://Scripts/Visual/SpriteMachine.cs" id="3_6t5aa"]
-[ext_resource type="Resource" path="res://Resources/SpriteFrames/Player/player_sprites.tres" id="4_vgqql"]
-
+[ext_resource type="Script" uid="uid://ckkni6rswhj6x" path="res://Scripts/Damage/DamageReceiver.cs" id="3_6t5aa"]
+[ext_resource type="Resource" uid="uid://dqffkpp5648el" path="res://Resources/SpriteFrames/Player/player_sprites.tres" id="4_vgqql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
 size = Vector2(8, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=634190875 node_paths=PackedStringArray("sprite")]
+[node name="Player" type="CharacterBody2D" unique_id=634190875 node_paths=PackedStringArray("sprite", "damageReceiver")]
 script = ExtResource("1_g2els")
-sprite = NodePath("")
-
-[node name="TextureRect" type="AnimatedSprite2D" parent="." unique_id=2114385064]
-sprite_frames = ExtResource("2_cvnsp")
-animation = &"Idle"
-script = ExtResource("3_6t5aa")
-spriteFramesSet = ExtResource("4_vgqql")
-metadata/_custom_type_script = "uid://dugm4fjjygmx1"
+sprite = NodePath("AnimatedSprite2D")
+spriteSet = ExtResource("4_vgqql")
+damageReceiver = NodePath("DamageReceiver")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=768757703]
 shape = SubResource("RectangleShape2D_sov4a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2146966284]
+sprite_frames = ExtResource("2_cvnsp")
+animation = &"Idle"
+
+[node name="DamageReceiver" type="Area2D" parent="." unique_id=893201584]
+script = ExtResource("3_6t5aa")
+metadata/_custom_type_script = "uid://ckkni6rswhj6x"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" unique_id=811643548]
+shape = SubResource("RectangleShape2D_sov4a")
+debug_color = Color(0.97357374, 0.1347957, 0.24165499, 0.41960785)

@@ -21,6 +21,9 @@ public partial class Player : CharacterBody2D
 
     private SpriteController spriteController;
 
+    private float groundedTime = -1000f;
+    private bool needsJump = false;
+
     // Used for debug.
     public MovementStateMachine StateMachine { get => movementStateMachine; }
 
@@ -30,12 +33,18 @@ public partial class Player : CharacterBody2D
         movementStateMachine = new();
         movementStateMachine.EnterState(new Movement.States.IdleMovementState());
         abilityBridge = new();
+        spriteController = new();
         spriteController.Bind(sprite, spriteSet);
         healthBar.Start();
     }
 
     public override void _Process(double delta)
     {
+        if (IsOnFloor())
+        {
+            groundedTime = Time.GetTicksMsec() / 1000f;
+        }
+
         if (!healthBar.IsAlive())
         {
             return;
@@ -67,7 +76,8 @@ public partial class Player : CharacterBody2D
         movementStateMachine.PassInfo(new()
         {
             grounded = IsOnFloor(),
-            realVelocity = GetRealVelocity(),
+            groundedTime = groundedTime,
+            realVelocity = Velocity,
             usingAbility = abilityBridge.UsingAbility(),
         });
         movementStateMachine.Process();
@@ -92,6 +102,11 @@ public partial class Player : CharacterBody2D
                     abilityBridge.EndAbility();
                 }
             }
+
+            if (directive.impulseOnEnter != Vector2.Zero)
+            {
+                needsJump = true;
+            }
         }
 
         if (sprite != null)
@@ -105,6 +120,12 @@ public partial class Player : CharacterBody2D
                     break;
                 case MovementStateLabel.Run:
                     spriteController.Do("Walk");
+                    break;
+                case MovementStateLabel.Jump:
+                    spriteController.Do("Jump");
+                    break;
+                case MovementStateLabel.Falling:
+                    spriteController.Do("Fall");
                     break;
                 default:
                     spriteController.Stop();
@@ -133,36 +154,54 @@ public partial class Player : CharacterBody2D
         // Without a reset, applications like gravity will pile up forever.
         // So I'm resetting each step here to the real velocity.
         // That means that the requested Y velocity will stop accumulating if on the ground.
-        Velocity = GetRealVelocity();
+        //Velocity = GetRealVelocity();
 
-        if (movementStateMachine.TransitionOnLastProcess)
+        Vector2 _v = Velocity;
+
+        if (needsJump)
         {
-            //* I think this logic is frame dependent. Not sure how to fix it.
-            //* I think GetRealVelocity()'s return value is time-interpolated, so it changes slowly based on the requested velocity.
-            //* That would make this the correct method, maybe? It needs to be evaluated at different framerates.
-
-            Velocity = GetRealVelocity() + movementStateMachine.GetDirective().impulseOnEnter;
+            _v = directive.impulseOnEnter;
+            needsJump = false;
         }
 
-        Velocity += GetGravity() * (float)delta;
+        if (_v.Y < 0f && !directive.useJumpGravity)
+        {
+            _v.Y = 0f;
+        }
+
+        _v.Y += CustomGravity(directive.useJumpGravity) * (float)delta;
 
         // The player controls horizontal velocity directive determines whether the player gets to set the horizontal velocity with input.
         if (directive.playerControlsHorizontalVelocity)
         {
-            Velocity = new(directive.horizontalMovementSpeed * InputManager.Instance.GetHorizontalAxis(), Velocity.Y);
+            _v.X = directive.horizontalMovementSpeed * InputManager.Instance.GetHorizontalAxis();
+        }
+
+        Velocity = _v;
+    }
+
+    private float CustomGravity(bool useJumpGravity = false)
+    {
+        if (useJumpGravity)
+        {
+            return Constants.PLAYER_RISE_GRAVITY;
+        }
+        else
+        {
+            return Constants.PLAYER_FALL_GRAVITY;
         }
     }
 
     public void PhysicsFollowAbilityDirective(AbilityDirective directive, double delta)
     {
-        Velocity = GetRealVelocity();
-        Velocity += GetGravity() * (float)delta;
+        Vector2 _v = Velocity;
+        _v.Y += CustomGravity() * (float)delta;
 
         if (directive.fixY)
         {
-            Vector2 _v = Velocity;
             _v.Y = 0;
-            Velocity = _v;
         }
+
+        Velocity = _v;
     }
 }

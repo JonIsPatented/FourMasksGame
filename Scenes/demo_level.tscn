@@ -1,0 +1,1453 @@
+[gd_scene format=3 uid="uid://bs22w4gsyye4r"]
+
+[ext_resource type="Material" uid="uid://50ye04jip1il" path="res://Shaders/Materials/background.tres" id="1_kyodv"]
+[ext_resource type="PackedScene" uid="uid://b313wkoetydv6" path="res://Scenes/player.tscn" id="1_tn8qy"]
+[ext_resource type="PackedScene" uid="uid://bocgudn10f5to" path="res://Scenes/Environment/Wing/w_gblock.tscn" id="1_ulhtt"]
+[ext_resource type="PackedScene" uid="uid://da180qg7oo0ho" path="res://Scenes/Environment/Wing/w_pillar.tscn" id="1_vlhjm"]
+[ext_resource type="Script" uid="uid://3cprxlyrd55v" path="res://Scripts/Input/InputContextSwitchNode.cs" id="2_7f6mx"]
+[ext_resource type="PackedScene" uid="uid://b5ggie48l10g6" path="res://Scenes/Environment/Wing/w_bwall.tscn" id="2_hnugb"]
+[ext_resource type="PackedScene" uid="uid://b5egc8khy7if3" path="res://Scenes/Environment/Wing/w_stonetop.tscn" id="2_vlhjm"]
+[ext_resource type="Script" uid="uid://3nps1bfq0pkx" path="res://Scripts/Environment/Background.cs" id="3_7f6mx"]
+[ext_resource type="PackedScene" uid="uid://bjl0rjv3diac1" path="res://Scenes/Environment/Wing/w_grayplat.tscn" id="7_4g462"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
+size = Vector2(379, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnugb"]
+size = Vector2(83.5, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyodv"]
+size = Vector2(135.75, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4g462"]
+size = Vector2(143.875, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxy47"]
+size = Vector2(87.9375, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wj2o1"]
+size = Vector2(87.9375, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucliy"]
+size = Vector2(160, 216)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xa4jn"]
+size = Vector2(160, 220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_323ns"]
+size = Vector2(160, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kaqsx"]
+size = Vector2(16, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hi7pw"]
+size = Vector2(16, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghfmt"]
+size = Vector2(144, 98)
+
+[node name="DemoLevel" type="Node2D" unique_id=70501329]
+
+[node name="Background" type="Node2D" parent="." unique_id=1275252503]
+z_index = -5
+material = ExtResource("1_kyodv")
+script = ExtResource("3_7f6mx")
+metadata/_custom_type_script = "uid://3nps1bfq0pkx"
+
+[node name="BG" type="Node2D" parent="." unique_id=140885014]
+modulate = Color(0.5370987, 0.5370987, 0.5370987, 1)
+
+[node name="WPillar" parent="BG" unique_id=1049740812 instance=ExtResource("1_vlhjm")]
+position = Vector2(48, -8)
+metadata/_scene_painted = true
+
+[node name="WPillar2" parent="BG" unique_id=316648202 instance=ExtResource("1_vlhjm")]
+position = Vector2(88, -8)
+metadata/_scene_painted = true
+
+[node name="WPillar4" parent="BG" unique_id=1202739410 instance=ExtResource("1_vlhjm")]
+position = Vector2(128, -8)
+metadata/_scene_painted = true
+
+[node name="WBwall" parent="BG" unique_id=1472097665 instance=ExtResource("2_hnugb")]
+position = Vector2(-96, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall2" parent="BG" unique_id=742963133 instance=ExtResource("2_hnugb")]
+position = Vector2(-96, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall3" parent="BG" unique_id=870305559 instance=ExtResource("2_hnugb")]
+position = Vector2(-96, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall4" parent="BG" unique_id=1606769550 instance=ExtResource("2_hnugb")]
+position = Vector2(-88, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall5" parent="BG" unique_id=642260415 instance=ExtResource("2_hnugb")]
+position = Vector2(-80, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall6" parent="BG" unique_id=655275328 instance=ExtResource("2_hnugb")]
+position = Vector2(-72, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall7" parent="BG" unique_id=508636610 instance=ExtResource("2_hnugb")]
+position = Vector2(-64, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall8" parent="BG" unique_id=1535978704 instance=ExtResource("2_hnugb")]
+position = Vector2(-56, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall9" parent="BG" unique_id=1659123273 instance=ExtResource("2_hnugb")]
+position = Vector2(-48, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall10" parent="BG" unique_id=1060806334 instance=ExtResource("2_hnugb")]
+position = Vector2(-40, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall11" parent="BG" unique_id=1902449857 instance=ExtResource("2_hnugb")]
+position = Vector2(-32, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall12" parent="BG" unique_id=1268375792 instance=ExtResource("2_hnugb")]
+position = Vector2(-24, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall13" parent="BG" unique_id=606140449 instance=ExtResource("2_hnugb")]
+position = Vector2(-88, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall14" parent="BG" unique_id=224290271 instance=ExtResource("2_hnugb")]
+position = Vector2(-80, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall15" parent="BG" unique_id=1683750191 instance=ExtResource("2_hnugb")]
+position = Vector2(-72, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall16" parent="BG" unique_id=724905551 instance=ExtResource("2_hnugb")]
+position = Vector2(-64, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall17" parent="BG" unique_id=2029701956 instance=ExtResource("2_hnugb")]
+position = Vector2(-56, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall18" parent="BG" unique_id=1754705348 instance=ExtResource("2_hnugb")]
+position = Vector2(-48, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall19" parent="BG" unique_id=1544252786 instance=ExtResource("2_hnugb")]
+position = Vector2(-40, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall20" parent="BG" unique_id=2027773691 instance=ExtResource("2_hnugb")]
+position = Vector2(-32, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall21" parent="BG" unique_id=1290267520 instance=ExtResource("2_hnugb")]
+position = Vector2(-24, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall22" parent="BG" unique_id=1860673666 instance=ExtResource("2_hnugb")]
+position = Vector2(-88, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall23" parent="BG" unique_id=1913088850 instance=ExtResource("2_hnugb")]
+position = Vector2(-80, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall24" parent="BG" unique_id=732400604 instance=ExtResource("2_hnugb")]
+position = Vector2(-72, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall25" parent="BG" unique_id=2102794926 instance=ExtResource("2_hnugb")]
+position = Vector2(-64, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall26" parent="BG" unique_id=1106193769 instance=ExtResource("2_hnugb")]
+position = Vector2(-56, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall27" parent="BG" unique_id=825812969 instance=ExtResource("2_hnugb")]
+position = Vector2(-48, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall28" parent="BG" unique_id=823719432 instance=ExtResource("2_hnugb")]
+position = Vector2(-40, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall29" parent="BG" unique_id=303398190 instance=ExtResource("2_hnugb")]
+position = Vector2(-32, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall30" parent="BG" unique_id=1420572372 instance=ExtResource("2_hnugb")]
+position = Vector2(-24, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall31" parent="BG" unique_id=910391794 instance=ExtResource("2_hnugb")]
+position = Vector2(-16, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall32" parent="BG" unique_id=782431329 instance=ExtResource("2_hnugb")]
+position = Vector2(-8, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall33" parent="BG" unique_id=1058988968 instance=ExtResource("2_hnugb")]
+position = Vector2(0, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall34" parent="BG" unique_id=1151475915 instance=ExtResource("2_hnugb")]
+position = Vector2(8, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall35" parent="BG" unique_id=429801714 instance=ExtResource("2_hnugb")]
+position = Vector2(16, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall36" parent="BG" unique_id=2090217114 instance=ExtResource("2_hnugb")]
+position = Vector2(24, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall37" parent="BG" unique_id=1745282282 instance=ExtResource("2_hnugb")]
+position = Vector2(32, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall38" parent="BG" unique_id=1846681122 instance=ExtResource("2_hnugb")]
+position = Vector2(-16, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall39" parent="BG" unique_id=1815512184 instance=ExtResource("2_hnugb")]
+position = Vector2(-16, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall40" parent="BG" unique_id=1080172134 instance=ExtResource("2_hnugb")]
+position = Vector2(-8, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall41" parent="BG" unique_id=402009398 instance=ExtResource("2_hnugb")]
+position = Vector2(0, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall42" parent="BG" unique_id=1709176153 instance=ExtResource("2_hnugb")]
+position = Vector2(8, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall43" parent="BG" unique_id=576009288 instance=ExtResource("2_hnugb")]
+position = Vector2(16, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall44" parent="BG" unique_id=1633086821 instance=ExtResource("2_hnugb")]
+position = Vector2(24, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall45" parent="BG" unique_id=1237881751 instance=ExtResource("2_hnugb")]
+position = Vector2(-8, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall46" parent="BG" unique_id=344487105 instance=ExtResource("2_hnugb")]
+position = Vector2(0, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall47" parent="BG" unique_id=1841124534 instance=ExtResource("2_hnugb")]
+position = Vector2(8, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall48" parent="BG" unique_id=1538882536 instance=ExtResource("2_hnugb")]
+position = Vector2(16, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall49" parent="BG" unique_id=1229496903 instance=ExtResource("2_hnugb")]
+position = Vector2(24, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall50" parent="BG" unique_id=492842330 instance=ExtResource("2_hnugb")]
+position = Vector2(32, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall51" parent="BG" unique_id=1506517669 instance=ExtResource("2_hnugb")]
+position = Vector2(32, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall52" parent="BG" unique_id=791649317 instance=ExtResource("2_hnugb")]
+position = Vector2(-96, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall53" parent="BG" unique_id=207707225 instance=ExtResource("2_hnugb")]
+position = Vector2(-88, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall54" parent="BG" unique_id=1904412988 instance=ExtResource("2_hnugb")]
+position = Vector2(-80, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall55" parent="BG" unique_id=786259778 instance=ExtResource("2_hnugb")]
+position = Vector2(-72, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall56" parent="BG" unique_id=466643991 instance=ExtResource("2_hnugb")]
+position = Vector2(-64, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall57" parent="BG" unique_id=1578775586 instance=ExtResource("2_hnugb")]
+position = Vector2(-56, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall58" parent="BG" unique_id=567861469 instance=ExtResource("2_hnugb")]
+position = Vector2(-48, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall59" parent="BG" unique_id=2141408851 instance=ExtResource("2_hnugb")]
+position = Vector2(-40, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall60" parent="BG" unique_id=1847688715 instance=ExtResource("2_hnugb")]
+position = Vector2(-32, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall61" parent="BG" unique_id=111171179 instance=ExtResource("2_hnugb")]
+position = Vector2(-24, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall62" parent="BG" unique_id=459775926 instance=ExtResource("2_hnugb")]
+position = Vector2(-16, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall63" parent="BG" unique_id=1225706979 instance=ExtResource("2_hnugb")]
+position = Vector2(-8, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall64" parent="BG" unique_id=1101072907 instance=ExtResource("2_hnugb")]
+position = Vector2(0, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall65" parent="BG" unique_id=1141476466 instance=ExtResource("2_hnugb")]
+position = Vector2(8, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall66" parent="BG" unique_id=645773926 instance=ExtResource("2_hnugb")]
+position = Vector2(16, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall67" parent="BG" unique_id=1659869890 instance=ExtResource("2_hnugb")]
+position = Vector2(24, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall68" parent="BG" unique_id=163056757 instance=ExtResource("2_hnugb")]
+position = Vector2(32, -104)
+metadata/_scene_painted = true
+
+[node name="WGblock" parent="BG" unique_id=640469796 instance=ExtResource("1_ulhtt")]
+position = Vector2(200, -32)
+metadata/_scene_painted = true
+
+[node name="WGblock2" parent="BG" unique_id=1581362308 instance=ExtResource("1_ulhtt")]
+position = Vector2(224, -48)
+metadata/_scene_painted = true
+
+[node name="WGblock3" parent="BG" unique_id=1080854421 instance=ExtResource("1_ulhtt")]
+position = Vector2(264, -64)
+metadata/_scene_painted = true
+
+[node name="WGblock4" parent="BG" unique_id=819567290 instance=ExtResource("1_ulhtt")]
+position = Vector2(248, -72)
+metadata/_scene_painted = true
+
+[node name="WGblock5" parent="BG" unique_id=360715561 instance=ExtResource("1_ulhtt")]
+position = Vector2(288, -88)
+metadata/_scene_painted = true
+
+[node name="WGblock6" parent="BG" unique_id=220983343 instance=ExtResource("1_ulhtt")]
+position = Vector2(272, -104)
+metadata/_scene_painted = true
+
+[node name="WGblock7" parent="BG" unique_id=449577039 instance=ExtResource("1_ulhtt")]
+position = Vector2(288, -120)
+metadata/_scene_painted = true
+
+[node name="WGblock8" parent="BG" unique_id=487071420 instance=ExtResource("1_ulhtt")]
+position = Vector2(264, -88)
+metadata/_scene_painted = true
+
+[node name="WGblock9" parent="BG" unique_id=1230639707 instance=ExtResource("1_ulhtt")]
+position = Vector2(240, -56)
+metadata/_scene_painted = true
+
+[node name="WGblock10" parent="BG" unique_id=445878989 instance=ExtResource("1_ulhtt")]
+position = Vector2(296, -136)
+metadata/_scene_painted = true
+
+[node name="WGblock11" parent="BG" unique_id=589746518 instance=ExtResource("1_ulhtt")]
+position = Vector2(320, -152)
+metadata/_scene_painted = true
+
+[node name="WGblock12" parent="BG" unique_id=2041189816 instance=ExtResource("1_ulhtt")]
+position = Vector2(264, -200)
+metadata/_scene_painted = true
+
+[node name="WGblock13" parent="BG" unique_id=2136899531 instance=ExtResource("1_ulhtt")]
+position = Vector2(272, -176)
+metadata/_scene_painted = true
+
+[node name="WGblock14" parent="BG" unique_id=366967947 instance=ExtResource("1_ulhtt")]
+position = Vector2(264, -160)
+metadata/_scene_painted = true
+
+[node name="WGblock15" parent="BG" unique_id=1515579722 instance=ExtResource("1_ulhtt")]
+position = Vector2(248, -136)
+metadata/_scene_painted = true
+
+[node name="WGblock16" parent="BG" unique_id=1693564930 instance=ExtResource("1_ulhtt")]
+position = Vector2(256, -112)
+metadata/_scene_painted = true
+
+[node name="WGblock17" parent="BG" unique_id=549739464 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, -152)
+metadata/_scene_painted = true
+
+[node name="WGblock18" parent="BG" unique_id=1938868631 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, -176)
+metadata/_scene_painted = true
+
+[node name="WGblock19" parent="BG" unique_id=1704138694 instance=ExtResource("1_ulhtt")]
+position = Vector2(-168, -200)
+metadata/_scene_painted = true
+
+[node name="WGblock20" parent="BG" unique_id=655728056 instance=ExtResource("1_ulhtt")]
+position = Vector2(-104, -160)
+metadata/_scene_painted = true
+
+[node name="WGblock21" parent="BG" unique_id=2109990704 instance=ExtResource("1_ulhtt")]
+position = Vector2(-112, -184)
+metadata/_scene_painted = true
+
+[node name="WGblock22" parent="BG" unique_id=1172810730 instance=ExtResource("1_ulhtt")]
+position = Vector2(-96, -208)
+metadata/_scene_painted = true
+
+[node name="WGblock23" parent="BG" unique_id=672921197 instance=ExtResource("1_ulhtt")]
+position = Vector2(-152, -224)
+metadata/_scene_painted = true
+
+[node name="WGblock24" parent="BG" unique_id=1741073500 instance=ExtResource("1_ulhtt")]
+position = Vector2(-168, -248)
+metadata/_scene_painted = true
+
+[node name="WGblock25" parent="BG" unique_id=772966999 instance=ExtResource("1_ulhtt")]
+position = Vector2(-112, -232)
+metadata/_scene_painted = true
+
+[node name="WGblock26" parent="BG" unique_id=953426596 instance=ExtResource("1_ulhtt")]
+position = Vector2(-120, -256)
+metadata/_scene_painted = true
+
+[node name="WGblock27" parent="BG" unique_id=742890844 instance=ExtResource("1_ulhtt")]
+position = Vector2(-152, -264)
+metadata/_scene_painted = true
+
+[node name="WGblock28" parent="BG" unique_id=1515992126 instance=ExtResource("1_ulhtt")]
+position = Vector2(-168, -288)
+metadata/_scene_painted = true
+
+[node name="WGblock29" parent="BG" unique_id=1298247618 instance=ExtResource("1_ulhtt")]
+position = Vector2(-56, -160)
+metadata/_scene_painted = true
+
+[node name="WGblock30" parent="BG" unique_id=1251831292 instance=ExtResource("1_ulhtt")]
+position = Vector2(-64, -184)
+metadata/_scene_painted = true
+
+[node name="WGblock31" parent="BG" unique_id=1210662126 instance=ExtResource("1_ulhtt")]
+position = Vector2(-80, -200)
+metadata/_scene_painted = true
+
+[node name="MG" type="Node2D" parent="." unique_id=944027869]
+modulate = Color(0.78235406, 0.78235406, 0.77612895, 1)
+
+[node name="WGblock" parent="MG" unique_id=189556828 instance=ExtResource("1_ulhtt")]
+position = Vector2(-40, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock2" parent="MG" unique_id=1744168135 instance=ExtResource("1_ulhtt")]
+position = Vector2(-96, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock3" parent="MG" unique_id=834756483 instance=ExtResource("1_ulhtt")]
+position = Vector2(40, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock4" parent="MG" unique_id=206319451 instance=ExtResource("1_ulhtt")]
+position = Vector2(40, -8)
+metadata/_scene_painted = true
+
+[node name="WGblock5" parent="MG" unique_id=1084856248 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock6" parent="MG" unique_id=1243630592 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, -8)
+metadata/_scene_painted = true
+
+[node name="WGblock7" parent="MG" unique_id=1360427101 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, -32)
+metadata/_scene_painted = true
+
+[node name="WGblock8" parent="MG" unique_id=1788186785 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, -56)
+metadata/_scene_painted = true
+
+[node name="WGblock9" parent="MG" unique_id=59853616 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, -80)
+metadata/_scene_painted = true
+
+[node name="WGblock10" parent="MG" unique_id=806543783 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, -104)
+metadata/_scene_painted = true
+
+[node name="WGblock11" parent="MG" unique_id=821256127 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock12" parent="MG" unique_id=234784809 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, 56)
+metadata/_scene_painted = true
+
+[node name="WGblock13" parent="MG" unique_id=1426846395 instance=ExtResource("1_ulhtt")]
+position = Vector2(-176, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock14" parent="MG" unique_id=1775899804 instance=ExtResource("1_ulhtt")]
+position = Vector2(-96, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock15" parent="MG" unique_id=693829583 instance=ExtResource("1_ulhtt")]
+position = Vector2(-96, 64)
+metadata/_scene_painted = true
+
+[node name="WGblock16" parent="MG" unique_id=1733999448 instance=ExtResource("1_ulhtt")]
+position = Vector2(-88, 88)
+metadata/_scene_painted = true
+
+[node name="WGblock17" parent="MG" unique_id=804367259 instance=ExtResource("1_ulhtt")]
+position = Vector2(-136, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock18" parent="MG" unique_id=1295007113 instance=ExtResource("1_ulhtt")]
+position = Vector2(-128, 64)
+metadata/_scene_painted = true
+
+[node name="WGblock19" parent="MG" unique_id=1120479447 instance=ExtResource("1_ulhtt")]
+position = Vector2(-144, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock20" parent="MG" unique_id=1265850748 instance=ExtResource("1_ulhtt")]
+position = Vector2(-152, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock21" parent="MG" unique_id=940819959 instance=ExtResource("1_ulhtt")]
+position = Vector2(-200, -32)
+metadata/_scene_painted = true
+
+[node name="WGblock22" parent="MG" unique_id=1548288044 instance=ExtResource("1_ulhtt")]
+position = Vector2(-184, -72)
+metadata/_scene_painted = true
+
+[node name="WGblock23" parent="MG" unique_id=2088908494 instance=ExtResource("1_ulhtt")]
+position = Vector2(-24, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock24" parent="MG" unique_id=230506850 instance=ExtResource("1_ulhtt")]
+position = Vector2(-24, 56)
+metadata/_scene_painted = true
+
+[node name="WGblock25" parent="MG" unique_id=1344753353 instance=ExtResource("1_ulhtt")]
+position = Vector2(-16, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock26" parent="MG" unique_id=1104158302 instance=ExtResource("1_ulhtt")]
+position = Vector2(-40, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock27" parent="MG" unique_id=442283027 instance=ExtResource("1_ulhtt")]
+position = Vector2(-40, 72)
+metadata/_scene_painted = true
+
+[node name="WGblock28" parent="MG" unique_id=1775347851 instance=ExtResource("1_ulhtt")]
+position = Vector2(40, 32)
+metadata/_scene_painted = true
+
+[node name="WGblock29" parent="MG" unique_id=2018948127 instance=ExtResource("1_ulhtt")]
+position = Vector2(40, 48)
+metadata/_scene_painted = true
+
+[node name="WGblock30" parent="MG" unique_id=137711702 instance=ExtResource("1_ulhtt")]
+position = Vector2(16, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock31" parent="MG" unique_id=820925938 instance=ExtResource("1_ulhtt")]
+position = Vector2(104, -8)
+metadata/_scene_painted = true
+
+[node name="WGblock32" parent="MG" unique_id=1191325541 instance=ExtResource("1_ulhtt")]
+position = Vector2(112, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock33" parent="MG" unique_id=1254218073 instance=ExtResource("1_ulhtt")]
+position = Vector2(88, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock34" parent="MG" unique_id=724340378 instance=ExtResource("1_ulhtt")]
+position = Vector2(48, 64)
+metadata/_scene_painted = true
+
+[node name="WGblock35" parent="MG" unique_id=1293770354 instance=ExtResource("1_ulhtt")]
+position = Vector2(120, 64)
+metadata/_scene_painted = true
+
+[node name="WGblock36" parent="MG" unique_id=378087853 instance=ExtResource("1_ulhtt")]
+position = Vector2(56, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock37" parent="MG" unique_id=909369212 instance=ExtResource("1_ulhtt")]
+position = Vector2(136, 80)
+metadata/_scene_painted = true
+
+[node name="WStoneTop" parent="MG" unique_id=1708360253 instance=ExtResource("2_vlhjm")]
+position = Vector2(-88, 16)
+metadata/_scene_painted = true
+
+[node name="WStoneTop2" parent="MG" unique_id=1356405281 instance=ExtResource("2_vlhjm")]
+position = Vector2(-48, 16)
+metadata/_scene_painted = true
+
+[node name="WStoneTop3" parent="MG" unique_id=542823415 instance=ExtResource("2_vlhjm")]
+position = Vector2(-8, 16)
+metadata/_scene_painted = true
+
+[node name="WStoneTop4" parent="MG" unique_id=797133508 instance=ExtResource("2_vlhjm")]
+position = Vector2(8, 16)
+metadata/_scene_painted = true
+
+[node name="WStoneTop5" parent="MG" unique_id=1016680307 instance=ExtResource("2_vlhjm")]
+position = Vector2(48, -8)
+metadata/_scene_painted = true
+
+[node name="WStoneTop6" parent="MG" unique_id=183553530 instance=ExtResource("2_vlhjm")]
+position = Vector2(88, -8)
+metadata/_scene_painted = true
+
+[node name="WStoneTop7" parent="MG" unique_id=2010839194 instance=ExtResource("2_vlhjm")]
+position = Vector2(128, -8)
+metadata/_scene_painted = true
+
+[node name="WBwall" parent="MG" unique_id=742184575 instance=ExtResource("2_hnugb")]
+position = Vector2(-96, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall2" parent="MG" unique_id=1350558654 instance=ExtResource("2_hnugb")]
+position = Vector2(-88, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall3" parent="MG" unique_id=2092696837 instance=ExtResource("2_hnugb")]
+position = Vector2(-80, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall4" parent="MG" unique_id=1788444680 instance=ExtResource("2_hnugb")]
+position = Vector2(-72, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall5" parent="MG" unique_id=1209926477 instance=ExtResource("2_hnugb")]
+position = Vector2(-64, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall6" parent="MG" unique_id=1194677282 instance=ExtResource("2_hnugb")]
+position = Vector2(-56, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall7" parent="MG" unique_id=804054853 instance=ExtResource("2_hnugb")]
+position = Vector2(-48, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall8" parent="MG" unique_id=1291090060 instance=ExtResource("2_hnugb")]
+position = Vector2(-40, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall9" parent="MG" unique_id=1048155557 instance=ExtResource("2_hnugb")]
+position = Vector2(-32, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall10" parent="MG" unique_id=1539491688 instance=ExtResource("2_hnugb")]
+position = Vector2(-24, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall11" parent="MG" unique_id=647822055 instance=ExtResource("2_hnugb")]
+position = Vector2(-16, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall12" parent="MG" unique_id=280370877 instance=ExtResource("2_hnugb")]
+position = Vector2(-8, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall13" parent="MG" unique_id=1184333388 instance=ExtResource("2_hnugb")]
+position = Vector2(0, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall14" parent="MG" unique_id=569365192 instance=ExtResource("2_hnugb")]
+position = Vector2(8, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall15" parent="MG" unique_id=110476988 instance=ExtResource("2_hnugb")]
+position = Vector2(16, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall17" parent="MG" unique_id=749261836 instance=ExtResource("2_hnugb")]
+position = Vector2(24, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall18" parent="MG" unique_id=1700256015 instance=ExtResource("2_hnugb")]
+position = Vector2(32, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall16" parent="MG" unique_id=1801824637 instance=ExtResource("2_hnugb")]
+position = Vector2(-104, -16)
+metadata/_scene_painted = true
+
+[node name="WBwall19" parent="MG" unique_id=1420842335 instance=ExtResource("2_hnugb")]
+position = Vector2(-104, -48)
+metadata/_scene_painted = true
+
+[node name="WBwall20" parent="MG" unique_id=2023894444 instance=ExtResource("2_hnugb")]
+position = Vector2(-104, -80)
+metadata/_scene_painted = true
+
+[node name="WBwall21" parent="MG" unique_id=1363143542 instance=ExtResource("2_hnugb")]
+position = Vector2(-104, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall22" parent="MG" unique_id=1906918724 instance=ExtResource("2_hnugb")]
+position = Vector2(-104, -136)
+metadata/_scene_painted = true
+
+[node name="WBwall23" parent="MG" unique_id=1257270713 instance=ExtResource("2_hnugb")]
+position = Vector2(-104, -104)
+metadata/_scene_painted = true
+
+[node name="WBwall24" parent="MG" unique_id=702426178 instance=ExtResource("2_hnugb")]
+position = Vector2(-104, -104)
+metadata/_scene_painted = true
+
+[node name="WGblock38" parent="MG" unique_id=2126198053 instance=ExtResource("1_ulhtt")]
+position = Vector2(176, -16)
+metadata/_scene_painted = true
+
+[node name="WGblock39" parent="MG" unique_id=640072214 instance=ExtResource("1_ulhtt")]
+position = Vector2(176, 8)
+metadata/_scene_painted = true
+
+[node name="WGblock40" parent="MG" unique_id=1846426924 instance=ExtResource("1_ulhtt")]
+position = Vector2(168, 32)
+metadata/_scene_painted = true
+
+[node name="WGblock41" parent="MG" unique_id=1421809557 instance=ExtResource("1_ulhtt")]
+position = Vector2(168, 56)
+metadata/_scene_painted = true
+
+[node name="WGblock42" parent="MG" unique_id=1459661025 instance=ExtResource("1_ulhtt")]
+position = Vector2(200, 72)
+metadata/_scene_painted = true
+
+[node name="WGblock43" parent="MG" unique_id=2020025137 instance=ExtResource("1_ulhtt")]
+position = Vector2(256, -40)
+metadata/_scene_painted = true
+
+[node name="WGblock44" parent="MG" unique_id=1079095852 instance=ExtResource("1_ulhtt")]
+position = Vector2(248, -16)
+metadata/_scene_painted = true
+
+[node name="WGblock45" parent="MG" unique_id=389171915 instance=ExtResource("1_ulhtt")]
+position = Vector2(248, 8)
+metadata/_scene_painted = true
+
+[node name="WGblock46" parent="MG" unique_id=677084723 instance=ExtResource("1_ulhtt")]
+position = Vector2(240, 24)
+metadata/_scene_painted = true
+
+[node name="WGblock47" parent="MG" unique_id=250940516 instance=ExtResource("1_ulhtt")]
+position = Vector2(240, 48)
+metadata/_scene_painted = true
+
+[node name="WGblock48" parent="MG" unique_id=1366138248 instance=ExtResource("1_ulhtt")]
+position = Vector2(264, 72)
+metadata/_scene_painted = true
+
+[node name="WGblock49" parent="MG" unique_id=1632566509 instance=ExtResource("1_ulhtt")]
+position = Vector2(336, -200)
+metadata/_scene_painted = true
+
+[node name="WGblock50" parent="MG" unique_id=1094723719 instance=ExtResource("1_ulhtt")]
+position = Vector2(336, -176)
+metadata/_scene_painted = true
+
+[node name="WGblock51" parent="MG" unique_id=2131965008 instance=ExtResource("1_ulhtt")]
+position = Vector2(336, -152)
+metadata/_scene_painted = true
+
+[node name="WGblock52" parent="MG" unique_id=960253298 instance=ExtResource("1_ulhtt")]
+position = Vector2(336, -128)
+metadata/_scene_painted = true
+
+[node name="WGblock53" parent="MG" unique_id=1719896459 instance=ExtResource("1_ulhtt")]
+position = Vector2(336, -104)
+metadata/_scene_painted = true
+
+[node name="WGblock55" parent="MG" unique_id=2054981477 instance=ExtResource("1_ulhtt")]
+position = Vector2(336, -80)
+metadata/_scene_painted = true
+
+[node name="WGblock56" parent="MG" unique_id=536364326 instance=ExtResource("1_ulhtt")]
+position = Vector2(336, -40)
+metadata/_scene_painted = true
+
+[node name="WGblock57" parent="MG" unique_id=186593129 instance=ExtResource("1_ulhtt")]
+position = Vector2(328, -24)
+metadata/_scene_painted = true
+
+[node name="WGblock58" parent="MG" unique_id=1761329200 instance=ExtResource("1_ulhtt")]
+position = Vector2(320, -8)
+metadata/_scene_painted = true
+
+[node name="WGblock59" parent="MG" unique_id=464994964 instance=ExtResource("1_ulhtt")]
+position = Vector2(320, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock60" parent="MG" unique_id=1182468205 instance=ExtResource("1_ulhtt")]
+position = Vector2(312, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock61" parent="MG" unique_id=712595363 instance=ExtResource("1_ulhtt")]
+position = Vector2(320, 56)
+metadata/_scene_painted = true
+
+[node name="WGblock62" parent="MG" unique_id=2101224268 instance=ExtResource("1_ulhtt")]
+position = Vector2(336, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock63" parent="MG" unique_id=1727895525 instance=ExtResource("1_ulhtt")]
+position = Vector2(256, 88)
+metadata/_scene_painted = true
+
+[node name="WGblock64" parent="MG" unique_id=1517097627 instance=ExtResource("1_ulhtt")]
+position = Vector2(200, 96)
+metadata/_scene_painted = true
+
+[node name="WGblock65" parent="MG" unique_id=1832238071 instance=ExtResource("1_ulhtt")]
+position = Vector2(136, 104)
+metadata/_scene_painted = true
+
+[node name="WGblock66" parent="MG" unique_id=1485829286 instance=ExtResource("1_ulhtt")]
+position = Vector2(72, 104)
+metadata/_scene_painted = true
+
+[node name="WGblock67" parent="MG" unique_id=1892962983 instance=ExtResource("1_ulhtt")]
+position = Vector2(0, 104)
+metadata/_scene_painted = true
+
+[node name="WGblock68" parent="MG" unique_id=168512442 instance=ExtResource("1_ulhtt")]
+position = Vector2(-72, 104)
+metadata/_scene_painted = true
+
+[node name="WGblock69" parent="MG" unique_id=1350368438 instance=ExtResource("1_ulhtt")]
+position = Vector2(-104, 120)
+metadata/_scene_painted = true
+
+[node name="WGblock70" parent="MG" unique_id=540315686 instance=ExtResource("1_ulhtt")]
+position = Vector2(-144, 104)
+metadata/_scene_painted = true
+
+[node name="WGblock71" parent="MG" unique_id=83703557 instance=ExtResource("1_ulhtt")]
+position = Vector2(-184, 128)
+metadata/_scene_painted = true
+
+[node name="WGblock72" parent="MG" unique_id=850521320 instance=ExtResource("1_ulhtt")]
+position = Vector2(-208, 104)
+metadata/_scene_painted = true
+
+[node name="WGblock73" parent="MG" unique_id=1766828266 instance=ExtResource("1_ulhtt")]
+position = Vector2(-240, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock74" parent="MG" unique_id=1135277458 instance=ExtResource("1_ulhtt")]
+position = Vector2(-256, 56)
+metadata/_scene_painted = true
+
+[node name="WGblock75" parent="MG" unique_id=1923518071 instance=ExtResource("1_ulhtt")]
+position = Vector2(-256, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock76" parent="MG" unique_id=1846604916 instance=ExtResource("1_ulhtt")]
+position = Vector2(-256, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock77" parent="MG" unique_id=1343004384 instance=ExtResource("1_ulhtt")]
+position = Vector2(-256, -8)
+metadata/_scene_painted = true
+
+[node name="WGblock78" parent="MG" unique_id=905609559 instance=ExtResource("1_ulhtt")]
+position = Vector2(-256, -32)
+metadata/_scene_painted = true
+
+[node name="WGblock79" parent="MG" unique_id=700550785 instance=ExtResource("1_ulhtt")]
+position = Vector2(-256, -56)
+metadata/_scene_painted = true
+
+[node name="WGblock80" parent="MG" unique_id=1405353345 instance=ExtResource("1_ulhtt")]
+position = Vector2(-256, -80)
+metadata/_scene_painted = true
+
+[node name="WGblock81" parent="MG" unique_id=1161988176 instance=ExtResource("1_ulhtt")]
+position = Vector2(-256, -104)
+metadata/_scene_painted = true
+
+[node name="WGblock82" parent="MG" unique_id=351193778 instance=ExtResource("1_ulhtt")]
+position = Vector2(-184, -128)
+metadata/_scene_painted = true
+
+[node name="WGblock83" parent="MG" unique_id=783664617 instance=ExtResource("1_ulhtt")]
+position = Vector2(-264, -128)
+metadata/_scene_painted = true
+
+[node name="WGblock84" parent="MG" unique_id=822306129 instance=ExtResource("1_ulhtt")]
+position = Vector2(-256, -152)
+metadata/_scene_painted = true
+
+[node name="WGblock85" parent="MG" unique_id=1336401456 instance=ExtResource("1_ulhtt")]
+position = Vector2(-248, -176)
+metadata/_scene_painted = true
+
+[node name="WGblock86" parent="MG" unique_id=184259064 instance=ExtResource("1_ulhtt")]
+position = Vector2(-240, -200)
+metadata/_scene_painted = true
+
+[node name="WGblock87" parent="MG" unique_id=140023382 instance=ExtResource("1_ulhtt")]
+position = Vector2(-232, -224)
+metadata/_scene_painted = true
+
+[node name="WGblock88" parent="MG" unique_id=1667028915 instance=ExtResource("1_ulhtt")]
+position = Vector2(-312, -224)
+metadata/_scene_painted = true
+
+[node name="WGblock89" parent="MG" unique_id=370984439 instance=ExtResource("1_ulhtt")]
+position = Vector2(-320, -200)
+metadata/_scene_painted = true
+
+[node name="WGblock90" parent="MG" unique_id=633474043 instance=ExtResource("1_ulhtt")]
+position = Vector2(-320, -176)
+metadata/_scene_painted = true
+
+[node name="WGblock91" parent="MG" unique_id=1792131773 instance=ExtResource("1_ulhtt")]
+position = Vector2(-328, -160)
+metadata/_scene_painted = true
+
+[node name="WGblock92" parent="MG" unique_id=1315004351 instance=ExtResource("1_ulhtt")]
+position = Vector2(-328, -144)
+metadata/_scene_painted = true
+
+[node name="WGblock93" parent="MG" unique_id=1760098143 instance=ExtResource("1_ulhtt")]
+position = Vector2(-336, -120)
+metadata/_scene_painted = true
+
+[node name="WGblock94" parent="MG" unique_id=1697867850 instance=ExtResource("1_ulhtt")]
+position = Vector2(-328, -96)
+metadata/_scene_painted = true
+
+[node name="WGblock95" parent="MG" unique_id=974403037 instance=ExtResource("1_ulhtt")]
+position = Vector2(-328, -80)
+metadata/_scene_painted = true
+
+[node name="WGblock96" parent="MG" unique_id=671644946 instance=ExtResource("1_ulhtt")]
+position = Vector2(-328, -56)
+metadata/_scene_painted = true
+
+[node name="WGblock97" parent="MG" unique_id=968598342 instance=ExtResource("1_ulhtt")]
+position = Vector2(-328, -32)
+metadata/_scene_painted = true
+
+[node name="WGblock98" parent="MG" unique_id=1052617200 instance=ExtResource("1_ulhtt")]
+position = Vector2(-328, -8)
+metadata/_scene_painted = true
+
+[node name="WGblock99" parent="MG" unique_id=1409812465 instance=ExtResource("1_ulhtt")]
+position = Vector2(-328, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock100" parent="MG" unique_id=604672261 instance=ExtResource("1_ulhtt")]
+position = Vector2(-328, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock101" parent="MG" unique_id=616057166 instance=ExtResource("1_ulhtt")]
+position = Vector2(-320, 64)
+metadata/_scene_painted = true
+
+[node name="WGblock102" parent="MG" unique_id=437005701 instance=ExtResource("1_ulhtt")]
+position = Vector2(-312, 88)
+metadata/_scene_painted = true
+
+[node name="WGblock103" parent="MG" unique_id=306810228 instance=ExtResource("1_ulhtt")]
+position = Vector2(-288, 104)
+metadata/_scene_painted = true
+
+[node name="WGblock104" parent="MG" unique_id=1797324288 instance=ExtResource("1_ulhtt")]
+position = Vector2(-264, 128)
+metadata/_scene_painted = true
+
+[node name="WGblock105" parent="MG" unique_id=1878518318 instance=ExtResource("1_ulhtt")]
+position = Vector2(-344, 128)
+metadata/_scene_painted = true
+
+[node name="WGblock106" parent="MG" unique_id=293448528 instance=ExtResource("1_ulhtt")]
+position = Vector2(-360, 104)
+metadata/_scene_painted = true
+
+[node name="WGblock107" parent="MG" unique_id=1658821317 instance=ExtResource("1_ulhtt")]
+position = Vector2(-368, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock108" parent="MG" unique_id=1605436055 instance=ExtResource("1_ulhtt")]
+position = Vector2(-400, 56)
+metadata/_scene_painted = true
+
+[node name="WGblock109" parent="MG" unique_id=840400420 instance=ExtResource("1_ulhtt")]
+position = Vector2(-408, 32)
+metadata/_scene_painted = true
+
+[node name="WGblock110" parent="MG" unique_id=378627994 instance=ExtResource("1_ulhtt")]
+position = Vector2(-408, 8)
+metadata/_scene_painted = true
+
+[node name="WGblock111" parent="MG" unique_id=2145044316 instance=ExtResource("1_ulhtt")]
+position = Vector2(-408, -16)
+metadata/_scene_painted = true
+
+[node name="WGblock112" parent="MG" unique_id=1166827285 instance=ExtResource("1_ulhtt")]
+position = Vector2(-408, -40)
+metadata/_scene_painted = true
+
+[node name="WGblock113" parent="MG" unique_id=494073249 instance=ExtResource("1_ulhtt")]
+position = Vector2(-400, -64)
+metadata/_scene_painted = true
+
+[node name="WGblock114" parent="MG" unique_id=1708857500 instance=ExtResource("1_ulhtt")]
+position = Vector2(-384, -88)
+metadata/_scene_painted = true
+
+[node name="WGblock115" parent="MG" unique_id=1681421728 instance=ExtResource("1_ulhtt")]
+position = Vector2(-376, -112)
+metadata/_scene_painted = true
+
+[node name="WGblock116" parent="MG" unique_id=155218407 instance=ExtResource("1_ulhtt")]
+position = Vector2(-384, -136)
+metadata/_scene_painted = true
+
+[node name="WGblock117" parent="MG" unique_id=1627446079 instance=ExtResource("1_ulhtt")]
+position = Vector2(-384, -160)
+metadata/_scene_painted = true
+
+[node name="WGblock118" parent="MG" unique_id=480227980 instance=ExtResource("1_ulhtt")]
+position = Vector2(-384, -184)
+metadata/_scene_painted = true
+
+[node name="WGblock119" parent="MG" unique_id=1455587285 instance=ExtResource("1_ulhtt")]
+position = Vector2(-376, -208)
+metadata/_scene_painted = true
+
+[node name="WGblock120" parent="MG" unique_id=1066317905 instance=ExtResource("1_ulhtt")]
+position = Vector2(-376, -232)
+metadata/_scene_painted = true
+
+[node name="WGblock121" parent="MG" unique_id=1559997618 instance=ExtResource("1_ulhtt")]
+position = Vector2(-360, -256)
+metadata/_scene_painted = true
+
+[node name="WGblock122" parent="MG" unique_id=217975204 instance=ExtResource("1_ulhtt")]
+position = Vector2(-376, -280)
+metadata/_scene_painted = true
+
+[node name="WGblock123" parent="MG" unique_id=1550364111 instance=ExtResource("1_ulhtt")]
+position = Vector2(-376, -304)
+metadata/_scene_painted = true
+
+[node name="WGblock124" parent="MG" unique_id=990420065 instance=ExtResource("1_ulhtt")]
+position = Vector2(-296, -304)
+metadata/_scene_painted = true
+
+[node name="WGblock125" parent="MG" unique_id=1179983362 instance=ExtResource("1_ulhtt")]
+position = Vector2(-296, -272)
+metadata/_scene_painted = true
+
+[node name="WGblock126" parent="MG" unique_id=1567369044 instance=ExtResource("1_ulhtt")]
+position = Vector2(-296, -280)
+metadata/_scene_painted = true
+
+[node name="WGblock127" parent="MG" unique_id=21022461 instance=ExtResource("1_ulhtt")]
+position = Vector2(-272, -256)
+metadata/_scene_painted = true
+
+[node name="WGblock128" parent="MG" unique_id=2032821464 instance=ExtResource("1_ulhtt")]
+position = Vector2(-288, -240)
+metadata/_scene_painted = true
+
+[node name="WGblock129" parent="MG" unique_id=140066830 instance=ExtResource("1_ulhtt")]
+position = Vector2(-304, -248)
+metadata/_scene_painted = true
+
+[node name="WGblock130" parent="MG" unique_id=1948838043 instance=ExtResource("1_ulhtt")]
+position = Vector2(-240, -240)
+metadata/_scene_painted = true
+
+[node name="WGblock131" parent="MG" unique_id=1473364571 instance=ExtResource("1_ulhtt")]
+position = Vector2(-240, -272)
+metadata/_scene_painted = true
+
+[node name="WGblock132" parent="MG" unique_id=1362774093 instance=ExtResource("1_ulhtt")]
+position = Vector2(-232, -264)
+metadata/_scene_painted = true
+
+[node name="WGblock133" parent="MG" unique_id=813886284 instance=ExtResource("1_ulhtt")]
+position = Vector2(-240, -304)
+metadata/_scene_painted = true
+
+[node name="WGblock134" parent="MG" unique_id=271087975 instance=ExtResource("1_ulhtt")]
+position = Vector2(-240, -288)
+metadata/_scene_painted = true
+
+[node name="WGblock135" parent="MG" unique_id=989405063 instance=ExtResource("1_ulhtt")]
+position = Vector2(416, -200)
+metadata/_scene_painted = true
+
+[node name="WGblock136" parent="MG" unique_id=1151832169 instance=ExtResource("1_ulhtt")]
+position = Vector2(416, -176)
+metadata/_scene_painted = true
+
+[node name="WGblock137" parent="MG" unique_id=473024297 instance=ExtResource("1_ulhtt")]
+position = Vector2(400, -184)
+metadata/_scene_painted = true
+
+[node name="WGblock138" parent="MG" unique_id=313119229 instance=ExtResource("1_ulhtt")]
+position = Vector2(416, -152)
+metadata/_scene_painted = true
+
+[node name="WGblock139" parent="MG" unique_id=1444876292 instance=ExtResource("1_ulhtt")]
+position = Vector2(416, -128)
+metadata/_scene_painted = true
+
+[node name="WGblock140" parent="MG" unique_id=1966211725 instance=ExtResource("1_ulhtt")]
+position = Vector2(416, -104)
+metadata/_scene_painted = true
+
+[node name="WGblock141" parent="MG" unique_id=925722136 instance=ExtResource("1_ulhtt")]
+position = Vector2(408, -80)
+metadata/_scene_painted = true
+
+[node name="WGblock142" parent="MG" unique_id=331234409 instance=ExtResource("1_ulhtt")]
+position = Vector2(392, -64)
+metadata/_scene_painted = true
+
+[node name="WGblock143" parent="MG" unique_id=2090776753 instance=ExtResource("1_ulhtt")]
+position = Vector2(376, -128)
+metadata/_scene_painted = true
+
+[node name="WGblock144" parent="MG" unique_id=564533095 instance=ExtResource("1_ulhtt")]
+position = Vector2(408, -40)
+metadata/_scene_painted = true
+
+[node name="WGblock145" parent="MG" unique_id=574381370 instance=ExtResource("1_ulhtt")]
+position = Vector2(400, -16)
+metadata/_scene_painted = true
+
+[node name="WGblock146" parent="MG" unique_id=2006433982 instance=ExtResource("1_ulhtt")]
+position = Vector2(392, 8)
+metadata/_scene_painted = true
+
+[node name="WGblock147" parent="MG" unique_id=1884049539 instance=ExtResource("1_ulhtt")]
+position = Vector2(392, 32)
+metadata/_scene_painted = true
+
+[node name="WGblock148" parent="MG" unique_id=1613730 instance=ExtResource("1_ulhtt")]
+position = Vector2(400, 56)
+metadata/_scene_painted = true
+
+[node name="WGblock149" parent="MG" unique_id=293899776 instance=ExtResource("1_ulhtt")]
+position = Vector2(408, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock150" parent="MG" unique_id=987124289 instance=ExtResource("1_ulhtt")]
+position = Vector2(488, -184)
+metadata/_scene_painted = true
+
+[node name="WGblock151" parent="MG" unique_id=1455354583 instance=ExtResource("1_ulhtt")]
+position = Vector2(488, -160)
+metadata/_scene_painted = true
+
+[node name="WGblock152" parent="MG" unique_id=850710252 instance=ExtResource("1_ulhtt")]
+position = Vector2(488, -136)
+metadata/_scene_painted = true
+
+[node name="WGblock153" parent="MG" unique_id=873620165 instance=ExtResource("1_ulhtt")]
+position = Vector2(488, -112)
+metadata/_scene_painted = true
+
+[node name="WGblock154" parent="MG" unique_id=541421003 instance=ExtResource("1_ulhtt")]
+position = Vector2(480, -80)
+metadata/_scene_painted = true
+
+[node name="WGblock155" parent="MG" unique_id=1308652433 instance=ExtResource("1_ulhtt")]
+position = Vector2(488, -88)
+metadata/_scene_painted = true
+
+[node name="WGblock156" parent="MG" unique_id=627353557 instance=ExtResource("1_ulhtt")]
+position = Vector2(472, -56)
+metadata/_scene_painted = true
+
+[node name="WGblock157" parent="MG" unique_id=2037488671 instance=ExtResource("1_ulhtt")]
+position = Vector2(456, -40)
+metadata/_scene_painted = true
+
+[node name="WGblock158" parent="MG" unique_id=2044288967 instance=ExtResource("1_ulhtt")]
+position = Vector2(480, -24)
+metadata/_scene_painted = true
+
+[node name="WGblock159" parent="MG" unique_id=2008386632 instance=ExtResource("1_ulhtt")]
+position = Vector2(464, -8)
+metadata/_scene_painted = true
+
+[node name="WGblock160" parent="MG" unique_id=93027395 instance=ExtResource("1_ulhtt")]
+position = Vector2(480, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock161" parent="MG" unique_id=23853887 instance=ExtResource("1_ulhtt")]
+position = Vector2(448, 16)
+metadata/_scene_painted = true
+
+[node name="WGblock162" parent="MG" unique_id=840145070 instance=ExtResource("1_ulhtt")]
+position = Vector2(480, 48)
+metadata/_scene_painted = true
+
+[node name="WGblock163" parent="MG" unique_id=540746206 instance=ExtResource("1_ulhtt")]
+position = Vector2(472, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock164" parent="MG" unique_id=596390262 instance=ExtResource("1_ulhtt")]
+position = Vector2(480, 72)
+metadata/_scene_painted = true
+
+[node name="WGblock165" parent="MG" unique_id=1614433573 instance=ExtResource("1_ulhtt")]
+position = Vector2(544, -64)
+metadata/_scene_painted = true
+
+[node name="WGblock166" parent="MG" unique_id=30394878 instance=ExtResource("1_ulhtt")]
+position = Vector2(536, -48)
+metadata/_scene_painted = true
+
+[node name="WGblock167" parent="MG" unique_id=1722315631 instance=ExtResource("1_ulhtt")]
+position = Vector2(552, -40)
+metadata/_scene_painted = true
+
+[node name="WGblock168" parent="MG" unique_id=574484162 instance=ExtResource("1_ulhtt")]
+position = Vector2(560, -24)
+metadata/_scene_painted = true
+
+[node name="WGblock169" parent="MG" unique_id=978981166 instance=ExtResource("1_ulhtt")]
+position = Vector2(544, 0)
+metadata/_scene_painted = true
+
+[node name="WGblock170" parent="MG" unique_id=1566275982 instance=ExtResource("1_ulhtt")]
+position = Vector2(-24, 136)
+metadata/_scene_painted = true
+
+[node name="WGblock171" parent="MG" unique_id=697479492 instance=ExtResource("1_ulhtt")]
+position = Vector2(-16, 128)
+metadata/_scene_painted = true
+
+[node name="WGblock172" parent="MG" unique_id=1948834897 instance=ExtResource("1_ulhtt")]
+position = Vector2(-32, 120)
+metadata/_scene_painted = true
+
+[node name="WGblock173" parent="MG" unique_id=998541837 instance=ExtResource("1_ulhtt")]
+position = Vector2(64, 120)
+metadata/_scene_painted = true
+
+[node name="WGblock174" parent="MG" unique_id=488456178 instance=ExtResource("1_ulhtt")]
+position = Vector2(144, 128)
+metadata/_scene_painted = true
+
+[node name="WGblock175" parent="MG" unique_id=2134834456 instance=ExtResource("1_ulhtt")]
+position = Vector2(216, 112)
+metadata/_scene_painted = true
+
+[node name="WGblock176" parent="MG" unique_id=1602847750 instance=ExtResource("1_ulhtt")]
+position = Vector2(296, 112)
+metadata/_scene_painted = true
+
+[node name="WGblock177" parent="MG" unique_id=1734407807 instance=ExtResource("1_ulhtt")]
+position = Vector2(344, 96)
+metadata/_scene_painted = true
+
+[node name="WGblock178" parent="MG" unique_id=1382358726 instance=ExtResource("1_ulhtt")]
+position = Vector2(328, 96)
+metadata/_scene_painted = true
+
+[node name="WGblock179" parent="MG" unique_id=2012559376 instance=ExtResource("1_ulhtt")]
+position = Vector2(376, 112)
+metadata/_scene_painted = true
+
+[node name="WGblock180" parent="MG" unique_id=1228540771 instance=ExtResource("1_ulhtt")]
+position = Vector2(424, 104)
+metadata/_scene_painted = true
+
+[node name="WGblock181" parent="MG" unique_id=1873491581 instance=ExtResource("1_ulhtt")]
+position = Vector2(496, 96)
+metadata/_scene_painted = true
+
+[node name="WGblock182" parent="MG" unique_id=297150458 instance=ExtResource("1_ulhtt")]
+position = Vector2(480, 96)
+metadata/_scene_painted = true
+
+[node name="WGblock183" parent="MG" unique_id=314180071 instance=ExtResource("1_ulhtt")]
+position = Vector2(568, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock184" parent="MG" unique_id=1744415086 instance=ExtResource("1_ulhtt")]
+position = Vector2(552, 80)
+metadata/_scene_painted = true
+
+[node name="WGblock185" parent="MG" unique_id=1847973739 instance=ExtResource("1_ulhtt")]
+position = Vector2(552, 56)
+metadata/_scene_painted = true
+
+[node name="WGblock186" parent="MG" unique_id=24991749 instance=ExtResource("1_ulhtt")]
+position = Vector2(552, 40)
+metadata/_scene_painted = true
+
+[node name="WGblock187" parent="MG" unique_id=1920413980 instance=ExtResource("1_ulhtt")]
+position = Vector2(552, 24)
+metadata/_scene_painted = true
+
+[node name="WGblock188" parent="MG" unique_id=336688667 instance=ExtResource("1_ulhtt")]
+position = Vector2(624, 0)
+metadata/_scene_painted = true
+
+[node name="WGblock189" parent="MG" unique_id=1044745904 instance=ExtResource("1_ulhtt")]
+position = Vector2(632, 24)
+metadata/_scene_painted = true
+
+[node name="WGblock190" parent="MG" unique_id=992829587 instance=ExtResource("1_ulhtt")]
+position = Vector2(632, 48)
+metadata/_scene_painted = true
+
+[node name="WGblock191" parent="MG" unique_id=1774724107 instance=ExtResource("1_ulhtt")]
+position = Vector2(632, 72)
+metadata/_scene_painted = true
+
+[node name="WGblock192" parent="MG" unique_id=1175311091 instance=ExtResource("1_ulhtt")]
+position = Vector2(704, 0)
+metadata/_scene_painted = true
+
+[node name="WGblock193" parent="MG" unique_id=817480836 instance=ExtResource("1_ulhtt")]
+position = Vector2(712, 32)
+metadata/_scene_painted = true
+
+[node name="WGblock194" parent="MG" unique_id=55509253 instance=ExtResource("1_ulhtt")]
+position = Vector2(712, 24)
+metadata/_scene_painted = true
+
+[node name="WGblock195" parent="MG" unique_id=1312958655 instance=ExtResource("1_ulhtt")]
+position = Vector2(704, 56)
+metadata/_scene_painted = true
+
+[node name="WGblock196" parent="MG" unique_id=1428340075 instance=ExtResource("1_ulhtt")]
+position = Vector2(704, 72)
+metadata/_scene_painted = true
+
+[node name="WGblock54" parent="MG" unique_id=405150965 instance=ExtResource("1_ulhtt")]
+position = Vector2(336, -56)
+metadata/_scene_painted = true
+
+[node name="Node2D" parent="MG" unique_id=1530482004 instance=ExtResource("7_4g462")]
+position = Vector2(320, -64)
+metadata/_scene_painted = true
+
+[node name="Node2D2" parent="MG" unique_id=1101927495 instance=ExtResource("7_4g462")]
+position = Vector2(256, -96)
+metadata/_scene_painted = true
+
+[node name="Node2D4" parent="MG" unique_id=1967880396 instance=ExtResource("7_4g462")]
+position = Vector2(320, -136)
+metadata/_scene_painted = true
+
+[node name="Node2D5" parent="MG" unique_id=1962238023 instance=ExtResource("7_4g462")]
+position = Vector2(256, -176)
+metadata/_scene_painted = true
+
+[node name="PHY" type="StaticBody2D" parent="." unique_id=1038230043]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PHY" unique_id=1106654324]
+position = Vector2(12.5, 60)
+shape = SubResource("RectangleShape2D_sov4a")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PHY" unique_id=226429766]
+position = Vector2(-138, -44)
+shape = SubResource("RectangleShape2D_hnugb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PHY" unique_id=1544914730]
+position = Vector2(-28, -120)
+shape = SubResource("RectangleShape2D_kyodv")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="PHY" unique_id=1814333464]
+position = Vector2(112.0625, 8)
+shape = SubResource("RectangleShape2D_4g462")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="PHY" unique_id=515361792]
+position = Vector2(220.03125, -4)
+shape = SubResource("RectangleShape2D_xxy47")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="PHY" unique_id=2147463680]
+position = Vector2(304, -20)
+shape = SubResource("RectangleShape2D_wj2o1")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="PHY" unique_id=1400831219]
+position = Vector2(416, -92)
+shape = SubResource("RectangleShape2D_ucliy")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="PHY" unique_id=1728344991]
+position = Vector2(488, -74)
+shape = SubResource("RectangleShape2D_xa4jn")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="PHY" unique_id=1174077860]
+position = Vector2(544, -12)
+shape = SubResource("RectangleShape2D_323ns")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="PHY" unique_id=358425380]
+position = Vector2(624, 10)
+shape = SubResource("RectangleShape2D_kaqsx")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="PHY" unique_id=2099060370]
+position = Vector2(632, 25)
+shape = SubResource("RectangleShape2D_hi7pw")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="PHY" unique_id=1022206098]
+position = Vector2(712, 48)
+shape = SubResource("RectangleShape2D_ghfmt")
+
+[node name="Player" parent="." unique_id=634190875 instance=ExtResource("1_tn8qy")]
+platform_on_leave = 1
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1333794043]
+
+[node name="FG" type="Node2D" parent="." unique_id=2059994589]
+
+[node name="AutoNorm" type="Node" parent="." unique_id=1828746288]
+script = ExtResource("2_7f6mx")

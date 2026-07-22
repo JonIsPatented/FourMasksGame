@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b5ggie48l10g6"]
+
+[ext_resource type="Texture2D" uid="uid://dm3pmwiu8q5cq" path="res://assets/environment/wingatlas.png" id="1_u4nbb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sov4a"]
+atlas = ExtResource("1_u4nbb")
+region = Rect2(40, 21, 8, 32)
+
+[node name="WBwall" type="Sprite2D" unique_id=1472097665]
+texture = SubResource("AtlasTexture_sov4a")
+centered = false

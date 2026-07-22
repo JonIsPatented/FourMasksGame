@@ -9,6 +9,7 @@ namespace FourMasksGame.Scripts.Movement;
 public struct MovementInfo
 {
     public bool grounded;
+    public float groundedTime;
     public Vector2 realVelocity;
     public bool usingAbility;
 }
