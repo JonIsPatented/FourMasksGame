@@ -11,10 +11,12 @@ wingMusic = NodePath("WingMusic")
 
 [node name="DemonMusic" type="AudioStreamPlayer" parent="." unique_id=370486889]
 stream = ExtResource("2_okrqc")
+volume_db = -80.0
 autoplay = true
 parameters/looping = true
 
 [node name="WingMusic" type="AudioStreamPlayer" parent="." unique_id=1296707826]
 stream = ExtResource("3_okrqc")
+volume_db = -80.0
 autoplay = true
 parameters/looping = true

@@ -1,5 +1,6 @@
 
 namespace FourMasksGame.Scripts.Damage;
+using Godot;
 
 public interface DamageSource
 {
@@ -66,6 +67,33 @@ public interface DamageSource
         {
             float now = Godot.Time.GetTicksMsec() / 1000f;
             return now >= endTime;
+        }
+    }
+
+    public class Hazard : DamageSource
+    {
+        public float Damage { get; }
+        public int Team { get; }
+
+        Node Source;
+        
+        public Hazard(Node source, float damage, int team)
+        {
+            Source = source;
+            Damage = damage;
+            Team = team;
+        }
+
+        float DamageSource.Damage => Damage;
+        bool DamageSource.Filter => false;
+        bool DamageSource.IsActive()
+        {
+            return Source != null;
+        }
+
+        bool DamageSource.IsComplete()
+        {
+            return Source == null;
         }
     }
 }

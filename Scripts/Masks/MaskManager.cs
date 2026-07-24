@@ -42,4 +42,9 @@ public partial class MaskManager : Node
         RenderingServer.GlobalShaderParameterSet("demon", mask == 2);
         EmitSignal(SignalName.MaskChanged, CurrentMask);
     }
+
+    public void QuietlyChangeMask(int mask)
+    {
+        futureMask = mask;
+    }
 }

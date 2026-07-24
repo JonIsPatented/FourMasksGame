@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://i0n3xtgcxrkh"]
+
+[ext_resource type="Script" uid="uid://dqwkcvemhxnji" path="res://Scripts/Environment/MaskVisibilityControl.cs" id="1_8rx2a"]
+[ext_resource type="Script" uid="uid://da6o4gywlveep" path="res://Scenes/Environment/Hazard.cs" id="1_wm8y7"]
+[ext_resource type="Texture2D" uid="uid://dm3pmwiu8q5cq" path="res://assets/environment/wingatlas.png" id="2_wm8y7"]
+[ext_resource type="Texture2D" uid="uid://1fmpxqfm4te6" path="res://assets/environment/demonatlas.png" id="3_flc3g"]
+[ext_resource type="Script" uid="uid://bx0jews2vom0c" path="res://Scripts/Damage/DamageSender.cs" id="4_d4ehk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sov4a"]
+atlas = ExtResource("2_wm8y7")
+region = Rect2(0, 11, 37, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvx6q"]
+atlas = ExtResource("3_flc3g")
+region = Rect2(0, 11, 36, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
+size = Vector2(32, 8)
+
+[node name="Hazard" type="Node2D" unique_id=1700061837 node_paths=PackedStringArray("sender")]
+script = ExtResource("1_wm8y7")
+sender = NodePath("DamageSender")
+
+[node name="Wing" type="Node2D" parent="." unique_id=1618806150]
+script = ExtResource("1_8rx2a")
+maskName = "Wing"
+metadata/_custom_type_script = "uid://dqwkcvemhxnji"
+
+[node name="Sprite2D" type="Sprite2D" parent="Wing" unique_id=1755803336]
+texture = SubResource("AtlasTexture_sov4a")
+offset = Vector2(0.5, -1)
+
+[node name="Demon" type="Node2D" parent="." unique_id=945616716]
+script = ExtResource("1_8rx2a")
+maskName = "Demon"
+metadata/_custom_type_script = "uid://dqwkcvemhxnji"
+
+[node name="Sprite2D" type="Sprite2D" parent="Demon" unique_id=1474444825]
+texture = SubResource("AtlasTexture_hvx6q")
+
+[node name="DamageSender" type="Area2D" parent="." unique_id=1116255733]
+script = ExtResource("4_d4ehk")
+metadata/_custom_type_script = "uid://bx0jews2vom0c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageSender" unique_id=1846967855]
+shape = SubResource("RectangleShape2D_sov4a")
+debug_color = Color(0.79700124, 0.72207564, 7.70092e-07, 0.41960785)

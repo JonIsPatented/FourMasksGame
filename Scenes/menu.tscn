@@ -2,15 +2,40 @@
 
 [ext_resource type="Material" uid="uid://50ye04jip1il" path="res://Shaders/Materials/background.tres" id="1_1rerr"]
 [ext_resource type="Texture2D" uid="uid://bvf6aqtb0wyi5" path="res://assets/player_sprites/mist_mask_sprites/player_sprite.png" id="1_jsrd8"]
+[ext_resource type="Script" uid="uid://bfffxtddw0mdk" path="res://Scenes/Menu.cs" id="1_rfqti"]
 [ext_resource type="Material" uid="uid://lpaygx1t0rm6" path="res://Shaders/Materials/demonmenu.tres" id="2_xhh6f"]
 [ext_resource type="Theme" uid="uid://cbtifi0ixukop" path="res://Shaders/Materials/menu_theme.tres" id="3_6swd7"]
 [ext_resource type="Texture2D" uid="uid://cnhr0umjdkvo4" path="res://assets/player_sprites/wing_mask_sprites/player_sprite.png" id="3_wbdvm"]
 [ext_resource type="Texture2D" uid="uid://8grhpujxp7te" path="res://assets/player_sprites/wing_mask_sprites/mask.png" id="4_7qvly"]
 [ext_resource type="Texture2D" uid="uid://bgjjmdp3t2ixp" path="res://assets/player_sprites/demon_mask_sprites/player_sprite.png" id="5_q3rjx"]
-[ext_resource type="Texture2D" uid="uid://f11x2ws8dhtl" path="res://assets/player_sprites/golem_mask_sprites/player_idle.png" id="6_6swd7"]
 [ext_resource type="Texture2D" uid="uid://c1qupptt72hxp" path="res://assets/player_sprites/demon_mask_sprites/mask.png" id="8_rfqti"]
+[ext_resource type="Texture2D" uid="uid://cnf3ukpekv0j1" path="res://assets/player_sprites/golem_mask_sprites/player_sprite.png" id="9_6swd7"]
 
-[node name="Menu" type="Node2D" unique_id=1850742036]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qvly"]
+bg_color = Color(0.82, 0.82, 0.82, 0.039215688)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvx6q"]
+bg_color = Color(1, 1, 1, 0.1764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sov4a"]
+bg_color = Color(0.91, 0.91, 0.91, 0.15686275)
+
+[sub_resource type="InputEventAction" id="InputEventAction_megyo"]
+action = &"DonMask1"
+
+[sub_resource type="Shortcut" id="Shortcut_gk03p"]
+events = [SubResource("InputEventAction_megyo")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_ujk5d"]
+action = &"DonMask2"
+
+[sub_resource type="Shortcut" id="Shortcut_n4y2n"]
+events = [SubResource("InputEventAction_ujk5d")]
+
+[node name="Menu" type="Node2D" unique_id=1850742036 node_paths=PackedStringArray("wingStartButton", "demonStartButton")]
+script = ExtResource("1_rfqti")
+wingStartButton = NodePath("CanvasLayer/Control/Control/HBoxContainer/VBoxContainer2/ColorRect3/WingStartButton")
+demonStartButton = NodePath("CanvasLayer/Control/Control/HBoxContainer/VBoxContainer/ColorRect/DemonStartButton")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1564359316]
 anchor_mode = 0
@@ -118,6 +143,21 @@ offset_right = 40.0
 grow_vertical = 0
 texture = ExtResource("3_wbdvm")
 
+[node name="WingStartButton" type="Button" parent="CanvasLayer/Control/Control/HBoxContainer/VBoxContainer2/ColorRect3" unique_id=1845181662]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+accessibility_name = "Wing Start"
+theme = ExtResource("3_6swd7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7qvly")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hvx6q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sov4a")
+shortcut = SubResource("Shortcut_gk03p")
+shortcut_in_tooltip = false
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Control/HBoxContainer" unique_id=1801438736]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -145,18 +185,29 @@ flip_h = true
 
 [node name="Button" type="Button" parent="CanvasLayer/Control/Control/HBoxContainer/VBoxContainer/ColorRect" unique_id=321899565]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -72.0
-offset_right = 72.0
-grow_vertical = 0
+offset_right = 113.0
+offset_bottom = 72.0
 theme = ExtResource("3_6swd7")
 text = "DEMON START"
 icon = ExtResource("8_rfqti")
 icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true
+
+[node name="DemonStartButton" type="Button" parent="CanvasLayer/Control/Control/HBoxContainer/VBoxContainer/ColorRect" unique_id=376718696]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+accessibility_name = "Wing Start"
+theme = ExtResource("3_6swd7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7qvly")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hvx6q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sov4a")
+shortcut = SubResource("Shortcut_n4y2n")
+shortcut_in_tooltip = false
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control/Control/HBoxContainer/VBoxContainer" unique_id=1980984381]
 layout_mode = 2
@@ -175,7 +226,7 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("6_6swd7")
+texture = ExtResource("9_6swd7")
 flip_h = true
 
 [node name="Label" type="RichTextLabel" parent="CanvasLayer/Control/Control/HBoxContainer/VBoxContainer/ColorRect2" unique_id=422701244]
@@ -185,8 +236,28 @@ offset_bottom = 89.0
 accessibility_name = "Credits"
 theme = ExtResource("3_6swd7")
 theme_override_font_sizes/normal_font_size = 11
-text = "A game by
+text = " A game by
 	Fern Badenhop
 	Amanda Milovich
 	Jon Cole"
 scroll_active = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=844100469]
+
+[node name="Label" type="Label" parent="CanvasLayer2" unique_id=1275624155]
+offset_left = 56.0
+offset_top = 164.0
+offset_right = 151.0
+offset_bottom = 187.0
+theme = ExtResource("3_6swd7")
+theme_override_font_sizes/font_size = 10
+text = "PRESS 1/DPAD UP"
+
+[node name="Label2" type="Label" parent="CanvasLayer2" unique_id=1864983415]
+offset_left = 168.0
+offset_top = 72.0
+offset_right = 270.0
+offset_bottom = 95.0
+theme = ExtResource("3_6swd7")
+theme_override_font_sizes/font_size = 10
+text = "PRESS 2/DPAD RIGHT"

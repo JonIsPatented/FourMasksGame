@@ -11,6 +11,7 @@ public class FallingMovementState : MovementState
         new IdleMovementState(),
         new JumpMovementState(),
         new RunMovementState(),
+        new AbilityMovementState(),
     ];
 
     MovementDirective MovementState.Directive(MovementInfo info) => new()

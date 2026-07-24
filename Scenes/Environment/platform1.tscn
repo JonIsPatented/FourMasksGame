@@ -13,13 +13,14 @@ region = Rect2(40, 53, 24, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hvx6q"]
 atlas = ExtResource("1_k7vwb")
-region = Rect2(40, 18, 24, 7)
+region = Rect2(40, 18, 24, 8)
 
 [node name="GrayPlat" type="StaticBody2D" unique_id=259895397]
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=993147583]
 shape = SubResource("RectangleShape2D_sov4a")
+one_way_collision = true
 
 [node name="Demon" type="Node2D" parent="." unique_id=128074405]
 script = ExtResource("1_ar6rv")

@@ -39,7 +39,7 @@ public partial class HealthBar : GodotObject
             
             if (FloorDamage)
             {
-                Health -= Mathf.Floor(source.Damage);
+                //Health -= Mathf.Floor(source.Damage);
             }
             else
             {

@@ -2,6 +2,7 @@
 namespace FourMasksGame.Scripts.Movement;
 
 using FourMasksGame.Scripts.Masks;
+using FourMasksGame.Scripts.Input;
 
 public static class Constants
 {
@@ -21,6 +22,9 @@ public static class Constants
     public static readonly float PLAYER_FALL_GRAVITY;
     public static readonly uint JUMP_PRESS_TOLERANCE = 5;
 
+    public const float PLAYER_MAX_FALLSPEED = 400f;
+    public const float BUMP_STRENGTH = -150f;
+
     private static float GetJumpHeight()
     {
         Mask _m = MaskManager.Instance.CurrentMask;
@@ -37,7 +41,7 @@ public static class Constants
 
         if (_m.Name == "Demon")
         {
-            return 64f;
+            return 68f;
         }
 
         return 0f;
@@ -45,10 +49,10 @@ public static class Constants
 
     private static float GetTimeToPeak()
     {
-        return 0.8f;
+        return 0.35f;
     }
 
-    private static float GetTimeToGround()
+    private static float GetTimeToGround(bool allowFloat)
     {
         Mask _m = MaskManager.Instance.CurrentMask;
 
@@ -59,7 +63,11 @@ public static class Constants
 
         if (_m.Name == "Wing")
         {
-            return 2.4f;
+            if (InputManager.Instance.GetActionHeld("Jump") && allowFloat)
+            {
+                return 2.4f;
+            }
+            return 0.3f;
         }
 
         if (_m.Name == "Demon")
@@ -72,7 +80,7 @@ public static class Constants
 
     public static float PlayerJumpVelocity()
     {
-        return 2f * GetJumpHeight() / GetTimeToPeak();
+        return -2f * GetJumpHeight() / GetTimeToPeak();
     }
 
     public static float PlayerRiseGravity()
@@ -80,8 +88,8 @@ public static class Constants
         return 2f * GetJumpHeight() / (GetTimeToPeak() * GetTimeToPeak());
     }
 
-    public static float PlayerFallGravity()
+    public static float PlayerFallGravity(bool allowFloat)
     {
-        return 2f * GetJumpHeight() / (GetTimeToGround() * GetTimeToGround());
+        return 2f * GetJumpHeight() / (GetTimeToGround(allowFloat) * GetTimeToGround(allowFloat));
     }
 }

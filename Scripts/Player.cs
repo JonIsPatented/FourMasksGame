@@ -25,7 +25,9 @@ public partial class Player : CharacterBody2D
     private SpriteController spriteController;
 
     private float groundedTime = -1000f;
+    private float bumpTime = -1000f;
     private bool needsJump = false;
+    private bool needsBump = false;
 
     // Used for debug.
     public MovementStateMachine StateMachine { get => movementStateMachine; }
@@ -53,11 +55,18 @@ public partial class Player : CharacterBody2D
             return;
         }
 
-        HashSet<DamageSource> damageSources = damageReceiver.Receive(1);
-        if (damageSources.Count > 0)
+        if (healthBar.SinceLastDamage() > 0.5f)
         {
-            spriteController.Damage();
-            healthBar.Damage(damageSources);
+            HashSet<DamageSource> damageSources = damageReceiver.Receive(1);
+            if (damageSources.Count > 0)
+            {
+                spriteController.Damage();
+                healthBar.Damage(damageSources);
+                audio.Stream = SoundEffects.Instance.Ouch;
+                audio.Play();
+                needsBump = true;
+                bumpTime = Time.GetTicksMsec() / 1000f;
+            }
         }
 
         if (!healthBar.IsAlive())
@@ -199,23 +208,31 @@ public partial class Player : CharacterBody2D
             needsJump = false;
         }
 
-        if (_v.Y < 0f && !directive.useJumpGravity)
+        if (_v.Y < 0f && !directive.useJumpGravity && bumpTime <= groundedTime)
         {
             _v.Y = 0f;
         }
 
-        _v.Y += CustomGravity(directive.useJumpGravity) * (float)delta;
+        _v.Y += CustomGravity(directive.useJumpGravity, bumpTime <= groundedTime) * (float)delta;
 
         // The player controls horizontal velocity directive determines whether the player gets to set the horizontal velocity with input.
-        if (directive.playerControlsHorizontalVelocity)
+        if (directive.playerControlsHorizontalVelocity && bumpTime <= groundedTime)
         {
             _v.X = directive.horizontalMovementSpeed * InputManager.Instance.GetHorizontalAxis();
+        }
+
+        _v.Y = Mathf.Min(_v.Y, Constants.PLAYER_MAX_FALLSPEED);
+
+        if (needsBump)
+        {
+            _v = new(Constants.BUMP_STRENGTH * InputManager.Instance.GetLastHorizontalAxis(), Constants.BUMP_STRENGTH);
+            needsBump = false;
         }
 
         Velocity = _v;
     }
 
-    private float CustomGravity(bool useJumpGravity = false)
+    private float CustomGravity(bool useJumpGravity = false, bool allowFloat = false)
     {
         if (useJumpGravity)
         {
@@ -223,7 +240,7 @@ public partial class Player : CharacterBody2D
         }
         else
         {
-            return Constants.PlayerFallGravity();
+            return Constants.PlayerFallGravity(allowFloat);
         }
     }
 
@@ -236,6 +253,8 @@ public partial class Player : CharacterBody2D
         {
             _v.Y = 0;
         }
+
+        _v.Y = Mathf.Min(_v.Y, Constants.PLAYER_MAX_FALLSPEED);
 
         Velocity = _v;
     }

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bedi8jjm5mel5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m01ol"]
+load_path = "res://.godot/imported/wingatlas.png-1be60e93775546abb0e94d53b9b06bb8.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtp60"]
+atlas = SubResource("CompressedTexture2D_m01ol")
+region = Rect2(0, 53, 40, 3)
+
+[node name="WDirtTop" type="Sprite2D" unique_id=1708360253]
+texture = SubResource("AtlasTexture_qtp60")
+centered = false
+offset = Vector2(-8, 0)

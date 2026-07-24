@@ -1,10 +1,11 @@
 using Godot;
 using FourMasksGame.Scripts.Damage;
 using System;
+using FourMasksGame.Scripts.Masks;
 
 namespace FourMasksGame.Scenes.Projectiles;
 
-public partial class Fireball : Node2D
+public partial class Fireball : CharacterBody2D
 {
     const float FIREBALL_SPEED = 200f;
 
@@ -13,41 +14,45 @@ public partial class Fireball : Node2D
 
     [Export] DamageSender damageSender;
     [Export] AnimatedSprite2D sprite;
-    [Export] Area2D groundCollider;
+    [Export] AudioStreamPlayer2D deathSound;
 
     public override void _Ready()
     {
         damageSender.Load(new FireballDamage(this));
         sprite.Play("default");
-        groundCollider.BodyEntered += CollidedWithGround;
-        groundCollider.AreaEntered += CollidedWithGround;
         GetTree().CreateTimer(10f).Timeout += Finish;
-    }
-
-    private void CollidedWithGround(Node2D body)
-    {
-        Finish();
+        Velocity = new Vector2(movement * FIREBALL_SPEED, 0f).Rotated(Rotation);
+        MaskManager.Instance.MaskStartChange += Finish;
     }
 
     public void Flip()
     {
         sprite.FlipH = !sprite.FlipH;
         movement = -movement;
+        Velocity = new Vector2(movement * FIREBALL_SPEED, 0f).Rotated(Rotation);
     }
-
 
     public override void _PhysicsProcess(double delta)
     {
-        Translate(new Vector2(movement * FIREBALL_SPEED * (float)delta, 0f).Rotated(Rotation));
+        KinematicCollision2D collision = MoveAndCollide(Velocity * (float)delta);
+        if (collision != null)
+        {
+            deathSound.Play();
+            Finish();
+        }
     }
 
     public void Finish()
     {
-        if (isAlive)
+        SetPhysicsProcess(false);
+        sprite.Visible = false;
+        if (deathSound.Playing)
         {
-            isAlive = false;
-            sprite.Play("finish");
-            sprite.AnimationFinished += QueueFree;
+            deathSound.Finished += QueueFree;
+        }
+        else
+        {
+            QueueFree();
         }
     }
 
@@ -72,11 +77,6 @@ public partial class Fireball : Node2D
         bool DamageSource.IsComplete()
         {
             return !fireball.isAlive;
-        }
-
-        void DamageSource.OnDamage()
-        {
-            fireball.Finish();
         }
     }
 }

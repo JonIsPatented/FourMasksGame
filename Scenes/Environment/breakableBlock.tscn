@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://do5lc7lf8nd15"]
+
+[ext_resource type="Script" uid="uid://bacw0ml46gv80" path="res://Scenes/Environment/BreakableBlock.cs" id="1_ftmdf"]
+[ext_resource type="Texture2D" uid="uid://dm3pmwiu8q5cq" path="res://assets/environment/wingatlas.png" id="2_uhgvl"]
+[ext_resource type="Script" uid="uid://ckkni6rswhj6x" path="res://Scripts/Damage/DamageReceiver.cs" id="3_tapjx"]
+[ext_resource type="Texture2D" uid="uid://cvygkggw56dlt" path="res://assets/projectiles.png" id="4_3bwf1"]
+[ext_resource type="AudioStream" uid="uid://8ny6orhgkd8f" path="res://assets/Sounds/Hit.ogg" id="5_s2s8f"]
+[ext_resource type="Script" uid="uid://dqwkcvemhxnji" path="res://Scripts/Environment/MaskVisibilityControl.cs" id="5_uhgvl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvx6q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvx6q"]
+atlas = ExtResource("4_3bwf1")
+region = Rect2(17, 1, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sov4a"]
+atlas = ExtResource("2_uhgvl")
+region = Rect2(64, 56, 16, 16)
+
+[node name="BreakableBlock" type="StaticBody2D" unique_id=324302250 node_paths=PackedStringArray("damageReceiver", "particles", "audio", "sprite")]
+collision_layer = 32
+collision_mask = 33
+script = ExtResource("1_ftmdf")
+damageReceiver = NodePath("DamageReceiver")
+particles = NodePath("CPUParticles2D")
+audio = NodePath("AudioStreamPlayer2D")
+sprite = NodePath("Node2D")
+
+[node name="DamageReceiver" type="Area2D" parent="." unique_id=2065938581]
+collision_mask = 2
+script = ExtResource("3_tapjx")
+metadata/_custom_type_script = "uid://ckkni6rswhj6x"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" unique_id=600150761]
+shape = SubResource("RectangleShape2D_hvx6q")
+debug_color = Color(0.9549238, 0.21508178, 0, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1631501990]
+shape = SubResource("RectangleShape2D_sov4a")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1305107839]
+emitting = false
+amount = 3
+texture = SubResource("AtlasTexture_hvx6q")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(8, 8)
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1246545671]
+stream = ExtResource("5_s2s8f")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1584912452]
+
+[node name="Wing" type="Node2D" parent="Node2D" unique_id=1838042032]
+script = ExtResource("5_uhgvl")
+maskName = "Wing"
+metadata/_custom_type_script = "uid://dqwkcvemhxnji"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/Wing" unique_id=418432589]
+modulate = Color(0.5019608, 0, 0.39215687, 1)
+texture = SubResource("AtlasTexture_sov4a")
+
+[node name="Demon" type="Node2D" parent="Node2D" unique_id=1013366913]
+script = ExtResource("5_uhgvl")
+maskName = "Demon"
+metadata/_custom_type_script = "uid://dqwkcvemhxnji"
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Demon" unique_id=453599837]
+modulate = Color(0.5019608, 0.8117647, 0.28235295, 1)
+texture = SubResource("AtlasTexture_sov4a")

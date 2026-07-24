@@ -26,6 +26,7 @@ animations = [{
 
 [node name="WCattail" type="AnimatedSprite2D" unique_id=895397483]
 sprite_frames = SubResource("SpriteFrames_sov4a")
+autoplay = "default"
 frame_progress = 0.9643561
 centered = false
 offset = Vector2(-16, -14)

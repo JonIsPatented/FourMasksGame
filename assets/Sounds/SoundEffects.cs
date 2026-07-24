@@ -15,4 +15,5 @@ public partial class SoundEffects : Node
     public AudioStream Jump = ResourceLoader.Load<AudioStream>("res://assets/Sounds/Jump.ogg");
     public AudioStream Step = ResourceLoader.Load<AudioStream>("res://assets/Sounds/Step.ogg");
     public AudioStream Land = ResourceLoader.Load<AudioStream>("res://assets/Sounds/Land.ogg");
+    public AudioStream Ouch = ResourceLoader.Load<AudioStream>("res://assets/Sounds/Ouch.ogg");
 }
