@@ -14,6 +14,18 @@ public partial class Menu : Node2D
         demonStartButton.ButtonUp += StartDemon;
     }
 
+    public override void _Process(double delta)
+    {
+        if (Input.IsActionJustReleased("DonMask1"))
+        {
+            StartWing();
+        }
+        if (Input.IsActionJustPressed("DonMask2"))
+        {
+            StartDemon();
+        }
+    }
+
     private void StartWing()
     {
         MaskManager.Instance.QuietlyChangeMask(1);

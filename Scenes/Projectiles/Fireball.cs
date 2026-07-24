@@ -20,9 +20,9 @@ public partial class Fireball : CharacterBody2D
     {
         damageSender.Load(new FireballDamage(this));
         sprite.Play("default");
-        GetTree().CreateTimer(10f).Timeout += Finish;
         Velocity = new Vector2(movement * FIREBALL_SPEED, 0f).Rotated(Rotation);
         MaskManager.Instance.MaskStartChange += Finish;
+        deathSound.Finished += QueueFree;
     }
 
     public void Flip()
@@ -44,13 +44,14 @@ public partial class Fireball : CharacterBody2D
 
     public void Finish()
     {
+        if (!IsInstanceValid(this))
+        {
+            return;
+        }
+
         SetPhysicsProcess(false);
         sprite.Visible = false;
-        if (deathSound.Playing)
-        {
-            deathSound.Finished += QueueFree;
-        }
-        else
+        if (!deathSound.Playing)
         {
             QueueFree();
         }

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://xir80hjovtb"]
+
+[ext_resource type="Script" uid="uid://da6o4gywlveep" path="res://Scenes/Environment/Hazard.cs" id="1_uwsbp"]
+[ext_resource type="Script" uid="uid://dqwkcvemhxnji" path="res://Scripts/Environment/MaskVisibilityControl.cs" id="2_bmwnr"]
+[ext_resource type="Texture2D" uid="uid://dm3pmwiu8q5cq" path="res://assets/environment/wingatlas.png" id="3_oni5h"]
+[ext_resource type="Texture2D" uid="uid://1fmpxqfm4te6" path="res://assets/environment/demonatlas.png" id="4_feht5"]
+[ext_resource type="Script" uid="uid://bx0jews2vom0c" path="res://Scripts/Damage/DamageSender.cs" id="5_ltoi5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sov4a"]
+atlas = ExtResource("3_oni5h")
+region = Rect2(12, 13, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwsbp"]
+atlas = ExtResource("3_oni5h")
+region = Rect2(10, 18, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvx6q"]
+atlas = ExtResource("4_feht5")
+region = Rect2(11, 11, 16, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
+size = Vector2(16, 4)
+
+[node name="SmallHazard" type="Node2D" unique_id=1700061837 node_paths=PackedStringArray("sender")]
+script = ExtResource("1_uwsbp")
+sender = NodePath("DamageSender")
+
+[node name="Wing" type="Node2D" parent="." unique_id=1618806150]
+script = ExtResource("2_bmwnr")
+maskName = "Wing"
+metadata/_custom_type_script = "uid://dqwkcvemhxnji"
+
+[node name="Sprite2D" type="Sprite2D" parent="Wing" unique_id=1755803336]
+texture = SubResource("AtlasTexture_sov4a")
+centered = false
+offset = Vector2(-8, -4)
+flip_v = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Wing" unique_id=862341785]
+texture = SubResource("AtlasTexture_uwsbp")
+centered = false
+offset = Vector2(-8, -4)
+flip_v = true
+
+[node name="Demon" type="Node2D" parent="." unique_id=945616716]
+script = ExtResource("2_bmwnr")
+maskName = "Demon"
+metadata/_custom_type_script = "uid://dqwkcvemhxnji"
+
+[node name="Sprite2D" type="Sprite2D" parent="Demon" unique_id=1474444825]
+texture = SubResource("AtlasTexture_hvx6q")
+centered = false
+offset = Vector2(-8, -4)
+
+[node name="DamageSender" type="Area2D" parent="." unique_id=1116255733]
+script = ExtResource("5_ltoi5")
+metadata/_custom_type_script = "uid://bx0jews2vom0c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageSender" unique_id=1846967855]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_sov4a")
+debug_color = Color(0.79700124, 0.72207564, 7.70092e-07, 0.41960785)

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://doh3ihei4xqod"]
+
+[ext_resource type="Texture2D" uid="uid://1fmpxqfm4te6" path="res://assets/environment/demonatlas.png" id="1_nghlm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sov4a"]
+atlas = ExtResource("1_nghlm")
+region = Rect2(40, 21, 8, 32)
+
+[node name="DTWall" type="Sprite2D" unique_id=1472097665]
+texture = SubResource("AtlasTexture_sov4a")
+centered = false

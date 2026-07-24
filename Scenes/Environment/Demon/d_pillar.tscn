@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dayjdxdpdpihd"]
+
+[ext_resource type="Texture2D" uid="uid://1fmpxqfm4te6" path="res://assets/environment/demonatlas.png" id="1_ohfei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es0pj"]
+atlas = ExtResource("1_ohfei")
+region = Rect2(0, 0, 40, 11.13459)
+
+[node name="DPillar" type="Sprite2D" unique_id=1049740812]
+rotation = 1.5707964
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_es0pj")
+centered = false
+offset = Vector2(-40, -11)

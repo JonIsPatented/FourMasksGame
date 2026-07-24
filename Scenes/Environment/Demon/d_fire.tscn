@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bjigl7i71niy6"]
+
+[ext_resource type="Texture2D" uid="uid://dak3s7cumgh1o" path="res://Scenes/Environment/Demon/fire_atlas.tres" id="1_hkkl7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sep25"]
+atlas = ExtResource("1_hkkl7")
+region = Rect2(0, 0, 32, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4qfe"]
+atlas = ExtResource("1_hkkl7")
+region = Rect2(0, 13, 32, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sov4a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sep25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4qfe")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="DFire" type="AnimatedSprite2D" unique_id=895397483]
+sprite_frames = SubResource("SpriteFrames_sov4a")
+autoplay = "default"
+frame_progress = 0.5599915
+centered = false
+offset = Vector2(-16, -13)

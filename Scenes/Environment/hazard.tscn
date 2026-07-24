@@ -28,7 +28,7 @@ metadata/_custom_type_script = "uid://dqwkcvemhxnji"
 
 [node name="Sprite2D" type="Sprite2D" parent="Wing" unique_id=1755803336]
 texture = SubResource("AtlasTexture_sov4a")
-offset = Vector2(0.5, -1)
+offset = Vector2(0.5, -0.5)
 
 [node name="Demon" type="Node2D" parent="." unique_id=945616716]
 script = ExtResource("1_8rx2a")
@@ -37,6 +37,7 @@ metadata/_custom_type_script = "uid://dqwkcvemhxnji"
 
 [node name="Sprite2D" type="Sprite2D" parent="Demon" unique_id=1474444825]
 texture = SubResource("AtlasTexture_hvx6q")
+offset = Vector2(0, 0.5)
 
 [node name="DamageSender" type="Area2D" parent="." unique_id=1116255733]
 script = ExtResource("4_d4ehk")

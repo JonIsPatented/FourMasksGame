@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://co8nmgk1wywxy"]
+
+[ext_resource type="Texture2D" uid="uid://1fmpxqfm4te6" path="res://assets/environment/demonatlas.png" id="1_capsy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1va2"]
+atlas = ExtResource("1_capsy")
+region = Rect2(45, 3, 11, 11)
+
+[node name="DCrack2" type="Sprite2D" unique_id=924302793]
+rotation = -1.5707964
+texture = SubResource("AtlasTexture_e1va2")
+centered = false
