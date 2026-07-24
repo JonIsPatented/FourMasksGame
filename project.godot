@@ -10,11 +10,13 @@ config_version=5
 
 [application]
 
-config/name="FourMasksGame"
+config/name="The Four Masks"
+config/version="1.0"
 run/main_scene="uid://b2y04uqnuku8p"
 config/features=PackedStringArray("4.7", "C#")
 run/max_fps=120
-config/icon="res://icon.png"
+config/icon="uid://8grhpujxp7te"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -27,8 +29,8 @@ Shutter="*uid://cmhe0o7jy6rn8"
 
 window/size/viewport_width=320
 window/size/viewport_height=180
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/window_width_override=640
+window/size/window_height_override=360
 window/stretch/mode="canvas_items"
 
 [dotnet]
