@@ -1,5 +1,6 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://b1tirhlpdkyyk"]
 
+[ext_resource type="Texture2D" uid="uid://dx3ls762knlly" path="res://assets/player_sprites/wing_mask_sprites/don_mask.png" id="1_8cctc"]
 [ext_resource type="Texture2D" uid="uid://cltjomy3ipbt6" path="res://assets/player_sprites/wing_mask_sprites/player_idle.png" id="1_wjs13"]
 [ext_resource type="Texture2D" uid="uid://igvr5rc5wtci" path="res://assets/player_sprites/wing_mask_sprites/player_attack.png" id="2_qi25c"]
 [ext_resource type="Texture2D" uid="uid://dswtowm2avws0" path="res://assets/player_sprites/wing_mask_sprites/player_walk.png" id="2_ttge5"]
@@ -58,6 +59,14 @@ region = Rect2(160, 0, 32, 33)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8cctc")
+}],
+"loop": 1,
+"name": &"DonMask",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bjjr1")

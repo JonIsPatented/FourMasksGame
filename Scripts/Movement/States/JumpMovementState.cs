@@ -18,7 +18,7 @@ public class JumpMovementState : MovementState
     {
         playerControlsHorizontalVelocity = true,
         horizontalMovementSpeed = Constants.PLAYER_SPEED,
-        impulseOnEnter = new(0f, Constants.PLAYER_JUMP_VELOCITY),
+        impulseOnEnter = new(0f, Constants.PlayerJumpVelocity()),
         useJumpGravity = true,
     };
 

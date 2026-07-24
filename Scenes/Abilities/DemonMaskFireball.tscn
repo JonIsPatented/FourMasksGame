@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ci850st5hq4g6"]
+
+[ext_resource type="Script" uid="uid://drvt5ewmwv7gm" path="res://Scripts/Abilities/SceneRoots/DemonMaskFireball.cs" id="1_f1fgr"]
+[ext_resource type="SpriteFrames" uid="uid://dtewjjryemq2c" path="res://Resources/SpriteFrames/Player/demon_sprite_frames.tres" id="1_pw74k"]
+[ext_resource type="PackedScene" uid="uid://bj3w46ee7iflo" path="res://Scenes/Projectiles/Fireball.tscn" id="2_6j475"]
+
+[node name="DemonMaskFireball" type="Node2D" unique_id=1886526848 node_paths=PackedStringArray("playerAnimation", "fireball")]
+script = ExtResource("1_f1fgr")
+playerAnimation = NodePath("AnimatedSprite2D")
+fireball = NodePath("Fireball")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1575470001]
+sprite_frames = ExtResource("1_pw74k")
+animation = &"Walk"
+
+[node name="Fireball" parent="." unique_id=66878780 instance=ExtResource("2_6j475")]
+position = Vector2(13, 0)

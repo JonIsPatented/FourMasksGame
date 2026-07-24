@@ -8,11 +8,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
 size = Vector2(8, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=634190875 node_paths=PackedStringArray("sprite", "damageReceiver")]
+[node name="Player" type="CharacterBody2D" unique_id=634190875 node_paths=PackedStringArray("sprite", "damageReceiver", "audio")]
+collision_mask = 32
 script = ExtResource("1_g2els")
 sprite = NodePath("AnimatedSprite2D")
 spriteSet = ExtResource("4_vgqql")
 damageReceiver = NodePath("DamageReceiver")
+audio = NodePath("AudioStreamPlayer2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=768757703]
 shape = SubResource("RectangleShape2D_sov4a")
@@ -28,3 +30,5 @@ metadata/_custom_type_script = "uid://ckkni6rswhj6x"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageReceiver" unique_id=811643548]
 shape = SubResource("RectangleShape2D_sov4a")
 debug_color = Color(0.97357374, 0.1347957, 0.24165499, 0.41960785)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1755691370]

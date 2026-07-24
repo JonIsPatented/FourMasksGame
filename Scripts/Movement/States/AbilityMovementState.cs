@@ -8,6 +8,7 @@ public class AbilityMovementState : MovementState
     MovementStateLabel MovementState.Label => MovementStateLabel.Ability;
     MovementState[] MovementState.FutureStates() => [
         new FallingMovementState(),
+        new JumpMovementState(),
         new IdleMovementState(),
         new RunMovementState(),
     ];

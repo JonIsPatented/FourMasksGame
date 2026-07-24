@@ -1,0 +1,40 @@
+[gd_resource type="Theme" format=3 uid="uid://cbtifi0ixukop"]
+
+[ext_resource type="FontFile" uid="uid://b4j5g71xscg2f" path="res://assets/Lato-Regular.ttf" id="1_jr5wi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jr5wi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kj62x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ms8ak"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fxn4l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h7g2o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxcq0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p6phc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ju1su"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b8mvq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kya5e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsiry"]
+
+[resource]
+Button/fonts/font = ExtResource("1_jr5wi")
+Button/styles/disabled = SubResource("StyleBoxEmpty_jr5wi")
+Button/styles/disabled_mirrored = SubResource("StyleBoxEmpty_kj62x")
+Button/styles/focus = SubResource("StyleBoxEmpty_ms8ak")
+Button/styles/hover = SubResource("StyleBoxEmpty_fxn4l")
+Button/styles/hover_mirrored = SubResource("StyleBoxEmpty_h7g2o")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_bxcq0")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_p6phc")
+Button/styles/normal = SubResource("StyleBoxEmpty_ju1su")
+Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_b8mvq")
+Button/styles/pressed = SubResource("StyleBoxEmpty_kya5e")
+Button/styles/pressed_mirrored = SubResource("StyleBoxEmpty_fsiry")
+Label/fonts/font = ExtResource("1_jr5wi")

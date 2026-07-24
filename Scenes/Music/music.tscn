@@ -2,12 +2,19 @@
 
 [ext_resource type="Script" uid="uid://dpepmo72psstb" path="res://Scenes/Music/MusicManager.cs" id="1_ddlu3"]
 [ext_resource type="AudioStream" uid="uid://cdva1f37oa38p" path="res://assets/music/demon.mp3" id="2_okrqc"]
+[ext_resource type="AudioStream" uid="uid://duwqcnl1duq7d" path="res://assets/music/wing.mp3" id="3_okrqc"]
 
-[node name="Music" type="Node2D" unique_id=450214637]
+[node name="Music" type="Node" unique_id=369812380 node_paths=PackedStringArray("demonMusic", "wingMusic")]
 script = ExtResource("1_ddlu3")
+demonMusic = NodePath("DemonMusic")
+wingMusic = NodePath("WingMusic")
 
 [node name="DemonMusic" type="AudioStreamPlayer" parent="." unique_id=370486889]
 stream = ExtResource("2_okrqc")
+autoplay = true
+parameters/looping = true
 
 [node name="WingMusic" type="AudioStreamPlayer" parent="." unique_id=1296707826]
+stream = ExtResource("3_okrqc")
 autoplay = true
+parameters/looping = true

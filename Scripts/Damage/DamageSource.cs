@@ -36,6 +36,8 @@ public interface DamageSource
     /// <returns></returns>
     bool IsComplete();
 
+    void OnDamage() { }
+
     public class Attack : DamageSource
     {
         public float Damage { get; }
@@ -65,6 +67,5 @@ public interface DamageSource
             float now = Godot.Time.GetTicksMsec() / 1000f;
             return now >= endTime;
         }
-
     }
 }

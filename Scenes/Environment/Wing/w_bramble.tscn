@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://durkacp5a5l6x"]
+
+[ext_resource type="Texture2D" uid="uid://dm3pmwiu8q5cq" path="res://assets/environment/wingatlas.png" id="1_jyg1b"]
+[ext_resource type="Script" uid="uid://bx0jews2vom0c" path="res://Scripts/Damage/DamageSender.cs" id="2_xacc2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sov4a"]
+atlas = ExtResource("1_jyg1b")
+region = Rect2(0, 11, 40, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
+size = Vector2(31, 5)
+
+[node name="WBramble" type="Sprite2D" unique_id=777046305]
+texture = SubResource("AtlasTexture_sov4a")
+centered = false
+
+[node name="DamageSender" type="Area2D" parent="." unique_id=42235384]
+script = ExtResource("2_xacc2")
+metadata/_custom_type_script = "uid://bx0jews2vom0c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageSender" unique_id=1209744234]
+position = Vector2(18.5, 4.5)
+shape = SubResource("RectangleShape2D_sov4a")
+debug_color = Color(0.9121398, 0.2611662, 0.35983002, 0.41960785)

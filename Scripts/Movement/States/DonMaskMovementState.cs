@@ -1,10 +1,13 @@
 using FourMasksGame.Scripts.Masks;
 using FourMasksGame.Scripts.Input;
+using Godot;
 
 namespace FourMasksGame.Scripts.Movement.States;
 
 public partial class DonMaskMovementState : MovementState
 {
+    bool maskHasChanged = false;
+
     bool MovementState.CanEnter(MovementInfo info)
     {
         return GetMaskShouldChangeTo() != -1;
@@ -42,6 +45,12 @@ public partial class DonMaskMovementState : MovementState
     void MovementState.OnEnter(MovementInfo info)
     {
         MaskManager.Instance.ChangeMask(GetMaskShouldChangeTo());
+        MaskManager.Instance.Connect("MaskChanged", Callable.From((Mask m) => { maskHasChanged = true; }), (uint)GodotObject.ConnectFlags.OneShot);
+    }
+
+    bool MovementState.ShouldExitTo(MovementInfo info, MovementStateLabel futureState)
+    {
+        return maskHasChanged;
     }
 
     MovementStateLabel MovementState.Label => MovementStateLabel.DonMask;

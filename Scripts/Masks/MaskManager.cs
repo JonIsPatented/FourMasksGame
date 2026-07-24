@@ -8,9 +8,12 @@ public partial class MaskManager : Node
     public static MaskManager Instance;
 
     public Mask CurrentMask { get; private set; }
+    private int futureMask;
 
     [Signal]
     public delegate void MaskChangedEventHandler(Mask mask);
+
+    [Signal] public delegate void MaskStartChangeEventHandler();
 
     private readonly Dictionary<int, string> maskPaths = new()
     {
@@ -27,7 +30,16 @@ public partial class MaskManager : Node
 
     public void ChangeMask(int mask)
     {
+        futureMask = mask;
+        GetTree().CreateTimer(0.8f).Timeout += FinishChangeMask;
+        EmitSignal(SignalName.MaskStartChange);
+    }
+
+    public void FinishChangeMask()
+    {
+        int mask = futureMask;
         CurrentMask = ResourceLoader.Load<Mask>(maskPaths[mask]);
+        RenderingServer.GlobalShaderParameterSet("demon", mask == 2);
         EmitSignal(SignalName.MaskChanged, CurrentMask);
     }
 }

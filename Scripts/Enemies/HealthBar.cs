@@ -35,6 +35,8 @@ public partial class HealthBar : GodotObject
     {
         foreach (DamageSource source in damageSources)
         {
+            source.OnDamage();
+            
             if (FloorDamage)
             {
                 Health -= Mathf.Floor(source.Damage);

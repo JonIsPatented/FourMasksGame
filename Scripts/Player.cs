@@ -5,6 +5,7 @@ using FourMasksGame.Scripts.Abilities;
 using FourMasksGame.Scripts.Visual;
 using FourMasksGame.Scripts.Enemies;
 using FourMasksGame.Scripts.Damage;
+using FourMasksGame.Scripts.Masks;
 using System.Collections.Generic;
 
 namespace FourMasksGame.Scripts;
@@ -18,6 +19,8 @@ public partial class Player : CharacterBody2D
     [Export] private AnimatedSprite2D sprite;
     [Export] private SpriteFramesSet spriteSet;
     [Export] private DamageReceiver damageReceiver;
+    [Export] private AudioStreamPlayer2D audio;
+
 
     private SpriteController spriteController;
 
@@ -73,6 +76,8 @@ public partial class Player : CharacterBody2D
             }
         }
 
+        MovementStateLabel priorStateLabel = movementStateMachine.GetLabel();
+
         movementStateMachine.PassInfo(new()
         {
             grounded = IsOnFloor(),
@@ -107,6 +112,33 @@ public partial class Player : CharacterBody2D
             {
                 needsJump = true;
             }
+
+            switch (priorStateLabel)
+            {
+                case MovementStateLabel.Falling:
+                    audio.Stream = SoundEffects.Instance.Land;
+                    audio.Play();
+                    break;
+            }
+
+            switch (movementStateMachine.GetLabel())
+            {
+                case MovementStateLabel.Jump:
+                    audio.Stream = SoundEffects.Instance.Jump;
+                    audio.Play();
+                    break;
+            }
+        }
+
+        if (movementStateMachine.GetLabel() == MovementStateLabel.Run && !audio.Playing)
+        {
+            audio.Stream = SoundEffects.Instance.Step;
+            audio.Play();
+        }
+
+        if (audio.Stream == SoundEffects.Instance.Step && movementStateMachine.GetLabel() != MovementStateLabel.Run)
+        {
+            audio.Stop();
         }
 
         if (sprite != null)
@@ -126,6 +158,9 @@ public partial class Player : CharacterBody2D
                     break;
                 case MovementStateLabel.Falling:
                     spriteController.Do("Fall");
+                    break;
+                case MovementStateLabel.DonMask:
+                    spriteController.Do("DonMask");
                     break;
                 default:
                     spriteController.Stop();
@@ -184,11 +219,11 @@ public partial class Player : CharacterBody2D
     {
         if (useJumpGravity)
         {
-            return Constants.PLAYER_RISE_GRAVITY;
+            return Constants.PlayerRiseGravity();
         }
         else
         {
-            return Constants.PLAYER_FALL_GRAVITY;
+            return Constants.PlayerFallGravity();
         }
     }
 

@@ -1,5 +1,6 @@
 [gd_resource type="Resource" format=3 uid="uid://db31jj4xxohle"]
 
+[ext_resource type="PackedScene" uid="uid://ci850st5hq4g6" path="res://Scenes/Abilities/DemonMaskFireball.tscn" id="1_4k7db"]
 [ext_resource type="Script" uid="uid://ppeha7ubcnsp" path="res://Scripts/Masks/Mask.cs" id="1_mrxtr"]
 [ext_resource type="Texture2D" uid="uid://c1qupptt72hxp" path="res://assets/player_sprites/demon_mask_sprites/mask.png" id="1_vsglk"]
 
@@ -9,3 +10,4 @@ Name = "Demon"
 Number = 1
 OverlayTexture = ExtResource("1_vsglk")
 EnvironmentColor = Color(1, 0, 0, 1)
+LightAttack = ExtResource("1_4k7db")

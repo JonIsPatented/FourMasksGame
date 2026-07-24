@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bjl0rjv3diac1"]
+
+[ext_resource type="Script" uid="uid://dqwkcvemhxnji" path="res://Scripts/Environment/MaskVisibilityControl.cs" id="1_ar6rv"]
+[ext_resource type="Texture2D" uid="uid://dm3pmwiu8q5cq" path="res://assets/environment/wingatlas.png" id="1_k7vwb"]
+[ext_resource type="Texture2D" uid="uid://1fmpxqfm4te6" path="res://assets/environment/demonatlas.png" id="3_xlhtt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sov4a"]
+size = Vector2(24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1mtj"]
+atlas = ExtResource("3_xlhtt")
+region = Rect2(40, 53, 24, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvx6q"]
+atlas = ExtResource("1_k7vwb")
+region = Rect2(40, 18, 24, 7)
+
+[node name="GrayPlat" type="StaticBody2D" unique_id=259895397]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=993147583]
+shape = SubResource("RectangleShape2D_sov4a")
+
+[node name="Demon" type="Node2D" parent="." unique_id=128074405]
+script = ExtResource("1_ar6rv")
+maskName = "Demon"
+metadata/_custom_type_script = "uid://dqwkcvemhxnji"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Demon" unique_id=254721426]
+texture = SubResource("AtlasTexture_h1mtj")
+
+[node name="Wing" type="Node2D" parent="." unique_id=1906829494]
+script = ExtResource("1_ar6rv")
+maskName = "Wing"
+metadata/_custom_type_script = "uid://dqwkcvemhxnji"
+
+[node name="Sprite2D" type="Sprite2D" parent="Wing" unique_id=937105173]
+texture = SubResource("AtlasTexture_hvx6q")

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bj3w46ee7iflo"]
+
+[ext_resource type="Script" uid="uid://chsbc0inefrbr" path="res://Scenes/Projectiles/Fireball.cs" id="1_fa2tn"]
+[ext_resource type="Texture2D" uid="uid://cvygkggw56dlt" path="res://assets/projectiles.png" id="2_q3rrb"]
+[ext_resource type="Script" uid="uid://bx0jews2vom0c" path="res://Scripts/Damage/DamageSender.cs" id="3_q3rrb"]
+[ext_resource type="AudioStream" uid="uid://cln5v65veutb8" path="res://assets/Sounds/Fireball.ogg" id="4_7dxrx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dxrx"]
+atlas = ExtResource("2_q3rrb")
+region = Rect2(0, 0, 9, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sov4a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dxrx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"finish",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sov4a"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hvx6q"]
+radius = 2.0
+
+[node name="Fireball" type="Node2D" unique_id=66878780 node_paths=PackedStringArray("damageSender", "sprite", "groundCollider")]
+script = ExtResource("1_fa2tn")
+damageSender = NodePath("DamageSender")
+sprite = NodePath("Sprite2D")
+groundCollider = NodePath("GroundCollider")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1497783035]
+sprite_frames = SubResource("SpriteFrames_sov4a")
+
+[node name="DamageSender" type="Area2D" parent="." unique_id=891813182]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_q3rrb")
+metadata/_custom_type_script = "uid://bx0jews2vom0c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageSender" unique_id=142170776]
+shape = SubResource("CircleShape2D_sov4a")
+debug_color = Color(0.98613375, 0, 0.3314768, 0.41960785)
+
+[node name="GroundCollider" type="Area2D" parent="." unique_id=903890501]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundCollider" unique_id=83460384]
+shape = SubResource("CircleShape2D_hvx6q")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1173832699]
+stream = ExtResource("4_7dxrx")
+autoplay = true
